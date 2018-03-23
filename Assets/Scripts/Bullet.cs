@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Bullet Class
+/// Simply call the OnCollisionEnter callback and apply damage
+/// If the collision doesn't have Health script, it is just destroy
+/// </summary>
 public class Bullet : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)

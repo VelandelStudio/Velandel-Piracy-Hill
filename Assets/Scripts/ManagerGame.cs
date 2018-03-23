@@ -5,8 +5,8 @@ using UnityEngine.Networking;
 
 public class ManagerGame : NetworkBehaviour
 {
-
     public GameObject Ship;
+
     public override void OnStartServer()
     {
         Debug.Log("hello world");
