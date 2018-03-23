@@ -368,6 +368,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1449625593299808, guid: a278b87e96f6c5f49956b7086010d3f2,
     type: 2}
   bulletSpawn: {fileID: 4570870109142032}
+  IsPilot: 0
 --- !u!114 &114377330289228156
 MonoBehaviour:
   m_ObjectHideFlags: 1
