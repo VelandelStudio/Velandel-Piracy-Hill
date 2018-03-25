@@ -10,7 +10,6 @@ public class ShipController : NetworkBehaviour
     [SyncVar]
     public bool ShipControlled = false;
 
-
     public void MoveBoat(float x, float z)
     {
         transform.Rotate(0, x, 0);

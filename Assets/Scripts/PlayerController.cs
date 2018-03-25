@@ -28,8 +28,8 @@ public class PlayerController : NetworkBehaviour
 
     void Start()
     {
-        Transform tr = GameObject.FindWithTag("Ship1").transform;
-        transform.parent = tr;
+        /*Transform tr = GameObject.FindWithTag("Ship1").transform;
+        transform.parent = tr;*/
     }
 
     /// <summary>
@@ -42,12 +42,12 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             CmdFire();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (!IsPilot)
             {

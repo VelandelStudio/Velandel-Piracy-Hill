@@ -5,15 +5,15 @@ using UnityEngine.Networking;
 
 public class ManagerGame : NetworkBehaviour
 {
-    public GameObject Ship;
+    public GameObject Canon;
 
     public override void OnStartServer()
     {
         Debug.Log("hello world");
-        var ship = (GameObject)Instantiate(
-                Ship,
-                Ship.transform.position,
-                Ship.transform.rotation);
-        NetworkServer.Spawn(ship);
+        var canon = Instantiate(
+                Canon,
+                Canon.transform.position,
+                Canon.transform.rotation);
+        NetworkServer.Spawn(canon);
     }
 }
