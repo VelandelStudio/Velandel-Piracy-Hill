@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+/// <summary>
+/// The CanonController is an ActivableMechanism
+/// When Player uses the mecanism, the canon can shoot CanonBall
+/// </summary>
 public class CanonController : ActivableMechanism {
 
     public Transform shootPlace;
@@ -13,6 +17,11 @@ public class CanonController : ActivableMechanism {
     private bool isUsed = false;
     private PlayerController playerUsingCanon;
 
+    /// <summary>
+    /// ActivateInterractable is to assigned a Player who press E button to the canon
+    /// Placing him and tell the it is used.
+    /// </summary>
+    /// <param name="other">Player</param>
     public override void ActivateInterractable(Collider other)
     {
         if (other.tag == "Player" && !isUsed)
@@ -24,6 +33,11 @@ public class CanonController : ActivableMechanism {
         }
     }
 
+    /// <summary>
+    /// Update method is here to know if the fire command is used.
+    /// If it is the case, we check if a LocalPlayer is using the canon and then the canon fires.
+    /// Next refacto will move this to the mother class.
+    /// </summary>
     protected override void Update()
     {
         base.Update();
@@ -42,18 +56,18 @@ public class CanonController : ActivableMechanism {
 
     /// <summary>
     /// CmdFire Method is called by client for the serveur
-    /// it is telling him to fire a bullet
+    /// it is telling him to fire a boullet
     /// </summary>
     [Command]
     void CmdFire()
     {
-        var boullet = (GameObject)Instantiate(
+        var boulet = (GameObject)Instantiate(
             canonBallPrefab,
             canonBallSpawn.position,
             canonBallSpawn.rotation);
 
-        boullet.GetComponent<Rigidbody>().velocity = boullet.transform.forward * 20;
-        NetworkServer.Spawn(boullet);
-        Destroy(boullet, 4.0f);
+        boulet.GetComponent<Rigidbody>().velocity = boulet.transform.forward * 20;
+        NetworkServer.Spawn(boulet);
+        Destroy(boulet, 4.0f);
     }
 }

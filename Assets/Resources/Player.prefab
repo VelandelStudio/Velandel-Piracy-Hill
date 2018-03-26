@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09a2cf417504254a8f6d1c26244984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crew: 0
   bulletPrefab: {fileID: 1449625593299808, guid: a278b87e96f6c5f49956b7086010d3f2,
     type: 2}
   bulletSpawn: {fileID: 4570870109142032}
@@ -483,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.04761905
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0

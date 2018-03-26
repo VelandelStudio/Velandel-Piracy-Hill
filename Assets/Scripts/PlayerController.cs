@@ -10,7 +10,8 @@ using System;
 /// </summary>
 public class PlayerController : NetworkBehaviour
 {
-
+    [Range(0, 1)]
+    public int crew;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 
@@ -26,12 +27,6 @@ public class PlayerController : NetworkBehaviour
         GetComponent<MeshRenderer>().material.color = Color.blue;
     }
 
-    void Start()
-    {
-        /*Transform tr = GameObject.FindWithTag("Ship1").transform;
-        transform.parent = tr;*/
-    }
-
     /// <summary>
     /// Update Method is called to apply movement and fire
     /// </summary>
@@ -45,18 +40,6 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CmdFire();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!IsPilot)
-            {
-                CmdSpawnShip();
-            }
-            else
-            {
-                CmdRemoveAuthority();
-            }
         }
 
         if (IsPilot)
@@ -101,6 +84,7 @@ public class PlayerController : NetworkBehaviour
             ShipPrefab.transform.position,
             ShipPrefab.transform.rotation);
         NetworkServer.Spawn(ship);*/
+
         if (!transform.GetComponentInParent<ShipController>().ShipControlled)
         {
             transform.parent.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
@@ -135,5 +119,19 @@ public class PlayerController : NetworkBehaviour
         shipController = transform.GetComponentInParent<ShipController>();
         shipController.ShipControlled = false;
         IsPilot = false;
+    }
+
+    public void BoatControl()
+    {
+        shipController = GetComponentInParent<ShipController>();
+
+        if (!IsPilot && shipController)
+        {
+            CmdSpawnShip();
+        }
+        else
+        {
+            CmdRemoveAuthority();
+        }
     }
 }

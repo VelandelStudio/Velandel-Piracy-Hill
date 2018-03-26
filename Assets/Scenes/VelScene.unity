@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 83781198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -266,7 +266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 374117784}
   m_LocalRotation: {x: 0.44603127, y: -0, z: -0, w: 0.8950174}
-  m_LocalPosition: {x: 0.51, y: 4.88, z: -6.08}
+  m_LocalPosition: {x: 0.51, y: 14.74, z: -17.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -334,6 +334,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &880859998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 880859999}
+  m_Layer: 0
+  m_Name: SpawnBoatCrew0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880859999
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880859998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2129203213}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918838337
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +427,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1133673986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1133673987}
+  m_Layer: 0
+  m_Name: SpawnBoatCrew1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133673987
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133673986}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2129203213}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2128763215
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canon: {fileID: 1430108762381208, guid: e6b4d1f18348eeb4ebd3755b5c8f61a9, type: 2}
+  Ship: {fileID: 1212395919088656, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
+  spawCrew0: {fileID: 880859999}
+  spawCrew1: {fileID: 1133673987}
 --- !u!1 &2129203212
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +560,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2128763216}
+  - {fileID: 880859999}
+  - {fileID: 1133673987}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -546,11 +607,11 @@ MonoBehaviour:
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1449625593299808, guid: a278b87e96f6c5f49956b7086010d3f2, type: 2}
+  - {fileID: 1572316363790004, guid: 37faeae40aa6e8d45a3246cf05723adb, type: 2}
   - {fileID: 1212395919088656, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
   - {fileID: 1430108762381208, guid: e6b4d1f18348eeb4ebd3755b5c8f61a9, type: 2}
-  - {fileID: 1572316363790004, guid: 37faeae40aa6e8d45a3246cf05723adb, type: 2}
   - {fileID: 1091943799212428, guid: db55983eea6ce02479233744163d1064, type: 2}
+  - {fileID: 1449625593299808, guid: a278b87e96f6c5f49956b7086010d3f2, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -593,7 +654,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1

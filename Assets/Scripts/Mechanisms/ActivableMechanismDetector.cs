@@ -86,6 +86,7 @@ public class ActivableMechanismDetector : NetworkBehaviour
 	 **/
     private void OnTriggerStay(Collider other)
     {
+
         if (other.tag == "Player" && interractable.IsActivable)
         {
             if (Input.GetKeyDown(KeyCode.E))
