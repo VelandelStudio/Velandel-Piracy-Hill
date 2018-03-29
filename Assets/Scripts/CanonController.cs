@@ -7,56 +7,75 @@ using UnityEngine.Networking;
 /// The CanonController is an ActivableMechanism
 /// When Player uses the mecanism, the canon can shoot CanonBall
 /// </summary>
-public class CanonController : ActivableMechanism {
+public class CanonController : ActivableMechanism
+{
+
+    [SyncVar]
+    public NetworkInstanceId parentNetId;
 
     public Transform shootPlace;
     public Transform canonBallSpawn;
     public GameObject canonBallPrefab;
 
-    [SyncVar]
-    private bool isUsed = false;
-    private PlayerController playerUsingCanon;
+    /// <summary>
+    /// When the client Start, we locate the parentNetId set privously by the GameManager and 
+    /// attribute the Canon prefab as child of its parent.
+    ///	In this way, we have a perfectly synchronized scene Server/Client.
+    /// </summary>
+    public override void OnStartClient()
+    {
+        GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
+        transform.SetParent(parentObject.transform);
+    }
 
     /// <summary>
-    /// ActivateInterractable is to assigned a Player who press E button to the canon
-    /// Placing him and tell the it is used.
+    /// RpcOnActivation is launched by the ActivateInterractable Method (Template pattern)
+	/// The RPC is only used to place the player on the canon.
     /// </summary>
-    /// <param name="other">Player</param>
-    public override void ActivateInterractable(Collider other)
+    /// <param name="activatorID">Player</param>
+	[ClientRpc]
+    public override void RpcOnActivation(NetworkIdentity activatorID)
     {
-        if (other.tag == "Player" && !isUsed)
-        {
-            other.transform.position = shootPlace.position;
-            other.transform.LookAt(transform);
-            playerUsingCanon = other.GetComponent<PlayerController>();
-            isUsed = true;
-        }
+        activatorID.transform.position = shootPlace.position;
+        activatorID.transform.LookAt(transform);
+    }
+
+    /// <summary>
+    /// RpcOnActivation is launched by the LeaveInterractable Method (Template pattern)
+    /// The RPC is only used to place the player at his position before he started using the canon.
+    /// </summary>
+    /// <param name="activatorID">Player</param>
+    [ClientRpc]
+    public override void RpcOnLeaving()
+    {
+        userId.transform.position = initialPositionOfUser;
+        userId.transform.rotation = initialRotationOfUser;
     }
 
     /// <summary>
     /// Update method is here to know if the fire command is used.
-    /// If it is the case, we check if a LocalPlayer is using the canon and then the canon fires.
-    /// Next refacto will move this to the mother class.
+    /// First of all, we ensure that someone isUsing the Canon and if the user is the local player.
+    /// If that's the case, we check if the localPlayer has the Authority on the Canon. 
+    /// If it is true, we launch the CmdFire.
     /// </summary>
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!userId || !userId.isLocalPlayer)
         {
-            if (playerUsingCanon != null && !(playerUsingCanon.isLocalPlayer))
-            {
-                return;
-            }
+            return;
+        }
 
+        if (Input.GetKeyDown(KeyCode.Space) && hasAuthority)
+        {
+            Debug.Log("ET QUAND IL RUGIT IL FAIT CE BRUIT CI");
+            Debug.Log("BOOM BOOM !");
             CmdFire();
-            Debug.Log("Tiré moussaillon");
         }
     }
 
     /// <summary>
     /// CmdFire Method is called by client for the serveur
-    /// it is telling him to fire a boullet
+    /// it is telling him to fire a boulet
     /// </summary>
     [Command]
     void CmdFire()
