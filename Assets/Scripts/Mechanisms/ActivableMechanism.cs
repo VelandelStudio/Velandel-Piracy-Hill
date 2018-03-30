@@ -22,9 +22,12 @@ public abstract class ActivableMechanism : Mechanism
 	 **/
     public override void CancelTextOfInterractable(Collider other) { }
 
-    /** ActivateInterractable, public override abstract void 
-	 * The behaviour of the ActivableMechanism will be set in the child script.
-	 **/
+    /// <summary>
+    /// ActivateInterractable, public override void 
+	/// If the mechanism is Activable, then we attribute all elements inside the attribute from the player which starts to control it.
+    /// Then, we launch the RPCOnActivation that will be handled in the child script.
+    ///</summary>
+    ///<param name="activatorID"> the Player </param>
     public override void ActivateInterractable(NetworkIdentity activatorID)
     {
         if (IsActivable)
@@ -43,9 +46,6 @@ public abstract class ActivableMechanism : Mechanism
         RpcOnLeaving();
     }
 
-    /** ActivateInterractable, public override abstract void 
-	 * The behaviour of the ActivableMechanism will be set in the child script.
-	 **/
     [ClientRpc]
     public override abstract void RpcOnActivation(NetworkIdentity activatorID);
 

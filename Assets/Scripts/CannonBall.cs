@@ -7,7 +7,8 @@ using UnityEngine;
 /// This script is attached to a CannonBall Prefab
 /// When we hit an element, we apply an explosions on hit rigidbodies
 /// </summary>
-public class CannonBall : MonoBehaviour {
+public class CannonBall : MonoBehaviour
+{
 
     [SerializeField] protected float areaOfEffect;
     [SerializeField] protected float explosionForce;
@@ -26,6 +27,7 @@ public class CannonBall : MonoBehaviour {
     /// Called when [collision enter].
     /// When a collision is detected, we surround an overlapSphere and add force to the rigidbody inside this sphere.
     /// Every RB in the sphere will have a isKinematic = false;
+	/// If the component hit is a IDestructibleElement, we call its OnElementHit Method.
     /// After this, we Destroy the CannonBall
     /// </summary>
     /// <param name="collision">The collision.</param>
@@ -35,10 +37,15 @@ public class CannonBall : MonoBehaviour {
         for (int i = 0; i < colliders.Length; i++)
         {
             Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
-            if(rb)
+            if (rb)
             {
                 rb.isKinematic = false;
-                rb.AddExplosionForce(500, transform.position,5, 0f, ForceMode.Impulse);
+                rb.AddExplosionForce(500, transform.position, 5, 0f, ForceMode.Impulse);
+
+                if (rb.GetComponent<IDestructibleElement>() != null)
+                {
+                    rb.GetComponent<IDestructibleElement>().OnElementHit();
+                }
             }
         }
 

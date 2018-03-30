@@ -24,8 +24,8 @@ public class CanonController : ActivableMechanism
     /// </summary>
     public override void OnStartClient()
     {
-        GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
-        transform.SetParent(parentObject.transform);
+        //GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
+        //transform.SetParent(parentObject.transform);
     }
 
     /// <summary>
