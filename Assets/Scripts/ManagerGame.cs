@@ -12,7 +12,7 @@ public class ManagerGame : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        var ship0 = Instantiate(
+    /*    var ship0 = Instantiate(
                 Ship,
                 spawCrew0.position,
                 spawCrew0.rotation);
@@ -34,6 +34,6 @@ public class ManagerGame : NetworkBehaviour
                 Canon.transform.rotation);
         canon.GetComponent<CanonController>().parentNetId = ship0.GetComponent<NetworkIdentity>().netId;
         canon.transform.SetParent(ship0.transform);
-        NetworkServer.Spawn(canon);
+        NetworkServer.Spawn(canon);*/
     }
 }

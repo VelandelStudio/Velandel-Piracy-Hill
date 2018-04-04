@@ -9,7 +9,6 @@ using UnityEngine;
 /// </summary>
 public class CannonBall : MonoBehaviour
 {
-
     [SerializeField] protected float areaOfEffect;
     [SerializeField] protected float explosionForce;
 
@@ -34,18 +33,20 @@ public class CannonBall : MonoBehaviour
     protected virtual void OnCollisionEnter(Collision collision)
     {
         Collider[] colliders = Physics.OverlapSphere(collision.contacts[0].point, areaOfEffect);
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = colliders.Length - 1; i >= 0; i--)
         {
             Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
             if (rb)
             {
-                rb.isKinematic = false;
-                rb.AddExplosionForce(500, transform.position, 5, 0f, ForceMode.Impulse);
-
                 if (rb.GetComponent<IDestructibleElement>() != null)
                 {
                     rb.GetComponent<IDestructibleElement>().OnElementHit();
                 }
+
+                rb.isKinematic = false;
+                rb.useGravity = true;
+                rb.AddExplosionForce(50, transform.position, 10, 0f, ForceMode.VelocityChange);
+
             }
         }
 

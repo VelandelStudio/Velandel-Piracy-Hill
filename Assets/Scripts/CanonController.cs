@@ -9,24 +9,9 @@ using UnityEngine.Networking;
 /// </summary>
 public class CanonController : ActivableMechanism
 {
-
-    [SyncVar]
-    public NetworkInstanceId parentNetId;
-
     public Transform shootPlace;
     public Transform canonBallSpawn;
     public GameObject canonBallPrefab;
-
-    /// <summary>
-    /// When the client Start, we locate the parentNetId set privously by the GameManager and 
-    /// attribute the Canon prefab as child of its parent.
-    ///	In this way, we have a perfectly synchronized scene Server/Client.
-    /// </summary>
-    public override void OnStartClient()
-    {
-        //GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
-        //transform.SetParent(parentObject.transform);
-    }
 
     /// <summary>
     /// RpcOnActivation is launched by the ActivateInterractable Method (Template pattern)
@@ -85,7 +70,7 @@ public class CanonController : ActivableMechanism
             canonBallSpawn.position,
             canonBallSpawn.rotation);
 
-        boulet.GetComponent<Rigidbody>().velocity = boulet.transform.forward * 20;
+        boulet.GetComponent<Rigidbody>().velocity = boulet.transform.forward * 50;
         NetworkServer.Spawn(boulet);
         Destroy(boulet, 4.0f);
     }

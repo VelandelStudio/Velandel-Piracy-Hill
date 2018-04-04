@@ -12,31 +12,19 @@ public class ShipBlock : MonoBehaviour, IDestructibleElement
     NetworkTransformChild transformChild;
 
     /// <summary>
-    /// The Awake lethod is used to disable the Ship gameObject and associate a NetworkTransformChild to it.
-    /// When added, we set the transform to the shipblock and we disable the NetworktransformChil component because we do not need it
-    ///	until the block is touched by a bullet. The we enable the ship back. 
-    /// </summary>
-    protected void Awake()
-    {
-        GameObject ship = GetComponentInParent<ShipController>().gameObject;
-        ship.SetActive(false);
-        transformChild = ship.AddComponent<NetworkTransformChild>();
-        transformChild.target = transform;
-        //transformChild.sendRate = 25f;
-        transformChild.enabled = false;
-        ship.SetActive(true);
-    }
-
-    /// <summary>
     /// Launched when the block is hit by a bullet.
     /// We enable the NetworkTransformChild on the parent.
     /// </summary>
     public void OnElementHit()
     {
-        if (gameObject.GetComponent<NetworkTransform>() == null)
-        {
-            transformChild.enabled = true;
-        }
+        GetComponent<NetworkTransform>().enabled = true;
+        Invoke("SetTrigger", 0.5f);
+        Destroy(gameObject, 5);
+    }
+
+    private void SetTrigger()
+    {
+        GetComponent<Collider>().isTrigger = true;
     }
 
     /// <summary>
