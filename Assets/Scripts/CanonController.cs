@@ -15,14 +15,17 @@ public class CanonController : ActivableMechanism
 
     /// <summary>
     /// RpcOnActivation is launched by the ActivateInterractable Method (Template pattern)
-	/// The RPC is only used to place the player on the canon.
+    /// The RPC is only used to place the player on the canon.
     /// </summary>
     /// <param name="activatorID">Player</param>
-	[ClientRpc]
+    [ClientRpc]
     public override void RpcOnActivation(NetworkIdentity activatorID)
     {
+        GetComponent<NetworkTransform>().enabled = true;
+        activatorID.transform.SetParent(transform);
         activatorID.transform.position = shootPlace.position;
         activatorID.transform.LookAt(transform);
+        activatorID.GetComponent<PlayerController>().freezeMovement = true;
     }
 
     /// <summary>
@@ -33,8 +36,11 @@ public class CanonController : ActivableMechanism
     [ClientRpc]
     public override void RpcOnLeaving()
     {
+        GetComponent<NetworkTransform>().enabled = false;
         userId.transform.position = initialPositionOfUser;
         userId.transform.rotation = initialRotationOfUser;
+        userId.transform.SetParent(parentIdentity.transform);
+        userId.GetComponent<PlayerController>().freezeMovement = false;
     }
 
     /// <summary>
@@ -42,6 +48,8 @@ public class CanonController : ActivableMechanism
     /// First of all, we ensure that someone isUsing the Canon and if the user is the local player.
     /// If that's the case, we check if the localPlayer has the Authority on the Canon. 
     /// If it is true, we launch the CmdFire.
+	/// Also, when a player has authority on the Canon, he is able to make it rotate on the horizontal side (-10 to +10 degrees) 
+	/// And on the Vertical side (+25 degrees max, we can not go under 0 degrees)
     /// </summary>
     protected void Update()
     {
@@ -50,11 +58,33 @@ public class CanonController : ActivableMechanism
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && hasAuthority)
+        if (hasAuthority)
         {
-            Debug.Log("ET QUAND IL RUGIT IL FAIT CE BRUIT CI");
-            Debug.Log("BOOM BOOM !");
-            CmdFire();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("ET QUAND IL RUGIT IL FAIT CE BRUIT CI");
+                Debug.Log("BOOM BOOM !");
+                CmdFire();
+            }
+
+            var yRotation = Input.GetAxis("Mouse X");
+            Quaternion localRotation = transform.localRotation;
+            var yEulerRotation = localRotation.eulerAngles.y + yRotation;
+            if (yEulerRotation > 180 && yEulerRotation < 350)
+            {
+                yEulerRotation = 350;
+            }
+            else if (yEulerRotation < 180 && yEulerRotation > 10)
+            {
+                yEulerRotation = 10;
+            }
+
+            var zRotation = Input.GetAxis("Mouse Y");
+            var zEulerRotation = localRotation.eulerAngles.z + zRotation;
+            zEulerRotation = Mathf.Clamp(zEulerRotation, 0f, 20f);
+
+            localRotation.eulerAngles = new Vector3(0, yEulerRotation, zEulerRotation);
+            transform.localRotation = localRotation;
         }
     }
 

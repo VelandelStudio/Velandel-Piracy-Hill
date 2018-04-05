@@ -18,6 +18,8 @@ public class PlayerController : NetworkBehaviour
     protected ShipController shipController;
 
     public bool IsPilot = false;
+    public bool freezeMovement = false;
+
     /// <summary>
     /// OnStartLocalPlayer is called when the player is spawning
     /// Just turn the color to diferenciate from other players
@@ -25,6 +27,17 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GetComponent<MeshRenderer>().material.color = Color.blue;
+    }
+
+    /// <summary>
+    /// When the script starts, we disable other cameras that are not the one associated to the localplayer.
+    /// </summary>
+	public void Start()
+    {
+        if (!isLocalPlayer)
+        {
+            GetComponentInChildren<Camera>().enabled = false;
+        }
     }
 
     /// <summary>
@@ -42,19 +55,21 @@ public class PlayerController : NetworkBehaviour
             CmdFire();
         }
 
-        if (IsPilot)
-        {
-            var x1 = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-            var z1 = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-            shipController.MoveBoat(x1, z1);
-        }
-        else
-        {
-            var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-            var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+        /* if (IsPilot)
+         {
+             var x1 = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+             var z1 = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+             shipController.MoveBoat(x1, z1);
+         }*/
 
-            transform.Rotate(0, x, 0);
-            transform.Translate(0, 0, z);
+        if (!freezeMovement)
+        {
+            var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
+            var y = Input.GetAxis("Mouse X") * Time.deltaTime * 150.0f;
+            var z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
+
+            transform.Rotate(0, y, 0);
+            transform.Translate(x, 0, z);
         }
     }
 

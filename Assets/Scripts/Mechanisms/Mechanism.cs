@@ -17,9 +17,12 @@ public abstract class Mechanism : NetworkBehaviour
     [SyncVar]
     public NetworkIdentity userId;
 
+    [SyncVar]
     protected Vector3 initialPositionOfUser;
+    [SyncVar]
     protected Quaternion initialRotationOfUser;
-
+    [SyncVar]
+    protected NetworkIdentity parentIdentity;
     /** ActivateInterractable, public abstract void
      * @param : Collider
      * This method should  be override in child scripts 

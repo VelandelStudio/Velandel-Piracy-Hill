@@ -12,6 +12,7 @@ public class ManagerGame : NetworkBehaviour
 
     public override void OnStartServer()
     {
+        NetworkServer.SpawnObjects();
     /*    var ship0 = Instantiate(
                 Ship,
                 spawCrew0.position,

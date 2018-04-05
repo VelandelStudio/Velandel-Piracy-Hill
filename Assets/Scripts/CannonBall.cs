@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 /// <summary>
 /// CannonBall public class
@@ -45,11 +46,9 @@ public class CannonBall : MonoBehaviour
 
                 rb.isKinematic = false;
                 rb.useGravity = true;
-                rb.AddExplosionForce(50, transform.position, 10, 0f, ForceMode.VelocityChange);
-
+                rb.AddExplosionForce(100, transform.position, 10, 0f, ForceMode.VelocityChange);
             }
         }
-
-        Destroy(gameObject);
+        NetworkServer.Destroy(gameObject);
     }
 }
