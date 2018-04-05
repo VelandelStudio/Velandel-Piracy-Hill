@@ -11,8 +11,10 @@ public class ShipController : ActivableMechanism
     public bool ShipControlled = false;
     public Transform barre;
 
-    public override void ActivateInterractable(Collider other)
+    [ClientRpc]
+    public override void RpcOnActivation(NetworkIdentity id)
     {
+        NetworkIdentity other = userId;
         PlayerController playerController = other.GetComponent<PlayerController>();
 
         if (other.tag == "Player" && playerController && playerController.crew == crew)
@@ -23,6 +25,12 @@ public class ShipController : ActivableMechanism
             other.transform.parent = transform;
             playerController.BoatControl();
         }
+    }
+
+    [ClientRpc]
+    public override void RpcOnLeaving()
+    {
+        Debug.Log("RpcLeavingBoat");
     }
 
     public void MoveBoat(float x, float z)

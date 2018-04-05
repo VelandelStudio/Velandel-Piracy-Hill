@@ -44,7 +44,6 @@ public class PlayerController : NetworkBehaviour
 
         if (IsPilot)
         {
-            Debug.Log("Hello");
             var x1 = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
             var z1 = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
             shipController.MoveBoat(x1, z1);

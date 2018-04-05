@@ -9,29 +9,16 @@ using UnityEngine.Networking;
  * They can be activated by the player or can active themselves in different conditions.
  * A mechanism always works with a GameObject (mechanismObject) that has a ActivableMechanismDetector attached to it.
  **/
-public abstract class Mechanism : NetworkBehaviour, IInterractable
+public abstract class Mechanism : NetworkBehaviour
 {
     protected GameObject mechanismObject;
-    protected bool isActivable = true;
-    public virtual bool IsActivable
-    {
-        get { return isActivable; }
-        protected set { }
-    }
+    [SyncVar]
+    public bool IsActivable = true;
+    [SyncVar]
+    public NetworkIdentity userId;
 
-    /** Awake protected virtual void
-	 * Launches the Abstract method AttributeMechanismObject. We ensure that child scripts will always attribut a ActivableMechanismDetector object to this script.
-	 **/
-    protected virtual void Awake()
-    {
-        AttributeMechanismObject();
-    }
-
-    /** AttributeMechanismObject, protected abstract void
-	 * This method should  be override in child scripts 
-	 * We use it to instantiate a childGameObject to the Mechanism wich handles the behaviour to activate it.
-	 **/
-    protected abstract void AttributeMechanismObject();
+    protected Vector3 initialPositionOfUser;
+    protected Quaternion initialRotationOfUser;
 
     /** ActivateInterractable, public abstract void
      * @param : Collider
@@ -39,13 +26,13 @@ public abstract class Mechanism : NetworkBehaviour, IInterractable
 	 * This method is used to tell to the mechanism that is it activated by a ActivableMechanismDetector.
 	 * You should override here the behaviour of your mechanism when it is activated.
 	 **/
-    public abstract void ActivateInterractable(Collider other);
+    public abstract void ActivateInterractable(NetworkIdentity activatorID);
 
+    public abstract void LeaveInterractable();
     /** DisplayTextOfInterractable, public virtual void
 	 * Used to display elements on the screen when we are close enough to the mechanism
 	 **/
     public virtual void DisplayTextOfInterractable() { }
-
 
     public virtual void CancelTextOfInterractable() { }
     /** CancelTextOfInterractable, public virtual void
@@ -53,7 +40,9 @@ public abstract class Mechanism : NetworkBehaviour, IInterractable
 	 **/
     public virtual void CancelTextOfInterractable(Collider other) { }
 
+    [ClientRpc]
+    public abstract void RpcOnActivation(NetworkIdentity id);
 
-
-    public abstract void OnActivation(Collider other);
+    [ClientRpc]
+    public abstract void RpcOnLeaving();
 }
