@@ -9,6 +9,16 @@ using UnityEngine.Networking;
 /// </summary>
 public class ShipBlock : NetworkBehaviour, IDestructibleElement
 {
+
+  /*  private void Start()
+    {
+        int x  = Mathf.RoundToInt(transform.localPosition.x);
+        int y = Mathf.RoundToInt(transform.localPosition.y);
+        int z = Mathf.RoundToInt(transform.localPosition.z);
+        transform.localPosition = new Vector3(x,y,z);
+
+    }*/
+
     /// <summary>
     /// Launched when the block is hit by a bullet.
     /// We enable the NetworkTransformChild on the parent.

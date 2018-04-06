@@ -7,10 +7,10 @@ using UnityEngine.Networking;
 /// MechanismHandler class, attached to the player that will handle the behaviour when
 /// a player is inside a mechanism and when he is using it or not.
 /// </summary>
-public class MechanismHandler : NetworkBehaviour 
-{	
-	public ActivableMechanism UsingMechanism;	
-	private NetworkIdentity mechanismID;
+public class MechanismHandler : NetworkBehaviour
+{
+    public ActivableMechanism UsingMechanism;
+    private NetworkIdentity mechanismID;
 
     /// <summary>
     /// Commands the notify inside mechanism.
@@ -19,19 +19,19 @@ public class MechanismHandler : NetworkBehaviour
     /// <param name="mechanism">The mechanism.</param>
     [Command]
     public void CmdNotifyInsideMechanism(NetworkIdentity mechanism)
-	{
-		RpcInsideMechanism(mechanism);
-	}
+    {
+        RpcInsideMechanism(mechanism);
+    }
     /// <summary>
     /// RPC inside mechanism, is an RPC that will set which mechanism we are inside and the instance of it's activable mechanism.
     /// </summary>
     /// <param name="mechanism">The mechanism.</param>
     [ClientRpc]
-	private void RpcInsideMechanism(NetworkIdentity mechanism)
-	{
-		mechanismID = mechanism;
-		UsingMechanism = mechanism.GetComponent<ActivableMechanism>();
-	}
+    private void RpcInsideMechanism(NetworkIdentity mechanism)
+    {
+        mechanismID = mechanism;
+        UsingMechanism = mechanism.GetComponent<ActivableMechanism>();
+    }
 
     /// <summary>
     /// Commands the notify outside mechanism.
@@ -39,20 +39,24 @@ public class MechanismHandler : NetworkBehaviour
     /// </summary>
     /// <param name="mechanism">The mechanism.</param>
     [Command]
-	public void CmdNotifyOutsideMechanism(NetworkIdentity mechanism)
-	{		
-		RpcOutsideMechanism();
-	}
+    public void CmdNotifyOutsideMechanism(NetworkIdentity mechanism)
+    {
+        if (mechanism.hasAuthority)
+        {
+            CmdQuitMechanism();
+        }
+        RpcOutsideMechanism();
+    }
     /// <summary>
     /// RPC outside mechanism, is an RPC that will reset the values of the player going out of the mechanism.
     /// </summary>
     /// <param name="mechanism">The mechanism.</param>
     [ClientRpc]
-	private void RpcOutsideMechanism()
-	{
-		UsingMechanism = null;
-		mechanismID = null;
-	}
+    private void RpcOutsideMechanism()
+    {
+        UsingMechanism = null;
+        mechanismID = null;
+    }
 
 
     /// <summary>
@@ -61,25 +65,25 @@ public class MechanismHandler : NetworkBehaviour
     /// If the player is already using a mechanism and press E we leave the mechanism.
     /// </summary>
     private void Update()
-	{
-		if(!isLocalPlayer)
-		{
-			return;
-		}
-		
-		if(mechanismID && Input.GetKeyDown(KeyCode.E))
-		{
-			if(UsingMechanism.IsActivable)
-			{
-				CmdUseMechanism();
-			}
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+        if (mechanismID && Input.GetKeyDown(KeyCode.E))
+        {
+            if (UsingMechanism.IsActivable)
+            {
+                CmdUseMechanism();
+            }
 
             if (UsingMechanism.hasAuthority)
-			{
-				CmdQuitMechanism();
-			}
-		}
-	}
+            {
+                CmdQuitMechanism();
+            }
+        }
+    }
 
     /// <summary>
     /// Commands the use of a mechanism.
@@ -87,11 +91,11 @@ public class MechanismHandler : NetworkBehaviour
     /// then, we Activate the Interractable.
     /// </summary>
     [Command]
-	private void CmdUseMechanism()
-	{	
-		mechanismID.AssignClientAuthority(connectionToClient);
-		UsingMechanism.ActivateInterractable(GetComponent<NetworkIdentity>());
-	}
+    private void CmdUseMechanism()
+    {
+        mechanismID.AssignClientAuthority(connectionToClient);
+        UsingMechanism.ActivateInterractable(GetComponent<NetworkIdentity>());
+    }
 
     /// <summary>
     /// Commands the quit of a mechanism.
@@ -99,9 +103,21 @@ public class MechanismHandler : NetworkBehaviour
     /// then, we remove to him the authority of the mechanism.
     /// </summary>
     [Command]
-	private void CmdQuitMechanism()
-	{	
+    private void CmdQuitMechanism()
+    {
         UsingMechanism.LeaveInterractable();
         mechanismID.RemoveClientAuthority(connectionToClient);
-	}
+    }
+
+    /// <summary>
+    /// Commands the quit of a mechanism.
+    /// When a player stops using a mechanism (by pressing E), we Leave the Interractable,
+    /// then, we remove to him the authority of the mechanism.
+    /// </summary>
+    [Command]
+    private void CmdExpulseMechanism()
+    {
+        UsingMechanism.ExpulsedFromInterractable();
+        mechanismID.RemoveClientAuthority(connectionToClient);
+    }
 }

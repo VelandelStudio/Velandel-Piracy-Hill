@@ -44,6 +44,19 @@ public class CanonController : ActivableMechanism
     }
 
     /// <summary>
+    /// RpcOnActivation is launched by the LeaveInterractable Method (Template pattern)
+    /// The RPC is only used to place the player at his position before he started using the canon.
+    /// </summary>
+    /// <param name="activatorID">Player</param>
+    [ClientRpc]
+    public override void RpcOnExpulsing()
+    {
+        GetComponent<NetworkTransform>().enabled = false;
+        userId.transform.SetParent(parentIdentity.transform);
+        userId.GetComponent<PlayerController>().freezeMovement = false;
+    }
+
+    /// <summary>
     /// Update method is here to know if the fire command is used.
     /// First of all, we ensure that someone isUsing the Canon and if the user is the local player.
     /// If that's the case, we check if the localPlayer has the Authority on the Canon. 

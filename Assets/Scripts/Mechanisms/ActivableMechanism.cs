@@ -50,10 +50,22 @@ public abstract class ActivableMechanism : Mechanism
     ///</summary>
     public override void LeaveInterractable()
     {
-        GetComponent<NetworkTransform>().enabled = true;
+        GetComponent<NetworkTransform>().enabled = false;
         IsActivable = true;
         userId.transform.SetParent(parentIdentity.transform);
         RpcOnLeaving();
+    }
+
+    /// <summary>
+    /// When the player leaves the Interractable element, we set it back to its original parent (ship).
+    /// We also notifies the Mechanism to set it activable then we call the RPC.
+    ///</summary>
+    public void ExpulsedFromInterractable()
+    {
+        GetComponent<NetworkTransform>().enabled = false;
+        IsActivable = true;
+        userId.transform.SetParent(parentIdentity.transform);
+        RpcOnExpulsing();
     }
 
     /// <summary>
@@ -67,4 +79,10 @@ public abstract class ActivableMechanism : Mechanism
     ///</summary>
     [ClientRpc]
     public override abstract void RpcOnLeaving();
+
+    /// <summary>
+    /// RPC associated to the LeaveInterractable method. Must be override in children.
+    ///</summary>
+    [ClientRpc]
+    public virtual void RpcOnExpulsing() { }
 }
