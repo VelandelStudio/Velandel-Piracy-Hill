@@ -10,7 +10,6 @@ public class VoxelBuilder : MonoBehaviour
 
     private void Update()
     {
-
         objSelected = Selection.activeGameObject;
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -61,5 +60,22 @@ public class VoxelBuilder : MonoBehaviour
         Selection.SetActiveObjectWithContext(newObj, null);
 
         return newObj;
+    }
+
+    private void DestroyMiddle ()
+    {
+        Transform[] sb = GetComponentsInChildren<Transform>();
+        for (int i = 0; i < sb.Length; i++)
+        {
+            /*if(sb[i].gameObject.name == "PontsRight")
+            {
+                continue;
+            }*/
+
+            if (sb[i].transform.localPosition.x == 0)
+            {
+                DestroyImmediate(sb[i].gameObject);
+            }
+        }
     }
 }
