@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PicaVoxel;
 using UnityEngine.Networking;
 
 /// <summary>
@@ -33,7 +34,21 @@ public class CannonBall : MonoBehaviour
     /// <param name="collision">The collision.</param>
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        Collider[] colliders = Physics.OverlapSphere(collision.contacts[0].point, areaOfEffect);
+        Exploder exploder = collision.transform.parent.parent.parent.GetComponentInChildren<Exploder>();
+        Vector3 avg = Vector3.zero;
+        foreach (ContactPoint cp in collision.contacts) avg += cp.point;
+        if (collision.contacts.Length >= 1)
+            avg /= (float)collision.contacts.Length;
+
+        // Set the Exploder's position to the average collision position
+        exploder.transform.position = avg;
+
+        // Just for effect, we're going to move the collision point up a couple of voxels:
+        exploder.transform.position += new Vector3(0f, 0.25f, 0f);
+
+        // We'll give our explosion particles some upward velocity - also for effect
+        exploder.Explode(new Vector3(0f, 7f, 0f));
+        /*Collider[] colliders = Physics.OverlapSphere(collision.contacts[0].point, areaOfEffect);
         for (int i = colliders.Length - 1; i >= 0; i--)
         {
             Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
@@ -48,7 +63,7 @@ public class CannonBall : MonoBehaviour
                 rb.useGravity = true;
                 rb.AddExplosionForce(100, transform.position, 10, 0f, ForceMode.VelocityChange);
             }
-        }
+        }*/
         NetworkServer.Destroy(gameObject);
     }
 }
