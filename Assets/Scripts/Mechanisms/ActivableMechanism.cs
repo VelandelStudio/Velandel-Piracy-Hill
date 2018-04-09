@@ -14,7 +14,7 @@ public abstract class ActivableMechanism : Mechanism
  **/
     public override void DisplayTextOfInterractable()
     {
-        Debug.Log("Press E to activate.");
+        Debug.Log("Press E to activate. " + gameObject.name);
     }
 
     /** CancelTextOfInterractable, public override void 
@@ -35,6 +35,7 @@ public abstract class ActivableMechanism : Mechanism
             userId = activatorID;
             IsActivable = false;
             GetComponent<NetworkTransform>().enabled = true;
+            
             parentIdentity = userId.transform.parent.GetComponent<NetworkIdentity>();
             userId.transform.SetParent(transform);
 
@@ -52,6 +53,7 @@ public abstract class ActivableMechanism : Mechanism
     {
         GetComponent<NetworkTransform>().enabled = false;
         IsActivable = true;
+
         userId.transform.SetParent(parentIdentity.transform);
         RpcOnLeaving();
     }

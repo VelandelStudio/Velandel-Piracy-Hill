@@ -3,39 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class ShipController : ActivableMechanism
+public class ShipController : NetworkBehaviour
 {
-    [Range(0, 1)]
-    public int crew;
-    [SyncVar]
-    public bool ShipControlled = false;
-    public Transform barre;
+    public Transform barrePlace;
+    public NetworkIdentity userId;
 
-    [ClientRpc]
-    public override void RpcOnActivation(NetworkIdentity id)
+    /// <summary>
+    /// 
+    /// </summary>
+    protected void Update()
     {
-        NetworkIdentity other = userId;
-        PlayerController playerController = other.GetComponent<PlayerController>();
-
-        if (other.tag == "Player" && playerController && playerController.crew == crew)
+        if (!userId || !userId.isLocalPlayer)
         {
-            other.transform.position = barre.position;
-            other.transform.LookAt(transform.forward);
-
-            other.transform.parent = transform;
-            playerController.BoatControl();
+            return;
         }
-    }
 
-    [ClientRpc]
-    public override void RpcOnLeaving()
-    {
-        Debug.Log("RpcLeavingBoat");
-    }
+        if (hasAuthority)
+        {
+            float x = Input.GetAxis("Horizontal") * Time.deltaTime * 20.0f;
+            float z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
 
-    public void MoveBoat(float x, float z)
-    {
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+            transform.Rotate(0, x, 0);
+            transform.Translate(0, 0, z);
+        }
     }
 }
