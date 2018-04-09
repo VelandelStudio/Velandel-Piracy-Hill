@@ -17,8 +17,10 @@ public class PlayerController : NetworkBehaviour
 
     protected ShipController shipController;
 
-    public bool IsPilot = false;
+    [SyncVar]
     public bool freezeMovement = false;
+    public bool IsPilot = false;
+
 
     /// <summary>
     /// OnStartLocalPlayer is called when the player is spawning
@@ -88,64 +90,5 @@ public class PlayerController : NetworkBehaviour
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
         NetworkServer.Spawn(bullet);
         Destroy(bullet, 2.0f);
-    }
-
-    [Command]
-    void CmdSpawnShip()
-    {
-        /*var ship = (GameObject)Instantiate(
-            ShipPrefab,
-            ShipPrefab.transform.position,
-            ShipPrefab.transform.rotation);
-        NetworkServer.Spawn(ship);*/
-
-        if (!transform.GetComponentInParent<ShipController>().ShipControlled)
-        {
-            transform.parent.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
-            RpcSpawn();
-        }
-    }
-
-    [Command]
-    void CmdRemoveAuthority()
-    {
-        /*var ship = (GameObject)Instantiate(
-            ShipPrefab,
-            ShipPrefab.transform.position,
-            ShipPrefab.transform.rotation);
-        NetworkServer.Spawn(ship);*/
-
-        transform.parent.GetComponent<NetworkIdentity>().RemoveClientAuthority(connectionToClient);
-        RpcDeSpawn();
-    }
-
-    [ClientRpc]
-    void RpcSpawn()
-    {
-        shipController = transform.GetComponentInParent<ShipController>();
-        shipController.ShipControlled = true;
-        IsPilot = true;
-    }
-
-    [ClientRpc]
-    void RpcDeSpawn()
-    {
-        shipController = transform.GetComponentInParent<ShipController>();
-        shipController.ShipControlled = false;
-        IsPilot = false;
-    }
-
-    public void BoatControl()
-    {
-        shipController = GetComponentInParent<ShipController>();
-
-        if (!IsPilot && shipController)
-        {
-            CmdSpawnShip();
-        }
-        else
-        {
-            CmdRemoveAuthority();
-        }
     }
 }
