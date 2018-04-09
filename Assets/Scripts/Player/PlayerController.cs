@@ -21,7 +21,6 @@ public class PlayerController : NetworkBehaviour
     public bool freezeMovement = false;
     public bool IsPilot = false;
 
-
     /// <summary>
     /// OnStartLocalPlayer is called when the player is spawning
     /// Just turn the color to diferenciate from other players
@@ -63,6 +62,14 @@ public class PlayerController : NetworkBehaviour
              var z1 = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
              shipController.MoveBoat(x1, z1);
          }*/
+    }
+
+    void FixedUpdate()
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
 
         if (!freezeMovement)
         {
@@ -74,7 +81,6 @@ public class PlayerController : NetworkBehaviour
             transform.Translate(x, 0, z);
         }
     }
-
     /// <summary>
     /// CmdFire Method is called by client for the serveur
     /// it is telling him to fire a bullet
