@@ -79,6 +79,9 @@ public class PlayerController : NetworkBehaviour
 
             transform.Rotate(0, y, 0);
             transform.Translate(x, 0, z);
+            //transform.localPosition += transform.forward * z;
+            //transform.localPosition += transform.right * x;
+
         }
     }
     /// <summary>

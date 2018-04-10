@@ -34,8 +34,11 @@ public abstract class ActivableMechanism : Mechanism
         {
             userId = activatorID;
             IsActivable = false;
-            GetComponent<NetworkTransform>().enabled = true;
-            
+            if (GetComponent<NetworkTransform>())
+            {
+                GetComponent<NetworkTransform>().enabled = true;
+            }
+
             parentIdentity = userId.transform.parent.GetComponent<NetworkIdentity>();
             userId.transform.SetParent(transform);
 
@@ -51,7 +54,10 @@ public abstract class ActivableMechanism : Mechanism
     ///</summary>
     public override void LeaveInterractable()
     {
-        GetComponent<NetworkTransform>().enabled = false;
+        if (GetComponent<NetworkTransform>())
+        {
+            GetComponent<NetworkTransform>().enabled = false;
+        }
         IsActivable = true;
 
         userId.transform.SetParent(parentIdentity.transform);
@@ -64,7 +70,11 @@ public abstract class ActivableMechanism : Mechanism
     ///</summary>
     public void ExpulsedFromInterractable()
     {
-        GetComponent<NetworkTransform>().enabled = false;
+        if (GetComponent<NetworkTransform>())
+        {
+            GetComponent<NetworkTransform>().enabled = false;
+        }
+
         IsActivable = true;
         userId.transform.SetParent(parentIdentity.transform);
         RpcOnExpulsing();

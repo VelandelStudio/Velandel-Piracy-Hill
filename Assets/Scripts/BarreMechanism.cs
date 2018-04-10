@@ -12,7 +12,6 @@ public class BarreMechanism : ActivableMechanism
     [ClientRpc]
     public override void RpcOnActivation(NetworkIdentity activatorID)
     {
-        GetComponent<NetworkTransform>().enabled = true;
         activatorID.transform.SetParent(transform);
         activatorID.transform.position = barrePlace.position;
         activatorID.transform.LookAt(transform);
@@ -32,7 +31,6 @@ public class BarreMechanism : ActivableMechanism
     [ClientRpc]
     public override void RpcOnLeaving()
     {
-        GetComponent<NetworkTransform>().enabled = false;
         userId.transform.position = initialPositionOfUser;
         userId.transform.rotation = initialRotationOfUser;
         userId.GetComponent<PlayerController>().freezeMovement = false;
@@ -46,7 +44,6 @@ public class BarreMechanism : ActivableMechanism
     [ClientRpc]
     public override void RpcOnExpulsing()
     {
-        GetComponent<NetworkTransform>().enabled = false;
         userId.GetComponent<PlayerController>().freezeMovement = false;
 
         ShipController shipController = GetComponentInParent<ShipController>();

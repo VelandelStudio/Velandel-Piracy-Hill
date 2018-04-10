@@ -16,6 +16,11 @@ public class GUIHandler : NetworkBehaviour
     {
         gameObject.transform.SetParent(ship.transform);
         gameObject.transform.position = ship.transform.position + Vector3.up * 2;
+        ship.gameObject.SetActive(false);
+        NetworkTransformChild Nchild = ship.gameObject.AddComponent<NetworkTransformChild>();
+        Nchild.target = gameObject.transform;
+        ship.gameObject.SetActive(true);
+
         RpcAttributeTeam(ship);
     }
 

@@ -351,7 +351,8 @@ Prefab:
       propertyPath: m_SendInterval
       value: 0.033333335
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114350830920238712, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &568804269
@@ -421,6 +422,27 @@ GameObject:
   m_PrefabParentObject: {fileID: 1212395919088656, guid: 8f51c6f53f4f918419ea8aabf1509b94,
     type: 2}
   m_PrefabInternal: {fileID: 1450658423}
+--- !u!114 &796725837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 796725835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &796725838 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114441266242685858, guid: 8f51c6f53f4f918419ea8aabf1509b94,
@@ -732,7 +754,9 @@ Prefab:
       propertyPath: m_SendInterval
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114335301286674902, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
+    - {fileID: 114350830920238712, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8f51c6f53f4f918419ea8aabf1509b94, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2128763215
