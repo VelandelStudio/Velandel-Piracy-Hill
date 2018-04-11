@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/VelScene.unity
     guid: a111e1af4dcd5e949a752e6c5b869ce9
+  - enabled: 1
+    path: Assets/Scenes/SceneMyri.unity
+    guid: bfe01466e0f05904e9caef6b661fb74e
