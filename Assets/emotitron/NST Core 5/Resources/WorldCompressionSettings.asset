@@ -14,4 +14,4 @@ MonoBehaviour:
   minPosResolution: 100
   defaultWorldBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 510, y: 50, z: 510}
+    m_Extent: {x: 255, y: 5, z: 255}
