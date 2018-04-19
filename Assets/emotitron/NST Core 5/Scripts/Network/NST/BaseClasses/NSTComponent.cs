@@ -88,7 +88,7 @@ namespace emotitron.Network.NST
 
 		public virtual void OnEnable()
 		{
-			/*if (lTexture == null)
+			if (lTexture == null)
 				lTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/HeaderName/NST " + headerName + ".png", typeof(Texture2D));
 
 			if (rTexture == null)
@@ -96,7 +96,7 @@ namespace emotitron.Network.NST
 
 			if (bTexture == null)
 				bTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/Background/NST " + headerColor + ".png", typeof(Texture2D));
-            */
+
 #if UNITY_EDITOR
 			// Touching or adding any Component that is part of the NST Library will fire this.
 			NetAdapterTools.EnsureSceneNetLibDependencies(false);
@@ -105,7 +105,7 @@ namespace emotitron.Network.NST
 
 		public override void OnInspectorGUI()
 		{
-			//OverlayHeader();
+			OverlayHeader();
 			base.OnInspectorGUI();
 		}
 
