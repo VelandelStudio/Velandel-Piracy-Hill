@@ -5395,7 +5395,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477257383175892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4010497782552366}
@@ -5506,7 +5506,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1528069811031524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4971329681293078}
@@ -5983,7 +5983,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1521775231313658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalPosition: {x: 0, y: -9, z: 10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819399400639354}
@@ -10439,9 +10439,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805083109641706}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 0.2
+  m_AngularDrag: 0.3
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -10797,7 +10797,7 @@ MonoBehaviour:
   ZSize: 1
   VoxelSize: 1
   OverlapAmount: 0
-  Pivot: {x: 0, y: 0, z: 0}
+  Pivot: {x: 0.5, y: 0.5, z: 120}
   CurrentFrame: 0
   Frames:
   - {fileID: 114453144111987764}
@@ -10849,7 +10849,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -995838
+  thisInstanceId: -878558
   Undone: 1
 --- !u!114 &114098285370913336
 MonoBehaviour:
@@ -11049,7 +11049,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -995890
+  thisInstanceId: -878614
   Undone: 1
 --- !u!114 &114153998097659166
 MonoBehaviour:
@@ -11166,7 +11166,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996674
+  thisInstanceId: -879390
   Undone: 1
 --- !u!114 &114186889235836210
 MonoBehaviour:
@@ -11288,8 +11288,8 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -995896
-  Undone: 0
+  thisInstanceId: -878610
+  Undone: 1
 --- !u!114 &114267663612666736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11467,7 +11467,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996822
+  thisInstanceId: -879482
   Undone: 1
 --- !u!114 &114333980276592720
 MonoBehaviour:
@@ -11584,7 +11584,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -995892
+  thisInstanceId: -878612
   Undone: 1
 --- !u!114 &114377870458218400
 MonoBehaviour:
@@ -11833,7 +11833,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -995894
+  thisInstanceId: -878622
   Undone: 1
 --- !u!114 &114511953860973560
 MonoBehaviour:
@@ -11986,7 +11986,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996488
+  thisInstanceId: -879276
   Undone: 0
 --- !u!114 &114548604020095672
 MonoBehaviour:
@@ -12088,16 +12088,16 @@ MonoBehaviour:
   _gameObject: {fileID: 0}
   autoForward: 0
   autoRotate: 0
-  restrictToNstRange: 1
+  restrictToNstRange: 0
   translateKinematic: 0
-  moveForce: 10
-  turnForce: 2
-  moveRate: 2
-  turnRate: 50
-  clampMove: 1
-  keyPresets: 1
+  moveForce: 400
+  turnForce: 5
+  moveRate: 20
+  turnRate: 10
+  clampMove: 0
+  keyPresets: 3
   mapping:
-    keyMaps: 640000006100000000000000000000007700000073000000720000006300000065000000710000003100000034000000
+    keyMaps: 000000000000000000000000000000007a00000073000000000000000000000064000000710000000000000000000000
   mousePitch:
     axisId: 0
     mouseAxis: 0
@@ -12186,7 +12186,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996854
+  thisInstanceId: -879166
   Undone: 0
 --- !u!114 &114622025837883412
 MonoBehaviour:
@@ -12406,7 +12406,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996474
+  thisInstanceId: -879600
   Undone: 1
 --- !u!114 &114704488368402844
 MonoBehaviour:
@@ -12540,7 +12540,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996520
+  thisInstanceId: -879516
   Undone: 1
 --- !u!114 &114731762143536922
 MonoBehaviour:
@@ -12638,7 +12638,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996578
+  thisInstanceId: -879598
   Undone: 0
 --- !u!114 &114745519845153916
 MonoBehaviour:
@@ -12760,7 +12760,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -995888
+  thisInstanceId: -878620
   Undone: 1
 --- !u!114 &114779700368758244
 MonoBehaviour:
@@ -12834,7 +12834,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996808
+  thisInstanceId: -879440
   Undone: 0
 --- !u!114 &114781367954126562
 MonoBehaviour:
@@ -12927,7 +12927,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996624
+  thisInstanceId: -879284
   Undone: 1
 --- !u!114 &114809215842908892
 MonoBehaviour:
@@ -13284,7 +13284,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -996654
+  thisInstanceId: -879274
   Undone: 0
 --- !u!114 &114952051982265170
 MonoBehaviour:

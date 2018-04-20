@@ -331,7 +331,7 @@ namespace emotitron.Network.NST.Sample
 			// Turn with force only if is a nonKinematic RB and rotation is of the Quat type - otherwise must be moved as euler angles
 			if (turnWithForce)
 			{
-				rb.AddRelativeTorque(turns * turnForce);
+                rb.AddRelativeTorque(turns * turnForce);
 				return;
 			}
 
