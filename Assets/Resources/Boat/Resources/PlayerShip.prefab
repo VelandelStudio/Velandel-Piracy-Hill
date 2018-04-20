@@ -1915,6 +1915,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1582634717008100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4552151582649682}
+  - component: {fileID: 20413818286769088}
+  - component: {fileID: 124946433015669460}
+  - component: {fileID: 81830166695313352}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1585033442900666
 GameObject:
   m_ObjectHideFlags: 1
@@ -4764,6 +4782,19 @@ Transform:
   m_Father: {fileID: 4158363613056954}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4552151582649682
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582634717008100}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 57, z: -108}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 4731724371260668}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4553437877383458
 Transform:
   m_ObjectHideFlags: 1
@@ -5253,10 +5284,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805083109641706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4971329681293078}
+  - {fileID: 4552151582649682}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5951,7 +5983,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1521775231313658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819399400639354}
@@ -6018,6 +6050,42 @@ Transform:
   m_Father: {fileID: 4747865637879120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20413818286769088
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582634717008100}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!23 &23004976330240528
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -10571,6 +10639,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 48, y: 2, z: 2}
   m_Center: {x: 24, y: 1, z: 1}
+--- !u!81 &81830166695313352
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582634717008100}
+  m_Enabled: 1
 --- !u!114 &114018385858236442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10698,8 +10773,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114097261285824060
@@ -10774,7 +10849,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -926504
+  thisInstanceId: -995838
   Undone: 1
 --- !u!114 &114098285370913336
 MonoBehaviour:
@@ -10974,7 +11049,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -926556
+  thisInstanceId: -995890
   Undone: 1
 --- !u!114 &114153998097659166
 MonoBehaviour:
@@ -11091,7 +11166,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927340
+  thisInstanceId: -996674
   Undone: 1
 --- !u!114 &114186889235836210
 MonoBehaviour:
@@ -11213,7 +11288,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -926562
+  thisInstanceId: -995896
   Undone: 0
 --- !u!114 &114267663612666736
 MonoBehaviour:
@@ -11392,7 +11467,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927488
+  thisInstanceId: -996822
   Undone: 1
 --- !u!114 &114333980276592720
 MonoBehaviour:
@@ -11509,7 +11584,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -926558
+  thisInstanceId: -995892
   Undone: 1
 --- !u!114 &114377870458218400
 MonoBehaviour:
@@ -11758,7 +11833,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -926560
+  thisInstanceId: -995894
   Undone: 1
 --- !u!114 &114511953860973560
 MonoBehaviour:
@@ -11911,7 +11986,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927154
+  thisInstanceId: -996488
   Undone: 0
 --- !u!114 &114548604020095672
 MonoBehaviour:
@@ -12111,7 +12186,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927520
+  thisInstanceId: -996854
   Undone: 0
 --- !u!114 &114622025837883412
 MonoBehaviour:
@@ -12331,7 +12406,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927140
+  thisInstanceId: -996474
   Undone: 1
 --- !u!114 &114704488368402844
 MonoBehaviour:
@@ -12465,7 +12540,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927186
+  thisInstanceId: -996520
   Undone: 1
 --- !u!114 &114731762143536922
 MonoBehaviour:
@@ -12563,7 +12638,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927244
+  thisInstanceId: -996578
   Undone: 0
 --- !u!114 &114745519845153916
 MonoBehaviour:
@@ -12685,7 +12760,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -926554
+  thisInstanceId: -995888
   Undone: 1
 --- !u!114 &114779700368758244
 MonoBehaviour:
@@ -12759,7 +12834,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927474
+  thisInstanceId: -996808
   Undone: 0
 --- !u!114 &114781367954126562
 MonoBehaviour:
@@ -12852,7 +12927,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927290
+  thisInstanceId: -996624
   Undone: 1
 --- !u!114 &114809215842908892
 MonoBehaviour:
@@ -13209,7 +13284,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -927320
+  thisInstanceId: -996654
   Undone: 0
 --- !u!114 &114952051982265170
 MonoBehaviour:
@@ -13285,3 +13360,10 @@ MonoBehaviour:
   AssetGuid: 44eeaea3-0e98-4780-9a22-c1ea9f35bcdb
   bserializedVoxels: 1f8b08003915d95a00ff636cf80f04109201cc8690a3e294870372188eb2474380d41018cd8f9010a3241c00e5a85052e0040000
   HasDeserialized: 1
+--- !u!124 &124946433015669460
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582634717008100}
+  m_Enabled: 1
