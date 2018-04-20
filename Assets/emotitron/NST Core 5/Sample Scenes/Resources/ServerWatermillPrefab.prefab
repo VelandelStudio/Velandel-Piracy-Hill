@@ -61,8 +61,8 @@ GameObject:
   - component: {fileID: 114852471931083390}
   - component: {fileID: 114662810226478812}
   - component: {fileID: 114009269078945314}
-  - component: {fileID: 114982497486060002}
-  - component: {fileID: 114361879462895640}
+  - component: {fileID: 114577206599934626}
+  - component: {fileID: 114218032946402146}
   m_Layer: 0
   m_Name: ServerWatermillPrefab
   m_TagString: Untagged
@@ -120,6 +120,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -135,6 +136,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -152,6 +154,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -167,6 +170,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -254,7 +258,7 @@ MonoBehaviour:
   - 1
   - 1
   - 1
---- !u!114 &114361879462895640
+--- !u!114 &114218032946402146
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -262,9 +266,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299822410295822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d501a2550997b7d46ad6f4a1272f3861, type: 3}
+  m_Script: {fileID: 11500000, guid: ae37c3ec04799ca459766c732bd8ed9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  authorityModel: 0
 --- !u!114 &114505060838513770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,6 +304,31 @@ MonoBehaviour:
     hitGroupTag: Armored
     hitGroupTagId: 3
   applyToChildren: 0
+--- !u!114 &114577206599934626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1299822410295822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents: []
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114662810226478812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,35 +444,3 @@ MonoBehaviour:
   frameUpdateInterval: 0
   invFrameUpdateInterval: 0
   lastSentPos: {x: 0, y: 0, z: 0}
---- !u!114 &114982497486060002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1299822410295822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 42
-    i1: 95
-    i2: 44
-    i3: 88
-    i4: 46
-    i5: 8
-    i6: 182
-    i7: 132
-    i8: 171
-    i9: 90
-    i10: 27
-    i11: 191
-    i12: 34
-    i13: 11
-    i14: 105
-    i15: 236
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0

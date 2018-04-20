@@ -59,7 +59,7 @@ public class ActivableMechanismDetector : MonoBehaviour
             if (otherID.isLocalPlayer)
             {
                 interractable.DisplayTextOfInterractable();
-                otherID.GetComponent<MechanismHandler>().CmdNotifyInsideMechanism(GetComponentInParent<NetworkIdentity>());
+                //otherID.GetComponent<MechanismHandler>().CmdNotifyInsideMechanism(GetComponentInParent<NetworkIdentity>());
             }
         }
     }
@@ -76,7 +76,7 @@ public class ActivableMechanismDetector : MonoBehaviour
             if (otherID.isLocalPlayer)
             {
                 interractable.CancelTextOfInterractable();
-                otherID.GetComponent<MechanismHandler>().CmdNotifyOutsideMechanism(GetComponentInParent<NetworkIdentity>());
+               // otherID.GetComponent<MechanismHandler>().CmdNotifyOutsideMechanism(GetComponentInParent<NetworkIdentity>());
             }
         }
     }

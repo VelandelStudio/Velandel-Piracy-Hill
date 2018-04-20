@@ -541,6 +541,8 @@ public class PhotonView : Photon.MonoBehaviour
 
                 if (foundMethod == false)
                 {
+                    Debug.Log(component);
+                    Debug.Log(PhotonNetworkingMessage.OnPhotonSerializeView.ToString());
                     Debug.LogError("The observed monobehaviour (" + component.name + ") of this PhotonView does not implement OnPhotonSerializeView()!");
                     method = null;
                 }

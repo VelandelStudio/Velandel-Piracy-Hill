@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51a45f328fb1d84080ed2e0ee768d98, type: 3}
   m_Name: NetLibrarySettings
   m_EditorClassIdentifier: 
-  networkLibrary: 0
+  networkLibrary: 1
   defaultAuthority: 1

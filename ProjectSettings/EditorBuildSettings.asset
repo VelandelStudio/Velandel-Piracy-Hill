@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/VelScene.unity
     guid: a111e1af4dcd5e949a752e6c5b869ce9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneMyri.unity
     guid: bfe01466e0f05904e9caef6b661fb74e
+  - enabled: 1
+    path: Assets/Scenes/PUN_LauncherScene.unity
+    guid: 1455155c5a04efe4d8d0f809cb806e4a
+  - enabled: 1
+    path: Assets/Scenes/PUN_GameScene.unity
+    guid: 9f9a42c0ae0e19947b5a884552f24b6e

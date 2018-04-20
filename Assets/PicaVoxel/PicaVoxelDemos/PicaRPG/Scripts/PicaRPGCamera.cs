@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class RPGCamera : MonoBehaviour
+public class PicaRPGCamera : MonoBehaviour
 {
     public enum CameraType
     {

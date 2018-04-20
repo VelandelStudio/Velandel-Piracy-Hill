@@ -25,7 +25,7 @@ public class CanonController : ActivableMechanism
         activatorID.transform.SetParent(transform);
         activatorID.transform.position = shootPlace.position;
         activatorID.transform.LookAt(transform);
-        activatorID.GetComponent<PlayerController>().freezeMovement = true;
+        //activatorID.GetComponent<PlayerController>().freezeMovement = true;
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class CanonController : ActivableMechanism
         userId.transform.position = initialPositionOfUser;
         userId.transform.rotation = initialRotationOfUser;
         userId.transform.SetParent(parentIdentity.transform);
-        userId.GetComponent<PlayerController>().freezeMovement = false;
+        //userId.GetComponent<PlayerController>().freezeMovement = false;
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class CanonController : ActivableMechanism
     {
         GetComponent<NetworkTransform>().enabled = false;
         userId.transform.SetParent(parentIdentity.transform);
-        userId.GetComponent<PlayerController>().freezeMovement = false;
+        //userId.GetComponent<PlayerController>().freezeMovement = false;
     }
 
     /// <summary>

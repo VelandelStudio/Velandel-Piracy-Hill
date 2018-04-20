@@ -15,10 +15,10 @@ public class BarreMechanism : ActivableMechanism
         activatorID.transform.SetParent(transform);
         activatorID.transform.position = barrePlace.position;
         activatorID.transform.LookAt(transform);
-        activatorID.GetComponent<PlayerController>().freezeMovement = true;
+        //activatorID.GetComponent<PlayerController>().freezeMovement = true;
 
-        ShipController shipController = GetComponentInParent<ShipController>();
-        shipController.userId = userId;
+        //ShipController shipController = GetComponentInParent<ShipController>();
+        //shipController.userId = userId;
         CmdAssignAuthorityToShip();
     }
 
@@ -33,20 +33,20 @@ public class BarreMechanism : ActivableMechanism
     {
         userId.transform.position = initialPositionOfUser;
         userId.transform.rotation = initialRotationOfUser;
-        userId.GetComponent<PlayerController>().freezeMovement = false;
+        //userId.GetComponent<PlayerController>().freezeMovement = false;
         userId.transform.SetParent(parentIdentity.transform);
 
-        ShipController shipController = GetComponentInParent<ShipController>();
-        shipController.userId = null;
+        //ShipController shipController = GetComponentInParent<ShipController>();
+        //shipController.userId = null;
 
     }
 
     [ClientRpc]
     public override void RpcOnExpulsing()
     {
-        userId.GetComponent<PlayerController>().freezeMovement = false;
+        //userId.GetComponent<PlayerController>().freezeMovement = false;
 
-        ShipController shipController = GetComponentInParent<ShipController>();
-        shipController.userId = null;
+        //ShipController shipController = GetComponentInParent<ShipController>();
+        //shipController.userId = null;
     }
 }
