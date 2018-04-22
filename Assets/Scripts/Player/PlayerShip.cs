@@ -9,7 +9,6 @@ namespace VelandelPiracyHill
         [HideInInspector] public Camera[] PlayerCams;
         [HideInInspector] public Rigidbody[] Rbs;
         [HideInInspector] public NSTSampleController Controller;
-        public GameObject cannonSpawn;
         void Awake()
         {
             DontDestroyOnLoad(gameObject);
