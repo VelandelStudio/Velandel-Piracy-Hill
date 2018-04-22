@@ -22,6 +22,7 @@ public class CannonBall : MonoBehaviour
     {
         areaOfEffect = areaOfEffect == 0 ? 3 : areaOfEffect;
         explosionForce = explosionForce == 0 ? 500 : explosionForce;
+        GetComponent<Rigidbody>().AddForce(transform.forward * 200, ForceMode.VelocityChange);
     }
 
     /// <summary>

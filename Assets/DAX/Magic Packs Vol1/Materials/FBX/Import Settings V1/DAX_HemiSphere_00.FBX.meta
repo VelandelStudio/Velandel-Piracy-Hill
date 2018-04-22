@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 0d7c68afe03fe61449ab15041458d4b9
+timeCreated: 1442746090
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: GeoSphere001
+    100004: Helix001
+    100006: Helix002
+    100008: Helix003
+    100010: Helix004
+    100012: Helix005
+    100014: Helix006
+    100016: SphereSector_00
+    100018: SphereSector_01
+    100020: SphereSectorLow_00
+    100022: SphereSectorLow_01
+    100024: SphereSectorLow_02
+    100026: SphereSectorLow_IV_00
+    100028: SphereSectorLow_IV_01
+    100030: SphereSectorLow_IV_02
+    100032: SphereSectorLow_IV_SHOCK_00
+    100034: SphereSectorLow_IV_SHOCK_01
+    100036: SphereSectorLow_IV_SHOCK_03
+    100038: SphereSectorLow_IV_SHOCK_04
+    400000: //RootNode
+    400002: GeoSphere001
+    400004: Helix001
+    400006: Helix002
+    400008: Helix003
+    400010: Helix004
+    400012: Helix005
+    400014: Helix006
+    400016: SphereSector_00
+    400018: SphereSector_01
+    400020: SphereSectorLow_00
+    400022: SphereSectorLow_01
+    400024: SphereSectorLow_02
+    400026: SphereSectorLow_IV_00
+    400028: SphereSectorLow_IV_01
+    400030: SphereSectorLow_IV_02
+    400032: SphereSectorLow_IV_SHOCK_00
+    400034: SphereSectorLow_IV_SHOCK_01
+    400036: SphereSectorLow_IV_SHOCK_03
+    400038: SphereSectorLow_IV_SHOCK_04
+    2300000: GeoSphere001
+    2300002: Helix001
+    2300004: Helix002
+    2300006: Helix003
+    2300008: Helix004
+    2300010: Helix005
+    2300012: Helix006
+    2300014: SphereSector_00
+    2300016: SphereSector_01
+    2300018: SphereSectorLow_00
+    2300020: SphereSectorLow_01
+    2300022: SphereSectorLow_02
+    2300024: SphereSectorLow_IV_00
+    2300026: SphereSectorLow_IV_01
+    2300028: SphereSectorLow_IV_02
+    2300030: SphereSectorLow_IV_SHOCK_00
+    2300032: SphereSectorLow_IV_SHOCK_01
+    2300034: SphereSectorLow_IV_SHOCK_03
+    2300036: SphereSectorLow_IV_SHOCK_04
+    3300000: GeoSphere001
+    3300002: Helix001
+    3300004: Helix002
+    3300006: Helix003
+    3300008: Helix004
+    3300010: Helix005
+    3300012: Helix006
+    3300014: SphereSector_00
+    3300016: SphereSector_01
+    3300018: SphereSectorLow_00
+    3300020: SphereSectorLow_01
+    3300022: SphereSectorLow_02
+    3300024: SphereSectorLow_IV_00
+    3300026: SphereSectorLow_IV_01
+    3300028: SphereSectorLow_IV_02
+    3300030: SphereSectorLow_IV_SHOCK_00
+    3300032: SphereSectorLow_IV_SHOCK_01
+    3300034: SphereSectorLow_IV_SHOCK_03
+    3300036: SphereSectorLow_IV_SHOCK_04
+    4300000: GeoSphere001
+    4300002: SphereSector_00
+    4300004: SphereSector_01
+    4300006: SphereSectorLow_00
+    4300008: SphereSectorLow_01
+    4300010: SphereSectorLow_02
+    4300012: SphereSectorLow_IV_00
+    4300014: SphereSectorLow_IV_01
+    4300016: SphereSectorLow_IV_02
+    4300018: SphereSectorLow_IV_SHOCK_00
+    4300020: SphereSectorLow_IV_SHOCK_01
+    4300022: SphereSectorLow_IV_SHOCK_04
+    4300024: SphereSectorLow_IV_SHOCK_03
+    4300026: Helix001
+    4300028: Helix002
+    4300030: Helix003
+    4300032: Helix004
+    4300034: Helix005
+    4300036: Helix006
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 25
+    meshCompression: 1
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 2
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
