@@ -118,7 +118,8 @@ namespace emotitron.Network.NST.Sample
 			isQuat = (re != null && re.RotationType == RotationType.Quaternion);
 
 			turnWithForce = isRootGO && rb != null && !rb.isKinematic && isQuat;
-			moveWithForce = isRootGO && rb != null && !rb.isKinematic;
+            turnWithForce = false;
+            moveWithForce = isRootGO && rb != null && !rb.isKinematic;
 
 			// Set the restriction bools based on the restrict switch and the enabled/disabled axes
 			if (restrictToNstRange)
@@ -236,14 +237,20 @@ namespace emotitron.Network.NST.Sample
 
 			if (allowTurn[1])
 			{
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.YawRight]))
-					turn[1] += 1;
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.YawRight]))
+                {
+                    turn[1] += 1;
+                    turn[2] += -1;
+                }
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.YawLeft]))
-					turn[1] += -1;
-			}
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.YawLeft]))
+                {
+                    turn[1] += -1;
+                    turn[2] += 1;
+                }
+            }
 
-			if (allowTurn[2])
+            if (allowTurn[2])
 			{
 
 				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.RollLeft]))
@@ -328,11 +335,11 @@ namespace emotitron.Network.NST.Sample
 		/// </summary>
 		private void ApplyRotation(Vector3 turns)
 		{
-			// Turn with force only if is a nonKinematic RB and rotation is of the Quat type - otherwise must be moved as euler angles
-			if (turnWithForce)
+            // Turn with force only if is a nonKinematic RB and rotation is of the Quat type - otherwise must be moved as euler angles
+            if (turnWithForce)
 			{
-                rb.AddRelativeTorque(turns * turnForce);
-				return;
+                rb.AddRelativeTorque(turns * turnForce, ForceMode.Impulse);
+                return;
 			}
 
 			// Non-Physics-based rotation
@@ -342,13 +349,39 @@ namespace emotitron.Network.NST.Sample
 								 _gameObject.transform.localEulerAngles + turns * turnRate;
 
 
-			if (!isRootGO && re != null)
-				re.Apply(clamped);
-			// isKinematic ... moverotation otherwise it will studder
-			else if (rb == null || translateKinematic)
-				_gameObject.transform.localRotation = clamped;
-			else
-				rb.MoveRotation(clamped);
+            if (!isRootGO && re != null)
+                re.Apply(clamped);
+            // isKinematic ... moverotation otherwise it will studder
+            else if (rb == null || translateKinematic)
+                _gameObject.transform.localRotation = clamped;
+            else
+            {
+                Debug.Log(turn[2]);
+                if (turn[2] != 0)
+                {
+                    if (clamped.z > 180 && clamped.z < 340)
+                    {
+                        clamped.z = 340;
+                    }
+                    else if (clamped.z < 180 && clamped.z > 20)
+                    {
+                        clamped.z = 20;
+                    }
+                }
+                else
+                {
+                    if (clamped.z >= 330 && clamped.z < 360)
+                    {
+                        clamped.z = Mathf.Lerp(clamped.z, 360, 0.01f);
+                    }
+                    else if (clamped.z > 0 && clamped.z <= 30)
+                    {
+                        clamped.z = Mathf.Lerp(clamped.z, 0, 0.01f);
+                    }
+                }
+
+                rb.MoveRotation(clamped);
+            }
 		}
 
 		public void ApplyPreset(ControllerKeyMap target, NSTControllerPresets copyFrom)

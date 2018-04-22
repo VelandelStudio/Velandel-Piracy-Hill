@@ -14,7 +14,7 @@ MonoBehaviour:
   AppID: ab591b00-341d-4135-b497-f5ab18d4551d
   VoiceAppID: 
   ChatAppID: 
-  HostType: 1
+  HostType: 3
   PreferredRegion: 0
   EnabledRegions: -1
   Protocol: 0
