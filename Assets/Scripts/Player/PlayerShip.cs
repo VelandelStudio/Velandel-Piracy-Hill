@@ -24,9 +24,9 @@ namespace VelandelPiracyHill
                     PlayerCams[i].gameObject.SetActive(false);
                 }
             
-                for (int i = 0; i < PlayerCams.Length; i++)
+                for (int i = 0; i < Rbs.Length; i++)
                 {
-                    Rbs[i].gameObject.SetActive(false);
+                    Rbs[i].isKinematic = true;
                 }
 
                 Controller.enabled = false;
