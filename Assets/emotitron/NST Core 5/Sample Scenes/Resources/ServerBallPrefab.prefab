@@ -26,8 +26,8 @@ GameObject:
   - component: {fileID: 114151687808721770}
   - component: {fileID: 114762147876334678}
   - component: {fileID: 114346810262832706}
-  - component: {fileID: 114358735094255190}
-  - component: {fileID: 114842542239318996}
+  - component: {fileID: 114395885013453600}
+  - component: {fileID: 114083221310302898}
   m_Layer: 0
   m_Name: ServerBallPrefab
   m_TagString: Untagged
@@ -104,6 +104,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114083221310302898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624351237623226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db1da27941d524baf83846e954e789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  authorityModel: 0
 --- !u!114 &114151687808721770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +211,7 @@ MonoBehaviour:
   frameUpdateInterval: 0
   invFrameUpdateInterval: 0
   lastSentPos: {x: 0, y: 0, z: 0}
---- !u!114 &114358735094255190
+--- !u!114 &114395885013453600
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -240,18 +252,6 @@ MonoBehaviour:
   rootRotId: 0
   elementCount: 0
   frameCount: 0
---- !u!114 &114842542239318996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624351237623226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae37c3ec04799ca459766c732bd8ed9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  authorityModel: 0
 --- !u!135 &135262045623303504
 SphereCollider:
   m_ObjectHideFlags: 1

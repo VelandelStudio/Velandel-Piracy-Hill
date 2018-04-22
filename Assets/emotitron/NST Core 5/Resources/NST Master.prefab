@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4102351367616866}
   - component: {fileID: 114789308516635908}
-  - component: {fileID: 114112519675352638}
+  - component: {fileID: 114423897328596450}
   m_Layer: 0
   m_Name: NST Master
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114112519675352638
+--- !u!114 &114423897328596450
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1617911322312796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed5033bceaa9834594645c86bad5d26, type: 3}
+  m_Script: {fileID: 11500000, guid: cde99193581e24c4b94165259fb7a00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114789308516635908

@@ -356,7 +356,6 @@ namespace emotitron.Network.NST.Sample
                 _gameObject.transform.localRotation = clamped;
             else
             {
-                Debug.Log(turn[2]);
                 if (turn[2] != 0)
                 {
                     if (clamped.z > 180 && clamped.z < 340)

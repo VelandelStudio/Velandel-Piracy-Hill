@@ -61,8 +61,8 @@ GameObject:
   - component: {fileID: 114852471931083390}
   - component: {fileID: 114662810226478812}
   - component: {fileID: 114009269078945314}
-  - component: {fileID: 114577206599934626}
-  - component: {fileID: 114218032946402146}
+  - component: {fileID: 114581884445261532}
+  - component: {fileID: 114574730871110424}
   m_Layer: 0
   m_Name: ServerWatermillPrefab
   m_TagString: Untagged
@@ -258,18 +258,6 @@ MonoBehaviour:
   - 1
   - 1
   - 1
---- !u!114 &114218032946402146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1299822410295822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae37c3ec04799ca459766c732bd8ed9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  authorityModel: 0
 --- !u!114 &114505060838513770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,7 +292,19 @@ MonoBehaviour:
     hitGroupTag: Armored
     hitGroupTagId: 3
   applyToChildren: 0
---- !u!114 &114577206599934626
+--- !u!114 &114574730871110424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1299822410295822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db1da27941d524baf83846e954e789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  authorityModel: 0
+--- !u!114 &114581884445261532
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

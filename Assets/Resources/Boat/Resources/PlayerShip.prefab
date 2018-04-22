@@ -3244,6 +3244,7 @@ GameObject:
   - component: {fileID: 54417326140848164}
   - component: {fileID: 114785444893307340}
   - component: {fileID: 114361692692048364}
+  - component: {fileID: 114082046843165894}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Untagged
@@ -4408,10 +4409,10 @@ GameObject:
   - component: {fileID: 114825687776512970}
   - component: {fileID: 114112784100085672}
   - component: {fileID: 114096956008420818}
-  - component: {fileID: 114906325829134224}
   - component: {fileID: 114083107589938098}
   - component: {fileID: 54392499559041448}
   - component: {fileID: 114586478487757340}
+  - component: {fileID: 114576023590276282}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -18941,7 +18942,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229478
+  thisInstanceId: -7749648
   Undone: 1
 --- !u!114 &114002499686173886
 MonoBehaviour:
@@ -19027,7 +19028,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229610
+  thisInstanceId: -7749780
   Undone: 1
 --- !u!114 &114021192188126192
 MonoBehaviour:
@@ -19168,6 +19169,27 @@ MonoBehaviour:
   AssetGuid: e6aa5f08-6787-4f07-8cbb-829f638f1ed6
   bserializedVoxels: 1f8b0800ae12d95a00ff6368f80f04a324ae106004870f8444563318c491dd30cac60c81c1105fc86e18656386000095defd2b80040000
   HasDeserialized: 1
+--- !u!114 &114082046843165894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597927144570674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72aca5c3f90d4674da8fcc88d55da267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nst: {fileID: 114825687776512970}
+  na: {fileID: 0}
+  animator: {fileID: 0}
+  floatThreshold: 0.0000001
+  keyframeEvery: 10
+  keyframeOffset: 3
+  useHalfFloats: 1
+  teleportOverride: 0
+  intInterpolate: 0
+  floatInterpolate: 1
 --- !u!114 &114083107589938098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19339,7 +19361,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228370
+  thisInstanceId: -7748540
   Undone: 1
 --- !u!114 &114124015369633120
 MonoBehaviour:
@@ -19530,7 +19552,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228110
+  thisInstanceId: -7748280
   Undone: 1
 --- !u!114 &114177966983196590
 MonoBehaviour:
@@ -19652,7 +19674,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228358
+  thisInstanceId: -7748528
   Undone: 1
 --- !u!114 &114217326769968168
 MonoBehaviour:
@@ -19786,7 +19808,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229806
+  thisInstanceId: -7749976
   Undone: 1
 --- !u!114 &114299130831308634
 MonoBehaviour:
@@ -19927,7 +19949,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228870
+  thisInstanceId: -7749040
   Undone: 1
 --- !u!114 &114327359431348432
 MonoBehaviour:
@@ -20101,7 +20123,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228364
+  thisInstanceId: -7748534
   Undone: 1
 --- !u!114 &114409444435554778
 MonoBehaviour:
@@ -20235,7 +20257,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229624
+  thisInstanceId: -7749794
   Undone: 1
 --- !u!114 &114462897773793194
 MonoBehaviour:
@@ -20321,7 +20343,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229586
+  thisInstanceId: -7749756
   Undone: 0
 --- !u!114 &114484005387502382
 MonoBehaviour:
@@ -20443,7 +20465,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229506
+  thisInstanceId: -7749676
   Undone: 1
 --- !u!114 &114509783586589146
 MonoBehaviour:
@@ -20517,7 +20539,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229760
+  thisInstanceId: -7749930
   Undone: 0
 --- !u!114 &114511503487419242
 MonoBehaviour:
@@ -20694,7 +20716,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229660
+  thisInstanceId: -7749830
   Undone: 1
 --- !u!114 &114557794553895946
 MonoBehaviour:
@@ -20811,8 +20833,20 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229602
+  thisInstanceId: -7749772
   Undone: 0
+--- !u!114 &114576023590276282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805083109641706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db1da27941d524baf83846e954e789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  authorityModel: 0
 --- !u!114 &114577639477525432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21087,7 +21121,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7229460
+  thisInstanceId: -7749630
   Undone: 0
 --- !u!114 &114717379379226898
 MonoBehaviour:
@@ -21283,7 +21317,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228360
+  thisInstanceId: -7748530
   Undone: 1
 --- !u!114 &114766038360726314
 MonoBehaviour:
@@ -21440,7 +21474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdf5a6b1cc27d74cab63a5666d2960a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  na: {fileID: 114906325829134224}
+  na: {fileID: 0}
   _state: 2
   ignoreStateUntil: 2
   sendEveryXTick: 1
@@ -21640,7 +21674,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7228366
+  thisInstanceId: -7748536
   Undone: 0
 --- !u!114 &114872508945141822
 MonoBehaviour:
@@ -21678,18 +21712,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
---- !u!114 &114906325829134224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1805083109641706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae37c3ec04799ca459766c732bd8ed9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  authorityModel: 0
 --- !u!114 &114916877390083684
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -81,8 +81,8 @@ GameObject:
   - component: {fileID: 114535851118888770}
   - component: {fileID: 114943359337312430}
   - component: {fileID: 114248871726920414}
-  - component: {fileID: 114186460030405792}
-  - component: {fileID: 114574153710139412}
+  - component: {fileID: 114279576635636124}
+  - component: {fileID: 114757253760719176}
   m_Layer: 0
   m_Name: PlayerPrefabCore
   m_TagString: Untagged
@@ -742,31 +742,6 @@ MonoBehaviour:
   m_FillAmount: 0.669
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114186460030405792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373414359014860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents: []
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!114 &114248871726920414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -850,6 +825,31 @@ MonoBehaviour:
     sensitivity: 1
     invert: 0
   enableBasicTouch: 1
+--- !u!114 &114279576635636124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373414359014860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents: []
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114308889352605662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1081,18 +1081,6 @@ MonoBehaviour:
   frameUpdateInterval: 0
   invFrameUpdateInterval: 0
   lastSentPos: {x: 0, y: 0, z: 0}
---- !u!114 &114574153710139412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373414359014860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae37c3ec04799ca459766c732bd8ed9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  authorityModel: 0
 --- !u!114 &114612622613137002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1147,6 +1135,18 @@ MonoBehaviour:
     hitGroupTag: Crit
     hitGroupTagId: 1
   applyToChildren: 0
+--- !u!114 &114757253760719176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373414359014860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db1da27941d524baf83846e954e789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  authorityModel: 0
 --- !u!114 &114770385641874324
 MonoBehaviour:
   m_ObjectHideFlags: 1
