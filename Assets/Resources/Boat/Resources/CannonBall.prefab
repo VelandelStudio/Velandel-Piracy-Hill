@@ -23,8 +23,7 @@ GameObject:
   - component: {fileID: 135925043450614646}
   - component: {fileID: 23976930991021828}
   - component: {fileID: 54309419033821474}
-  - component: {fileID: 114720089656296930}
-  - component: {fileID: 114800431574802552}
+  - component: {fileID: 114844428278532268}
   m_Layer: 0
   m_Name: CannonBall
   m_TagString: Untagged
@@ -60,7 +59,7 @@ GameObject:
   - component: {fileID: 198287833959102386}
   - component: {fileID: 199662684048275564}
   m_Layer: 0
-  m_Name: DAX_Smoke_Trail(Black)_9
+  m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091943799212428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.32, y: 0.85, z: -3.053}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4385646399336360}
@@ -225,7 +224,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 32
   m_CollisionDetection: 1
---- !u!114 &114720089656296930
+--- !u!114 &114844428278532268
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -233,37 +232,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1091943799212428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Script: {fileID: 11500000, guid: 20696ff968665d545825162d2bb34e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 114800431574802552}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
---- !u!114 &114800431574802552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091943799212428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
 --- !u!135 &135925043450614646
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -336,7 +307,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1491053855
+  randomSeed: 384733616
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3553,7 +3524,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -2036185725
+  randomSeed: 1767080258
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6884,7 +6855,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1978640837
+  randomSeed: 321480234
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10107,7 +10078,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 198099323
+  randomSeed: 1208558480
   InitialModule:
     serializedVersion: 3
     enabled: 1

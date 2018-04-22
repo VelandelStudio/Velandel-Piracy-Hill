@@ -1,23 +1,43 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Bullet Class
-/// Simply call the OnCollisionEnter callback and apply damage
-/// If the collision doesn't have Health script, it is just destroy
-/// </summary>
-public class Bullet : MonoBehaviour {
-
-    private void OnCollisionEnter(Collision collision)
+namespace VelandelPiracyHill
+{
+    /// <summary>
+    /// </summary>
+    public class Bullet : MonoBehaviour
     {
-        var hit = collision.gameObject;
-        var health = hit.GetComponent<Health>();
-        if (health != null)
+
+        [SerializeField] ParticleSystem explosion;
+        [SerializeField] ParticleSystem trail;
+        [SerializeField] Rigidbody rbody;
+
+        PlayerShooter bulletOwner;
+        float speed = 60f;
+
+        private void FixedUpdate()
         {
-            health.TakeDamage(10);
+            rbody.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
         }
 
-        Destroy(gameObject);
+        public void SetOwner(PhotonView ownerView)
+        {
+            bulletOwner = ownerView.GetComponent<PlayerShooter>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("Collision");
+
+            DestroyBullet();
+        }
+
+        private void DestroyBullet()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
