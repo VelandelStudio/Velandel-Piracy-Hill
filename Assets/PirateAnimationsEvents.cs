@@ -41,4 +41,10 @@ public class PirateAnimationsEvents : MonoBehaviour {
 	{
 		Destroy(cannonBallSlot.transform.GetChild(0).gameObject);
 	}
+
+    public void NotifyCannonLoaded()
+    {
+        Animator cannonAnimator = transform.parent.GetComponent<Animator>();
+        cannonAnimator.SetBool("CannonLoaded", true);
+    }
 }

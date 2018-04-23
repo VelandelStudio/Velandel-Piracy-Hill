@@ -9,6 +9,7 @@ public class CannonAnimationsEvents : MonoBehaviour {
 	{
 		Animator playerAnim = GetComponentInChildren<PirateAnimationsEvents>().GetComponent<Animator>();
 		PS_CannonShoot.Play();
+        GetComponent<Animator>().SetBool("CannonLoaded", false);
 		playerAnim.SetTrigger("StartShooting");
 	}
 }
