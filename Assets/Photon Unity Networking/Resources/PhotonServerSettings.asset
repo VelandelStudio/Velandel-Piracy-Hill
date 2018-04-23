@@ -45,4 +45,5 @@ MonoBehaviour:
   - RPC_FireBullet
   - RPC_MoveCrewLeft
   - RPC_MoveCrewRight
+  - RPC_MoveCrew
   DisableAutoOpenWizard: 1

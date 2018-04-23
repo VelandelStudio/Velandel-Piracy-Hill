@@ -19,16 +19,19 @@ namespace VelandelPiracyHill
 
         private void Update()
         {
+            if(!photonView.isMine)
+            {
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.A))
             {
-                photonView.RPC("RPC_MoveCrewLeft", PhotonTargets.All);
-                squadPos = 1;
+                photonView.RPC("RPC_MoveCrew", PhotonTargets.All, 1);
             }
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-                photonView.RPC("RPC_MoveCrewRight", PhotonTargets.All);
-                squadPos = 2;
+                photonView.RPC("RPC_MoveCrew", PhotonTargets.All, 2);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -93,15 +96,9 @@ namespace VelandelPiracyHill
         }
 
         [PunRPC]
-        void RPC_MoveCrewLeft(PhotonMessageInfo info)
+        void RPC_MoveCrew(int pos)
         {
-            // Do something
-        }
-
-        [PunRPC]
-        void RPC_MoveCrewRight(PhotonMessageInfo info)
-        {
-            // Do something
+            squadPos = pos;
         }
     }
 }
