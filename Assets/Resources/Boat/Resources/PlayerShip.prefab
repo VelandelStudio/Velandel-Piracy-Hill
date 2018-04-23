@@ -5062,6 +5062,7 @@ GameObject:
   - component: {fileID: 54392499559041448}
   - component: {fileID: 114586478487757340}
   - component: {fileID: 114576023590276282}
+  - component: {fileID: 114927400857832808}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -9930,7 +9931,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805083109641706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11303556, y: -2.3713894, z: 10.202186}
+  m_LocalPosition: {x: 0, y: 0.67, z: -7.01}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4552151582649682}
@@ -23109,6 +23110,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
+--- !u!114 &114927400857832808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805083109641706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb545d94117b7b4e84eb8d63761df31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 114844428278532268, guid: db55983eea6ce02479233744163d1064,
+    type: 2}
+  leftCanons: []
+  rightCanons:
+  - {fileID: 95184273916579846}
 --- !u!114 &114928050166668500
 MonoBehaviour:
   m_ObjectHideFlags: 1

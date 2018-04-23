@@ -10,7 +10,7 @@ namespace VelandelPiracyHill
     public class Bullet : MonoBehaviour
     {
 
-        [SerializeField] ParticleSystem explosion;
+        //[SerializeField] ParticleSystem explosion;
         [SerializeField] ParticleSystem trail;
         [SerializeField] Rigidbody rbody;
 
@@ -36,7 +36,12 @@ namespace VelandelPiracyHill
 
         private void DestroyBullet()
         {
-            throw new NotImplementedException();
+            trail.transform.SetParent(null);
+            trail.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            //explosion.transform.SetParent(null);
+            //explosion.Play();
+
+            Destroy(gameObject);
         }
     }
 }

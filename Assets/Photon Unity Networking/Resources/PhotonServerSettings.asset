@@ -43,4 +43,6 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - RPC_FireBullet
+  - RPC_MoveCrewLeft
+  - RPC_MoveCrewRight
   DisableAutoOpenWizard: 1
