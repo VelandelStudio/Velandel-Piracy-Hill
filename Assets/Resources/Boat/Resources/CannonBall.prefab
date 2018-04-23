@@ -514,9 +514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20696ff968665d545825162d2bb34e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 198273467599920648}
   trail: {fileID: 198678512991034716}
-  rbody: {fileID: 0}
+  explosion: {fileID: 198273467599920648}
+  rbody: {fileID: 54309419033821474}
 --- !u!135 &135925043450614646
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -7179,7 +7179,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -733884006
+  randomSeed: 833348067
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13742,7 +13742,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1238728102
+  randomSeed: -1718258645
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -23769,7 +23769,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 2144226555
+  randomSeed: 924370815
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -30302,7 +30302,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1429458599
+  randomSeed: -1075897158
   InitialModule:
     serializedVersion: 3
     enabled: 1

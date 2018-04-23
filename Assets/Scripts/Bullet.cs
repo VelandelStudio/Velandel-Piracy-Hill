@@ -12,6 +12,7 @@ namespace VelandelPiracyHill
 
         //[SerializeField] ParticleSystem explosion;
         [SerializeField] ParticleSystem trail;
+        [SerializeField] ParticleSystem explosion;
         [SerializeField] Rigidbody rbody;
 
         PlayerShooter bulletOwner;
