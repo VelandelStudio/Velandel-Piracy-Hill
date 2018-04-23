@@ -9,8 +9,6 @@ namespace VelandelPiracyHill
     /// </summary>
     public class Bullet : MonoBehaviour
     {
-
-        //[SerializeField] ParticleSystem explosion;
         [SerializeField] ParticleSystem trail;
         [SerializeField] ParticleSystem explosion;
         [SerializeField] Rigidbody rbody;
@@ -20,6 +18,7 @@ namespace VelandelPiracyHill
 
         private void FixedUpdate()
         {
+            //transform.rotation = Quaternion.LookRotation(rbody.velocity);
             rbody.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
         }
 
@@ -32,7 +31,7 @@ namespace VelandelPiracyHill
         {
             Debug.Log("Collision");
 
-            DestroyBullet();
+            //DestroyBullet();
         }
 
         private void DestroyBullet()
