@@ -2736,8 +2736,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709128894272892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7, z: 45.4}
+  m_LocalRotation: {x: -0, y: 0.084854685, z: -0, w: 0.9963934}
+  m_LocalPosition: {x: 1.6794691, y: -7, z: -46.45179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4758324650808398}
@@ -2751,7 +2751,7 @@ Transform:
   - {fileID: 4182273365880798}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 9.735001, z: 0}
 --- !u!4 &4579289062046074
 Transform:
   m_ObjectHideFlags: 1
@@ -6630,7 +6630,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254548
+  thisInstanceId: -28032
   Undone: 0
 --- !u!114 &114109319457288400
 MonoBehaviour:
@@ -6891,7 +6891,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254540
+  thisInstanceId: -28024
   Undone: 0
 --- !u!114 &114216761766728898
 MonoBehaviour:
@@ -6977,7 +6977,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254546
+  thisInstanceId: -28030
   Undone: 0
 --- !u!114 &114242485689912588
 MonoBehaviour:
@@ -7130,7 +7130,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254536
+  thisInstanceId: -28020
   Undone: 0
 --- !u!114 &114328209078648368
 MonoBehaviour:
@@ -7228,7 +7228,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254538
+  thisInstanceId: -28022
   Undone: 0
 --- !u!114 &114351773486419928
 MonoBehaviour:
@@ -7573,7 +7573,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254532
+  thisInstanceId: -28016
   Undone: 0
 --- !u!114 &114679072357052980
 MonoBehaviour:
@@ -7678,7 +7678,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254542
+  thisInstanceId: -28026
   Undone: 0
 --- !u!114 &114692706563027198
 MonoBehaviour:
@@ -7946,7 +7946,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254534
+  thisInstanceId: -28018
   Undone: 0
 --- !u!114 &114852708530193746
 MonoBehaviour:
@@ -8149,7 +8149,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -7254544
+  thisInstanceId: -28028
   Undone: 0
 --- !u!114 &114987197708511082
 MonoBehaviour:
