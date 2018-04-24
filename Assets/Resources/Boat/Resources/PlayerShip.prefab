@@ -9940,7 +9940,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805083109641706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.307287, y: 46.088394, z: -95.89038}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4552151582649682}
@@ -20299,7 +20299,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16426
+  thisInstanceId: -403248
   Undone: 1
 --- !u!114 &114002499686173886
 MonoBehaviour:
@@ -20385,7 +20385,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16764
+  thisInstanceId: -403586
   Undone: 1
 --- !u!114 &114021192188126192
 MonoBehaviour:
@@ -20718,7 +20718,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15394
+  thisInstanceId: -402216
   Undone: 1
 --- !u!114 &114124015369633120
 MonoBehaviour:
@@ -20909,7 +20909,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15312
+  thisInstanceId: -402134
   Undone: 1
 --- !u!114 &114177966983196590
 MonoBehaviour:
@@ -21031,7 +21031,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15382
+  thisInstanceId: -402204
   Undone: 1
 --- !u!114 &114217326769968168
 MonoBehaviour:
@@ -21113,6 +21113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8e7c80181745746aee2a6cb96a1b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cannonBallAnim: {fileID: 1157936151357994, guid: 8b15b0256fedd704685fce9bbe191db0,
+    type: 2}
 --- !u!114 &114286606749096166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21197,7 +21199,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -17030
+  thisInstanceId: -403852
   Undone: 1
 --- !u!114 &114299130831308634
 MonoBehaviour:
@@ -21338,7 +21340,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15596
+  thisInstanceId: -402418
   Undone: 1
 --- !u!114 &114327359431348432
 MonoBehaviour:
@@ -21363,7 +21365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ca4464f6407744696dfb8ac8db2117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PS_CannonShoot: {fileID: 198278492933580194}
 --- !u!114 &114359835284182752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21524,7 +21525,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15388
+  thisInstanceId: -402210
   Undone: 1
 --- !u!114 &114409444435554778
 MonoBehaviour:
@@ -21723,7 +21724,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16796
+  thisInstanceId: -403618
   Undone: 1
 --- !u!114 &114462897773793194
 MonoBehaviour:
@@ -21809,7 +21810,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16696
+  thisInstanceId: -403518
   Undone: 0
 --- !u!114 &114484005387502382
 MonoBehaviour:
@@ -21931,7 +21932,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16490
+  thisInstanceId: -403312
   Undone: 1
 --- !u!114 &114509783586589146
 MonoBehaviour:
@@ -22005,7 +22006,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16972
+  thisInstanceId: -403794
   Undone: 0
 --- !u!114 &114509894647804726
 MonoBehaviour:
@@ -22246,7 +22247,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16830
+  thisInstanceId: -403652
   Undone: 1
 --- !u!114 &114557794553895946
 MonoBehaviour:
@@ -22363,7 +22364,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16728
+  thisInstanceId: -403550
   Undone: 0
 --- !u!114 &114576023590276282
 MonoBehaviour:
@@ -22845,7 +22846,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -16388
+  thisInstanceId: -403210
   Undone: 0
 --- !u!114 &114717379379226898
 MonoBehaviour:
@@ -23170,7 +23171,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15384
+  thisInstanceId: -402206
   Undone: 1
 --- !u!114 &114766038360726314
 MonoBehaviour:
@@ -23327,8 +23328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18511271ed33f5a488cb5ac4b7fb1a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonBallAnim: {fileID: 1157936151357994, guid: 8b15b0256fedd704685fce9bbe191db0,
-    type: 2}
   cannonBallSlot: {fileID: 1861552388621186}
 --- !u!114 &114825687776512970
 MonoBehaviour:
@@ -23541,7 +23540,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -15390
+  thisInstanceId: -402212
   Undone: 0
 --- !u!114 &114872508945141822
 MonoBehaviour:
