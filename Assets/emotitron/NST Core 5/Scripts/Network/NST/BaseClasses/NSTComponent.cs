@@ -48,105 +48,103 @@ namespace emotitron.Network.NST
 	}
 
 #if UNITY_EDITOR
-	/// <summary>
-	/// All of this just draws the pretty NST header graphic on components. Nothing to see here.
-	/// </summary>
-	[CustomEditor(typeof(Component))]
-	[CanEditMultipleObjects]
-	public class NSTHeaderEditorBase : Editor
-	{
-		protected const string HeaderDefaultColor = "Orange";
-		protected const string HeaderNSTColor = "Red";
-		protected const string HeaderSettingsColor = "Blue";
-		protected const string HeaderRewindAddonColor = "Gold Addon";
-		protected const string HeaderAnimatorAddonColor = "Gold Addon";
-		protected const string HeaderElementAddonColor = "Gold Addon";
-		protected const string HeaderEngineColor = "Purple";
-		protected const string HeaderHelperColor = "Green";
-		protected const string HeaderSampleColor = "Gray";
+    /// <summary>
+    /// All of this just draws the pretty NST header graphic on components. Nothing to see here.
+    /// </summary>
+    [CustomEditor(typeof(Component))]
+    [CanEditMultipleObjects]
+    public class NSTHeaderEditorBase : Editor
+    {
+        	protected const string HeaderDefaultColor = "Orange";
+            protected const string HeaderNSTColor = "Red";
+            protected const string HeaderSettingsColor = "Blue";
+            protected const string HeaderRewindAddonColor = "Gold Addon";
+            protected const string HeaderAnimatorAddonColor = "Gold Addon";
+            protected const string HeaderElementAddonColor = "Gold Addon";
+            protected const string HeaderEngineColor = "Purple";
+            protected const string HeaderHelperColor = "Green";
+            protected const string HeaderSampleColor = "Gray";
 
-		protected const string HeaderDefaultName = "Tag";
-		protected const string HeaderNSTName = "Primary";
-		protected const string HeaderSettingsName = "Settings";
-		protected const string HeaderAnimatorAddonName = "Animator Add-on";
-		protected const string HeaderElementAddonName = "Element Add-on";
-		protected const string HeaderRewindAddonName = "Rewind Add-on";
-		protected const string HeaderRewindEngineName = "Engine";
-		protected const string HeaderElementsEngineName = "Engine";
-		protected const string HeaderMasterName = "Primary";
-		protected const string HeaderHelperName = "Helper";
-		protected const string HeaderTagName = "Tag";
-		protected const string HeaderSampleName = "Sample";
+            protected const string HeaderDefaultName = "Tag";
+            protected const string HeaderNSTName = "Primary";
+            protected const string HeaderSettingsName = "Settings";
+            protected const string HeaderAnimatorAddonName = "Animator Add-on";
+            protected const string HeaderElementAddonName = "Element Add-on";
+            protected const string HeaderRewindAddonName = "Rewind Add-on";
+            protected const string HeaderRewindEngineName = "Engine";
+            protected const string HeaderElementsEngineName = "Engine";
+            protected const string HeaderMasterName = "Primary";
+            protected const string HeaderHelperName = "Helper";
+            protected const string HeaderTagName = "Tag";
+            protected const string HeaderSampleName = "Sample";
 
 
-		protected string headerName = HeaderDefaultName;
-		protected string headerColor = HeaderDefaultColor;
+            protected string headerName = HeaderDefaultName;
+            protected string headerColor = HeaderDefaultColor;
 
-		Texture2D lTexture;
-		Texture2D bTexture;
-		Texture2D rTexture;
+            Texture2D lTexture;
+            Texture2D bTexture;
+            Texture2D rTexture;
 
-		public virtual void OnEnable()
-		{
-			if (lTexture == null)
-				lTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/HeaderName/NST " + headerName + ".png", typeof(Texture2D));
+            public virtual void OnEnable()
+            {
+                /*if (lTexture == null)
+                    lTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/HeaderName/NST " + headerName + ".png", typeof(Texture2D));
 
-			if (rTexture == null)
-				rTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/NST Teapot.png", typeof(Texture2D));
+                if (rTexture == null)
+                    rTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/NST Teapot.png", typeof(Texture2D));
 
-			if (bTexture == null)
-				bTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/Background/NST " + headerColor + ".png", typeof(Texture2D));
+                if (bTexture == null)
+                    bTexture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/emotitron/_Graphics/Background/NST " + headerColor + ".png", typeof(Texture2D));
+                    */
+    #if UNITY_EDITOR
+                // Touching or adding any Component that is part of the NST Library will fire this.
+               // NetAdapterTools.EnsureSceneNetLibDependencies(false);
+    #endif
+            }
 
-#if UNITY_EDITOR
-			// Touching or adding any Component that is part of the NST Library will fire this.
-			NetAdapterTools.EnsureSceneNetLibDependencies(false);
+            public override void OnInspectorGUI()
+            {
+                OverlayHeader();
+                base.OnInspectorGUI();
+            }
+
+            protected void OverlayHeader()
+            {
+               /* Rect r = EditorGUILayout.GetControlRect(true, 34);
+
+                float vw = r.width + 18;
+                float pad = 6;
+                GUI.DrawTexture(new Rect(pad, r.yMin + 2, vw - pad * 2, 32), bTexture);
+                GUI.DrawTexture(new Rect(vw - 160 - pad, r.yMin + 2, 160, 32), rTexture);
+                GUI.DrawTexture(new Rect(pad, r.yMin + 2, 128, 32), lTexture);*/
+            }
+        }
+
+        [CustomEditor(typeof(Component))]
+        [CanEditMultipleObjects]
+        public class NSTHelperEditorBase : NSTHeaderEditorBase
+        {
+            public override void OnEnable()
+            {
+                headerName = HeaderHelperName;
+                headerColor = HeaderHelperColor;
+                base.OnEnable();
+
+            }
+        }
+
+        [CustomEditor(typeof(Component))]
+        [CanEditMultipleObjects]
+        public class NSTSampleHeader : NSTHeaderEditorBase
+        {
+            public override void OnEnable()
+            {
+                headerName = HeaderSampleName;
+                headerColor = HeaderSampleColor;
+                base.OnEnable();
+
+            }
+        }
 #endif
-		}
-
-		public override void OnInspectorGUI()
-		{
-			OverlayHeader();
-			base.OnInspectorGUI();
-		}
-
-		protected void OverlayHeader()
-		{
-			Rect r = EditorGUILayout.GetControlRect(true, 34);
-
-			float vw = r.width + 18;
-			float pad = 6;
-			GUI.DrawTexture(new Rect(pad, r.yMin + 2, vw - pad * 2, 32), bTexture);
-			GUI.DrawTexture(new Rect(vw - 160 - pad, r.yMin + 2, 160, 32), rTexture);
-			GUI.DrawTexture(new Rect(pad, r.yMin + 2, 128, 32), lTexture);
-		}
-	}
-
-	[CustomEditor(typeof(Component))]
-	[CanEditMultipleObjects]
-	public class NSTHelperEditorBase : NSTHeaderEditorBase
-	{
-		public override void OnEnable()
-		{
-			headerName = HeaderHelperName;
-			headerColor = HeaderHelperColor;
-			base.OnEnable();
-
-		}
-	}
-
-	[CustomEditor(typeof(Component))]
-	[CanEditMultipleObjects]
-	public class NSTSampleHeader : NSTHeaderEditorBase
-	{
-		public override void OnEnable()
-		{
-			headerName = HeaderSampleName;
-			headerColor = HeaderSampleColor;
-			base.OnEnable();
-
-		}
-	}
-#endif
-
 }
-

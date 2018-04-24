@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace VelandelPiracyHill
@@ -12,23 +11,18 @@ namespace VelandelPiracyHill
 
         int squadPos = 0;
 
-        void Awake()
+        private void Awake()
         {
             enabled = photonView.isMine;
         }
 
         private void Update()
         {
-            if(!photonView.isMine)
-            {
-                return;
-            }
-
             if (Input.GetKeyDown(KeyCode.A))
             {
                 photonView.RPC("RPC_MoveCrew", PhotonTargets.All, 1);
             }
-            
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 photonView.RPC("RPC_MoveCrew", PhotonTargets.All, 2);
@@ -46,7 +40,6 @@ namespace VelandelPiracyHill
             if (squadPos == 0)
             {
                 Debug.Log("Squad Not Set to Canon side");
-
                 return;
             }
 
@@ -58,7 +51,7 @@ namespace VelandelPiracyHill
                 {
                     if (anim.GetBool("CannonLoaded"))
                     {
-                        Debug.Log("Left Fire");
+                        Debug.Log("Now to the left, to the left");
 
                         Transform canon = anim.GetComponent<Transform>();
                         Transform bulletSpawn = TransformExtensions.FindAnyChild<Transform>(canon, "Bullet Spawn");
@@ -80,7 +73,7 @@ namespace VelandelPiracyHill
                 {
                     if (anim.GetBool("CannonLoaded"))
                     {
-                        Debug.Log("Left Fire");
+                        Debug.Log("Now to the right, to the right");
 
                         Transform canon = anim.GetComponent<Transform>();
                         Transform bulletSpawn = TransformExtensions.FindAnyChild<Transform>(canon, "Bullet Spawn");
@@ -93,6 +86,8 @@ namespace VelandelPiracyHill
                     }
                 }
             }
+
+            Debug.Log("NOW TWIRL, AND TWIRL HONEY TWUUUUUUURL");
         }
 
         [PunRPC]
@@ -102,4 +97,3 @@ namespace VelandelPiracyHill
         }
     }
 }
-

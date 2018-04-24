@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace VelandelPiracyHill
 {
-    /// <summary>
-    /// </summary>
     public class Bullet : MonoBehaviour
     {
         [SerializeField] ParticleSystem trail;
@@ -14,12 +9,20 @@ namespace VelandelPiracyHill
         [SerializeField] Rigidbody rbody;
 
         PlayerShooter bulletOwner;
-        float speed = 60f;
+        float speed = 20f;
+
+        private void Start()
+        {
+            rbody.AddForce(transform.forward * speed, ForceMode.VelocityChange);
+        }
 
         private void FixedUpdate()
         {
-            //transform.rotation = Quaternion.LookRotation(rbody.velocity);
-            rbody.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.LookRotation(rbody.velocity);
+            if (transform.position.y < -50)
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void SetOwner(PhotonView ownerView)
@@ -27,22 +30,21 @@ namespace VelandelPiracyHill
             bulletOwner = ownerView.GetComponent<PlayerShooter>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
         {
-            Debug.Log("Collision");
-
-            //DestroyBullet();
+            if (other.gameObject.tag != "Player")
+            {
+                DestroyBullet();
+            }
         }
 
         private void DestroyBullet()
         {
-            trail.transform.SetParent(null);
             trail.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-            //explosion.transform.SetParent(null);
-            //explosion.Play();
-
+            explosion.transform.SetParent(null);
+            explosion.Play();
+            Destroy(explosion.gameObject, 3);
             Destroy(gameObject);
         }
     }
 }
-

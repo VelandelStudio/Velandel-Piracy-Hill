@@ -1,15 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using emotitron.Network.NST;
 
-public class CannonAnimationsEvents : MonoBehaviour {
+namespace VelandelPiracyHill
+{
+    public class CannonAnimationsEvents : Photon.MonoBehaviour
+    {
+        private PhotonView myView;
+        private string cannonID;
+        private string pirateID;
 
-	[SerializeField] ParticleSystem PS_CannonShoot;
-	public void StartShooting()
-	{
-		Animator playerAnim = GetComponentInChildren<PirateAnimationsEvents>().GetComponent<Animator>();
-		PS_CannonShoot.Play();
-        GetComponent<Animator>().SetBool("CannonLoaded", false);
-		playerAnim.SetTrigger("StartShooting");
-	}
+        private void Awake()
+        {
+            cannonID = GetComponent<NSTPositionElement>().positionElement.name;
+            pirateID = GetComponentInChildren<PirateAnimationsEvents>().GetComponent<NSTPositionElement>().positionElement.name;
+            myView = transform.root.GetComponent<PhotonView>();
+            enabled = myView.isMine;
+        }
+
+        public void StartShooting()
+        {
+            myView.RPC("RPC_StartShooting", PhotonTargets.All, pirateID, cannonID);
+        }
+    }
 }

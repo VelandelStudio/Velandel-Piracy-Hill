@@ -1,49 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using emotitron.Network.NST;
 using UnityEngine;
 
-public class PirateAnimationsEvents : MonoBehaviour {
-
-	[SerializeField] private GameObject cannonBallAnim;
-	[SerializeField] private GameObject cannonBallSlot;
-	private Transform cannonBallSlotParent;	
-	
-	public void StartReloadingCannon()
-	{
-		Animator cannonAnimator = transform.parent.GetComponent<Animator>();
-		cannonAnimator.SetTrigger("StartReloading");
-	}
-	
-	public void EndReloadingCannon()
-	{
-		Animator cannonAnimator = transform.parent.GetComponent<Animator>();
-		cannonAnimator.SetTrigger("EndReloading");
-	}
-	
-	public void PickUpNewCannonBall()
-	{
-		Instantiate(cannonBallAnim, cannonBallSlot.transform);
-	}
-	
-	public void DropCannonBall()
-	{
-		cannonBallSlotParent = cannonBallSlot.transform.parent;
-		cannonBallSlot.transform.SetParent(null);
-	}
-	
-	public void PickUpCannonBall()
-	{
-		cannonBallSlot.transform.SetParent(cannonBallSlotParent);
-	}
-	
-	public void DestroyHeldObject()
-	{
-		Destroy(cannonBallSlot.transform.GetChild(0).gameObject);
-	}
-
-    public void NotifyCannonLoaded()
+namespace VelandelPiracyHill
+{
+    public class PirateAnimationsEvents : Photon.MonoBehaviour
     {
-        Animator cannonAnimator = transform.parent.GetComponent<Animator>();
-        cannonAnimator.SetBool("CannonLoaded", true);
+        [SerializeField] private GameObject cannonBallSlot;
+        private string cannonID;
+        private string pirateID;
+        private Transform cannonBallSlotParent;
+
+        private PhotonView photonView;
+        private void Awake()
+        {
+            cannonID = transform.parent.GetComponent<NSTPositionElement>().positionElement.name;
+            pirateID = GetComponent<NSTPositionElement>().positionElement.name;
+
+            cannonBallSlotParent = cannonBallSlot.transform.parent;
+
+            photonView = transform.root.GetComponent<PhotonView>();
+            enabled = photonView.isMine;
+        }
+
+        #region AnimationEvents		
+        public void StartReloadingCannon()
+        {
+            photonView.RPC("RPC_StartReloadingCannon", PhotonTargets.All, cannonID);
+        }
+
+        public void EndReloadingCannon()
+        {
+            photonView.RPC("RPC_EndReloadingCannon", PhotonTargets.All, cannonID);
+        }
+
+        public void PickUpNewCannonBall()
+        {
+            photonView.RPC("RPC_PickUpNewCannonBall", PhotonTargets.All, pirateID, cannonBallSlot.name);
+        }
+
+        public void DropCannonBall()
+        {
+            photonView.RPC("RPC_DropCannonBall", PhotonTargets.All, pirateID, cannonBallSlot.name);
+        }
+
+        public void PickUpCannonBall()
+        {
+            photonView.RPC("RPC_PickUpCannonBall", PhotonTargets.All, pirateID, cannonBallSlot.name, cannonBallSlotParent.name);
+        }
+
+        public void DestroyHeldObject()
+        {
+            photonView.RPC("RPC_DestroyHeldObject", PhotonTargets.All,pirateID, cannonBallSlot.name);
+        }
+
+        public void NotifyCannonLoaded()
+        {
+            photonView.RPC("RPC_NotifyCannonLoaded", PhotonTargets.All, cannonID);
+        }
+        #endregion
     }
 }

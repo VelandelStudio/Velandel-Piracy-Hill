@@ -62,14 +62,14 @@ namespace emotitron.Network.NST
 			//NetAdapterTools.RemoveComponentTypeFromScene<NSTMaster>(true);
 
 			//FindMissingScripts.DestroyMissingComponentOnRoot(FindObjectOfType<MasterNetAdapter>().gameObject);
-			NetAdapterTools.RemoveUnusedNetworkManager();
+			/*NetAdapterTools.RemoveUnusedNetworkManager();
 			NetAdapterTools.TryToAddDependenciesEverywhere();
 			NetAdapterTools.GetNetworkManager(true);
 			NetAdapterTools.CopyPlayerPrefabFromPUNtoOthers();
 			NetAdapterTools.EnsureNMPlayerPrefabIsLocalAuthority();
 			NetAdapterTools.EnsureSceneNetLibDependencies(false);
 
-			needsEditorModePostAwakeCheck = false;
+			needsEditorModePostAwakeCheck = false;*/
 		}
 #endif
 

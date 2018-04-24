@@ -1967,6 +1967,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4615100250725960}
+  - component: {fileID: 114724885314207506}
+  - component: {fileID: 114583112258327784}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -3103,6 +3105,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4590770602594200}
+  - component: {fileID: 114692659634675596}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -4235,6 +4238,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4144870981537154}
+  - component: {fileID: 114439307684509792}
+  - component: {fileID: 114735223292742248}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -5066,6 +5071,7 @@ GameObject:
   - component: {fileID: 114586478487757340}
   - component: {fileID: 114576023590276282}
   - component: {fileID: 114927400857832808}
+  - component: {fileID: 114283133793282250}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -9934,7 +9940,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805083109641706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.67, z: -7.01}
+  m_LocalPosition: {x: -19.307287, y: 46.088394, z: -95.89038}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4552151582649682}
@@ -20293,7 +20299,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177272
+  thisInstanceId: -16426
   Undone: 1
 --- !u!114 &114002499686173886
 MonoBehaviour:
@@ -20379,7 +20385,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177246
+  thisInstanceId: -16764
   Undone: 1
 --- !u!114 &114021192188126192
 MonoBehaviour:
@@ -20712,7 +20718,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -178432
+  thisInstanceId: -15394
   Undone: 1
 --- !u!114 &114124015369633120
 MonoBehaviour:
@@ -20903,7 +20909,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -178416
+  thisInstanceId: -15312
   Undone: 1
 --- !u!114 &114177966983196590
 MonoBehaviour:
@@ -21025,7 +21031,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177496
+  thisInstanceId: -15382
   Undone: 1
 --- !u!114 &114217326769968168
 MonoBehaviour:
@@ -21096,6 +21102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
+--- !u!114 &114283133793282250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805083109641706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8e7c80181745746aee2a6cb96a1b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114286606749096166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21180,7 +21197,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -176968
+  thisInstanceId: -17030
   Undone: 1
 --- !u!114 &114299130831308634
 MonoBehaviour:
@@ -21321,7 +21338,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177566
+  thisInstanceId: -15596
   Undone: 1
 --- !u!114 &114327359431348432
 MonoBehaviour:
@@ -21507,7 +21524,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -176926
+  thisInstanceId: -15388
   Undone: 1
 --- !u!114 &114409444435554778
 MonoBehaviour:
@@ -21569,6 +21586,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
+--- !u!114 &114439307684509792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672695377015804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90252a2585690584f81b273e808e2d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nst: {fileID: 114825687776512970}
+  na: {fileID: 0}
+  nstElementsEngine: {fileID: 114112784100085672}
+  positionElement:
+    name: RCannon001
+    isRoot: 0
+    index: 0
+    drawerHeight: 316
+    nst: {fileID: 0}
+    na: {fileID: 0}
+    elementType: 0
+    sendCullMask: 30
+    keyRate: 5
+    gameobject: {fileID: 0}
+    extrapolation: 0.5
+    maxExtrapolates: 2
+    teleportOverride: 1
+    rewindGO: {fileID: 0}
+    lastSentKeyTime: 0
+    snapshotFrameId: 0
+    targetFrameId: 0
+    compression: 2
+    includedAxes: 7
+    axisRanges:
+    - axis: 0
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
+    - axis: 1
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
+    - axis: 2
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
 --- !u!114 &114440639224894542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21641,7 +21723,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -179266
+  thisInstanceId: -16796
   Undone: 1
 --- !u!114 &114462897773793194
 MonoBehaviour:
@@ -21727,7 +21809,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177782
+  thisInstanceId: -16696
   Undone: 0
 --- !u!114 &114484005387502382
 MonoBehaviour:
@@ -21849,7 +21931,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -176920
+  thisInstanceId: -16490
   Undone: 1
 --- !u!114 &114509783586589146
 MonoBehaviour:
@@ -21923,7 +22005,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177418
+  thisInstanceId: -16972
   Undone: 0
 --- !u!114 &114509894647804726
 MonoBehaviour:
@@ -22164,7 +22246,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177908
+  thisInstanceId: -16830
   Undone: 1
 --- !u!114 &114557794553895946
 MonoBehaviour:
@@ -22281,7 +22363,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -178824
+  thisInstanceId: -16728
   Undone: 0
 --- !u!114 &114576023590276282
 MonoBehaviour:
@@ -22329,7 +22411,7 @@ MonoBehaviour:
   na: {fileID: 0}
   nstElementsEngine: {fileID: 114112784100085672}
   positionElement:
-    name: Unnamed00
+    name: RCannon004
     isRoot: 0
     index: 0
     drawerHeight: 316
@@ -22403,6 +22485,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
+--- !u!114 &114583112258327784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323508973183234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6783ae1983fd8de43a9108c4ef73cabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nst: {fileID: 114825687776512970}
+  na: {fileID: 0}
+  nstElementsEngine: {fileID: 114112784100085672}
+  rotationElement:
+    name: Unnamed0000000
+    isRoot: 0
+    index: 0
+    drawerHeight: 0
+    nst: {fileID: 0}
+    na: {fileID: 0}
+    elementType: 1
+    sendCullMask: 30
+    keyRate: 5
+    gameobject: {fileID: 0}
+    extrapolation: 0.5
+    maxExtrapolates: 2
+    teleportOverride: 1
+    rewindGO: {fileID: 0}
+    lastSentKeyTime: 0
+    snapshotFrameId: 0
+    targetFrameId: 0
+    rotationType: 0
+    includedAxes: 7
+    totalBitsForQuat: 40
+    axes:
+    - res: 0.1
+      limitRange: 1
+      min: -85
+      max: 85
+      bits: 0
+      range: 0
+      mult: 0
+      unmult: 0
+      wrap: 0
+    - res: 0.2
+      limitRange: 1
+      min: -180
+      max: 180
+      bits: 0
+      range: 0
+      mult: 0
+      unmult: 0
+      wrap: 0
+    - res: 0.3
+      limitRange: 1
+      min: -180
+      max: 180
+      bits: 0
+      range: 0
+      mult: 0
+      unmult: 0
+      wrap: 0
+    useLocal: 1
 --- !u!114 &114586478487757340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22543,6 +22689,71 @@ MonoBehaviour:
   AssetGuid: 07a762c0-f6b0-4786-8972-c7d19db236db
   bserializedVoxels: 1f8b080002b7dc5a00ffed9dc175e3380c86955eb6873d6e1d7b9e467c9edb54b04da499394e25d9d8745ec0208041919448fa9b831e1f2801e0875fca3844e4edb26ddb1b470840000210800004200001084000021080000420000108400002108000042000010840000210800004200001084000021080000420000108400002108000042000010840000210800004200001084000021080000420000108400002108000042000010840000210800004200001084000021080000420000108f423f072f9e7afed4d1e532c6949e3f1edfd28e179463d58baa59a1080000420000108400002108000042000010840000210800004ce22a07fd78ac5277056a58ae3feba7d03a938faebaa99dd4494e23c27ffa6d408b7a19988da4dbf96a9b4e4d31e5a33537186240420f0cc04fc27edecb3cf5c597fed3595f53d8f3fabd73e7ece3d32d41c7c4b8f1c66f0f9f6fe6fbbd41c6f9f37f99f2104200001084000021080000420000108400002108000040401ff7771ccfa0486febd62615f81bf523d9bf59c8858433311caef91a7a6e45b7ae450ecf356bb975f5fff365c664ead8ba9162a4dd2f6c7bd33c1ffc404d2bdacdef3201535f1ea0aef2956facc04a4e6d71e53e556f55d89642b26713fe3d08be79cce1c27f355338957e4780232b7e3a31351139015b1c6fa2a2c108000042000010840000210800004200001088c4920fb749ff6a0e5d1ddc9caaee5cc1b8181aa1cd88b2cada0d98740ff49b637faf9578471c26729c7ca3054eb54f76ceddbb6bdff1d25c79604ac1a253bb4217027209ec3be66e42cf420b00601a9ea671eaf514d6b156d2b6b4559cfde969bf63602319d95651921dbe7c9c1aa42c4de969215b16d14bcf52060d52ed97b44c4e71a0450ce1a75641510800004200001084000021080c0c804fc4f5ed9acec3c71df87905d45e7892230841e2afa4f42bd07a9df46ec78deafa2f7403231de68eddf4147eae79ec9ed7e3f322eb172029f3d4bb93df5b1c8d9ebd8d2cf77d7b6ec84c1ffd004e493c718fb6f3a4aba1a7a8dfc7c818020603d09b14b026bdcd17245f5e33598d4aca29ea1e5a126ab9a6bad7c92bdc633d7b625e0574acfd647d73e51453dd5b33c58d594f6b37223eec804a442e478e49cc90d0210800004200001084000021080c09804e4a7aa8231fd27aa93a4809e71ed690ab9ed3f86f24fbd07c67ea5d98b42ff89d805cbaa2c491afd27f29bd6fd1a659ead8815f67b74fa4f2a18b6a891ec30d9d43b64e4ecd7b1af9f34bb5d7efc7d7d2f4d3a6aff589620209f3c85634b452db4bd04db0bab189180a55bec3e8119ef6b7f45f1d97cedd76f1edceeff7bffefdfedbdb7b3cd318f32e2bda3338c338c9fa9a3f4b35859f58b88e744e0e5f2fbf5e7fbbdf3f8a889595593767d55a9457a4be3520f9c5f4f20a290744e2496aea9b4443c70cec804226ad997bfd4891ceff3c6552310f0d5324286e4000108400002108000042000819508c84f52c563fa4f8c1e926292869f439576db7f7c90f9bece93b4b369f59f44f63dd7decb930402fd27f15e1459cd565abafba4ffe4644dcaae12bd572567a363a916396ea51cfc2c4820fdd448ff13484ff893ef0b7d2f6081c02701f964f3c7a9c7a0e6e8fb9f6b76c667572bc2f9da75ffc9ebebebfb4e7a3a5e3b363fc671cbb583258ff2a9d859ec11dadbbddfe0ca30767e5f0e3a875968cf9e67a467c03f47d74e5aeaf9486f695cef130fa5047c0d246f9173645c5d59ea2bf9cc3bfe50c2b5abedbb5558f6c73f652ccd48fb77111f7be6aab30824b558c7b3b2222e0420000108400002108000045625203f3d158fe93f31fa468a4986fd74d461da49f433d9d77f72f9f3e7cffb6f035a1d97fb445fd17f52da8b52af9fbbb6bbf49fb45248f2b39c4e2e7245b2ab44dad358ce968df5b3ab5e33ad3da0135df1932c43f79fa0939354711937ae7ebe5996bdff6391fd09d17d762b87d1ecad9fe47d75d28a5ebe6a59dff4e613fa4fae758cd0a6ff24d7525ffd8f1ceb63a7d823e09fe3ebad7eedda7fbd4f3c9412f03590bc45ce91717565a5459ec9782e02be12fc597fa55221d6d8f7c0ec6804921eace368d9920f0420000108400002108000046627607d920ad9e93ff1bb35bacd76511dfd2717ef77a15d98a7888dfa4f522f8a7fe7d6afe2ee9ffe93b3d4728f2bbb4aa46ea57dcf58eba75e33ad3dd057202b7ee6f825fd1f40fca46b5deb9ad5a1931a7a6b5eab9f6f9685fe134d66a4bbfbb13e75fefb2cf9aa75ffc93593974b3aa6f79f945a78ffc9f79d5a39f92bd5b616ad87b6fef1661188ec05fbe7e8da498b15376e97ded2387e2d67b622e06b2045899c23f3d195a5be92cfbc635f09feacbf6a4b33d2ee7b60763402490fd671b46cc907021080000420000108400002b313909f9e8ac7f49f887db7627abbaeeda837fa4f6e3b081d095bfe1bf59f441458bfba7b14fa4fac6a1e6497bd259bd89791f63d63ada27acdb4f6405f81acf8a9e3f4534374a1b4ae75cdead0490dbd35afd5cf37cb42ff892633d2ddfd589f3aff7d967cd5baff84f79f5c6b1161cbfb4f722d3dd6f0aae747f682fd737cbdd573d3feeb7de2a19480af81e42d728e8cab2b2b2df24cc67311f095e0cffa2b950ab1c6be0766472390f4601d47cb967c200001084000021080000420303b01eb9314f611081caa2efa4f2e27fd3638f59f5cda740b58ba6da5a5bb7ffa4fce52cb3dee1eb5c86f6bd2e3deca69a5c0bdfbc25637c24977fdc9fa51ab965d708563f91694765556191613b32abecf5e9f0f1ece27603de5b47def7346f6277cff56071d6b7ccb48f7755445ada8e66b97f5e5fb773e6bd18ab6f49393ff8cd5ca2e63a5712bcff8f10944f682fd7374eda4c58f1e9995ded04684588f737c0da4889173646ebab2d457f29977fc4809bf5f7fee7c8396a519699f97db73669ed4621d9f9309ab860004200001084000021080406f02f23314e37309f4aeb5e93fd27f22ded9b215ee51569d7f69ff9b6793c3a1b1f67411f8faecbd2e193d54d34379aeaa13bdae3dca897c4353aa6f6f15e17f380285cf73d973923d13b8df21303001a955c67102c33daf021a8bafce3f335fbbee3f495d28b5c73cca26de6936eed8e756337b0c0d2bc363a23f73147bd72fed115f8fd66eb2553569af672bbda571bd4f3c9412903af9787b92ec22f074a263e99a4a8b3e1fcb5c04a45aacf1be15499dc8f13e6f5c3502014b21c93e4286e400010840000210800004200081b509c8cf568c8f213084a20afb4f2499501f42e1fe66e633b0d73004c3e23ca35d0492b61e1fb976193dab9155df6226e3eeb61cc9f951aca872fc9e934751a8c5d31030ee5fabcf247b0e708f4360120252b78c2d026bfc5cb056b7cfbe06939a55ece3b6efaa9a3ce3d7fab9c5fd70666f027ea5f46c7d3eda67b2d47bc6c3f104ac6a4afbf15911717c025221723c7ee664080108400002108000042000010840605e02f2f317e37a020329a1a2ffc4e2f04d7fc224bb5447d5e56b17814552db8fca70fbf277b83a9364f9a6d669479b8a7721f05539f2fb74ac1add2bd5259faf3a394b9fc4dd4920fcfcdfe91fd541603002fe73f27966d7bea3dbd6716d5672756db9696f32d659639d9565392bc3e78c6b5521626f4bcc8ad8360ade7a10b06a97ec3d22e2730d0228678d3ab20a08400002108000042000010840605e02fee732667d0243d75dfcfdbbbf8ae2d95fb73796d38da076df4a490ea19fc03e75d68ba2563dc42aa6cfeada7f12d10fb421e013b054e45fc52c04562260dd05ebd957aa5ae95ada56b334fac8e7b72513f1360e8d48b6f29c71325f351349db1f1f4f40e6737c74226a02b222d6585f8505021080000420000108400002108000042000813109589feeb15b04c6ace383ac023d06d67a23f67b7fc2f43d00db9777833ca07a5b6f88cf2464565a4ba476e79ee3d33e3737a243000210588380ffa49d7d768d1af558454d657be473a44fbdf623a38f134b73f02de3647e64263e93c8ec91d9120b021080000420000108400002108000042000010840000210800004200001084000021080c0b904f42e6aca6746fbb924d78e3ea31e52ce5acf6b578ad54100021080000420000108400002108000042000010840000210800004200001084000021080000420b03681495ef9d6af0800d876bc4eb05f3d8ef78c025000b7c0f676fc9d374e449e013c0378063cdd33e07f646004bc00b20200
   HasDeserialized: 1
+--- !u!114 &114692659634675596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530224657798698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90252a2585690584f81b273e808e2d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nst: {fileID: 114825687776512970}
+  na: {fileID: 0}
+  nstElementsEngine: {fileID: 114112784100085672}
+  positionElement:
+    name: RCannon003
+    isRoot: 0
+    index: 0
+    drawerHeight: 316
+    nst: {fileID: 0}
+    na: {fileID: 0}
+    elementType: 0
+    sendCullMask: 30
+    keyRate: 5
+    gameobject: {fileID: 0}
+    extrapolation: 0.5
+    maxExtrapolates: 2
+    teleportOverride: 1
+    rewindGO: {fileID: 0}
+    lastSentKeyTime: 0
+    snapshotFrameId: 0
+    targetFrameId: 0
+    compression: 2
+    includedAxes: 7
+    axisRanges:
+    - axis: 0
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
+    - axis: 1
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
+    - axis: 2
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
 --- !u!114 &114702738596485552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22634,7 +22845,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -177224
+  thisInstanceId: -16388
   Undone: 0
 --- !u!114 &114717379379226898
 MonoBehaviour:
@@ -22672,6 +22883,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
+--- !u!114 &114724885314207506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323508973183234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90252a2585690584f81b273e808e2d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nst: {fileID: 114825687776512970}
+  na: {fileID: 0}
+  nstElementsEngine: {fileID: 114112784100085672}
+  positionElement:
+    name: RCannon002
+    isRoot: 0
+    index: 0
+    drawerHeight: 316
+    nst: {fileID: 0}
+    na: {fileID: 0}
+    elementType: 0
+    sendCullMask: 30
+    keyRate: 5
+    gameobject: {fileID: 0}
+    extrapolation: 0.5
+    maxExtrapolates: 2
+    teleportOverride: 1
+    rewindGO: {fileID: 0}
+    lastSentKeyTime: 0
+    snapshotFrameId: 0
+    targetFrameId: 0
+    compression: 2
+    includedAxes: 7
+    axisRanges:
+    - axis: 0
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
+    - axis: 1
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
+    - axis: 2
+      maxvalue: 2047
+      encoder: 102.35
+      decoder: 0.009770396
+      min: -10
+      max: 10
+      actualMin: -10
+      actualMax: 10
+      resolution: 100
+      precision: 0.01
 --- !u!114 &114730280494116920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22691,6 +22967,70 @@ MonoBehaviour:
   AssetGuid: 6b582c40-f4a8-4c18-82be-4f14dd534844
   bserializedVoxels: 1f8b08007a17d95a00ff636cf80f04f42119c076914ad2c76d94d842aa8f20eac9b31100eef7ad10b0010000
   HasDeserialized: 1
+--- !u!114 &114735223292742248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672695377015804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6783ae1983fd8de43a9108c4ef73cabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nst: {fileID: 114825687776512970}
+  na: {fileID: 0}
+  nstElementsEngine: {fileID: 114112784100085672}
+  rotationElement:
+    name: Unnamed00000
+    isRoot: 0
+    index: 0
+    drawerHeight: 0
+    nst: {fileID: 0}
+    na: {fileID: 0}
+    elementType: 1
+    sendCullMask: 30
+    keyRate: 5
+    gameobject: {fileID: 0}
+    extrapolation: 0.5
+    maxExtrapolates: 2
+    teleportOverride: 1
+    rewindGO: {fileID: 0}
+    lastSentKeyTime: 0
+    snapshotFrameId: 0
+    targetFrameId: 0
+    rotationType: 0
+    includedAxes: 7
+    totalBitsForQuat: 40
+    axes:
+    - res: 0.1
+      limitRange: 1
+      min: -85
+      max: 85
+      bits: 0
+      range: 0
+      mult: 0
+      unmult: 0
+      wrap: 0
+    - res: 0.2
+      limitRange: 1
+      min: -180
+      max: 180
+      bits: 0
+      range: 0
+      mult: 0
+      unmult: 0
+      wrap: 0
+    - res: 0.3
+      limitRange: 1
+      min: -180
+      max: 180
+      bits: 0
+      range: 0
+      mult: 0
+      unmult: 0
+      wrap: 0
+    useLocal: 1
 --- !u!114 &114738906724537114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22830,7 +23170,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -176874
+  thisInstanceId: -15384
   Undone: 1
 --- !u!114 &114766038360726314
 MonoBehaviour:
@@ -23001,7 +23341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdf5a6b1cc27d74cab63a5666d2960a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  na: {fileID: 0}
+  na: {fileID: 114576023590276282}
   _state: 2
   ignoreStateUntil: 2
   sendEveryXTick: 1
@@ -23201,7 +23541,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -178724
+  thisInstanceId: -15390
   Undone: 0
 --- !u!114 &114872508945141822
 MonoBehaviour:

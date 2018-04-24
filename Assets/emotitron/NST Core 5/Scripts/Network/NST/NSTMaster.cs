@@ -39,12 +39,12 @@ namespace emotitron.Network.NST
 
 #if UNITY_EDITOR
 			// Don't run awake if this is not runtime.
-			if (!Application.isPlaying)
+			/*if (!Application.isPlaying)
 			{
 				EnsureNSTMasterConforms();
 				needsEditorModePostAwakeCheck = true;
 				return;
-			}
+			}*/
 #endif
 			DontDestroyOnLoad(gameObject);
 		}
@@ -58,11 +58,11 @@ namespace emotitron.Network.NST
 #if UNITY_EDITOR
 			if (!Application.isPlaying)
 			{
-				if (needsEditorModePostAwakeCheck)
+				/*if (needsEditorModePostAwakeCheck)
 				{
 					NetAdapterTools.RemovedUnusedNetworkIdentity(gameObject);
 					needsEditorModePostAwakeCheck = false;
-				}
+				}*/
 				return;
 			}
 #endif
@@ -282,7 +282,7 @@ namespace emotitron.Network.NST
 
 #if UNITY_EDITOR
 
-		public void EnsureNSTMasterConforms()
+	/*	public void EnsureNSTMasterConforms()
 		{
 			//GameObject nstMasterPrefab = Resources.Load("NST Master", typeof(GameObject)) as GameObject;
 			gameObject.EnsureRootComponentExists<NSTMaster>();
@@ -299,7 +299,7 @@ namespace emotitron.Network.NST
 
 			if (PrefabUtility.GetPrefabType(gameObject) == PrefabType.PrefabInstance)
 				PrefabUtility.RevertPrefabInstance(gameObject);
-		}
+		}*/
 #endif
 	}
 	
@@ -317,9 +317,9 @@ namespace emotitron.Network.NST
 			headerColor = HeaderSettingsColor;
 			base.OnEnable();
 
-			_target = (NSTMaster)target;
+			//_target = (NSTMaster)target;
 
-			_target.EnsureNSTMasterConforms();
+			//_target.EnsureNSTMasterConforms();
 			//// Remove any stray NetworkIdentities that do not belong
 			//NetAdapterTools.RemovedUnusedNetworkIdentity(_target.gameObject);
 		}
@@ -331,9 +331,9 @@ namespace emotitron.Network.NST
 
 			base.OnInspectorGUI();
 
-			EditorGUILayout.HelpBox("The NST Master is a required engine singleton. It collects and sends all NST Updates, and receives and dispatches incoming updates from the network to their associated NSTs.", MessageType.None);
+			//EditorGUILayout.HelpBox("The NST Master is a required engine singleton. It collects and sends all NST Updates, and receives and dispatches incoming updates from the network to their associated NSTs.", MessageType.None);
 
-			_target.EnsureNSTMasterConforms();
+			//_target.EnsureNSTMasterConforms();
 
 			//NetLibrarySettings.Single.DrawGui(target, true, false);
 		}

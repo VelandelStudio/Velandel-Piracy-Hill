@@ -46,4 +46,12 @@ MonoBehaviour:
   - RPC_MoveCrewLeft
   - RPC_MoveCrewRight
   - RPC_MoveCrew
+  - RPC_DestroyHeldObject
+  - RPC_DropCannonBall
+  - RPC_EndReloadingCannon
+  - RPC_NotifyCannonLoaded
+  - RPC_PickUpCannonBall
+  - RPC_PickUpNewCannonBall
+  - RPC_StartReloadingCannon
+  - RPC_StartShooting
   DisableAutoOpenWizard: 1
