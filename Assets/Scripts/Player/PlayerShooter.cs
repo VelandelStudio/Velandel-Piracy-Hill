@@ -97,6 +97,7 @@ namespace VelandelPiracyHill
             {
                 if (anim.GetBool("CannonLoaded"))
                 {
+                    anim.SetBool("CannonLoaded", false);
                     Debug.Log("Left Fire");
 
                     Transform canon = anim.GetComponent<Transform>();

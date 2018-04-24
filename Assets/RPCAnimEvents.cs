@@ -76,7 +76,7 @@ namespace VelandelPiracyHill
         {
             Animator pirateAnim = nstElementEngine.elementLookup[pirateID].gameobject.GetComponent<Animator>();
             Animator cannonAnim = nstElementEngine.elementLookup[cannonID].gameobject.GetComponent<Animator>();
-            cannonAnim.SetBool("CannonLoaded", false);
+            //cannonAnim.SetBool("CannonLoaded", false);
             pirateAnim.SetTrigger("StartShooting");
             cannonAnim.GetComponentInChildren<ParticleSystem>().Play();
         }
