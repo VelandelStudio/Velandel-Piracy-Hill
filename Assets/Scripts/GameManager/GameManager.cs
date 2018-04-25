@@ -51,7 +51,7 @@ namespace VelandelPiracyHill
 
             localPlayer = PhotonNetwork.Instantiate(
                 "PlayerShip",
-                new Vector3(0, 0.5f, 0),
+                new Vector3(0, 0.4f, 0),
                 Quaternion.identity, 0);
         }
     }
