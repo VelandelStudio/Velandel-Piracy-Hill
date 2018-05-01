@@ -48,7 +48,7 @@ public class CannonBall : MonoBehaviour
         exploder.transform.position += new Vector3(0f, 0.25f, 0f);
 
         // We'll give our explosion particles some upward velocity - also for effect
-        exploder.Explode(new Vector3(0f, 7f, 0f));
+        //exploder.Explode(new Vector3(0f, 7f, 0f));
         /*Collider[] colliders = Physics.OverlapSphere(collision.contacts[0].point, areaOfEffect);
         for (int i = colliders.Length - 1; i >= 0; i--)
         {

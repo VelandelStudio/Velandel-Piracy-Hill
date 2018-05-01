@@ -232,7 +232,7 @@ public class DerbyCar : MonoBehaviour
         exploder.transform.position += new Vector3(0f,0.25f,0f);
 
         // We'll give our explosion particles some upward velocity - also for effect
-        exploder.Explode(new Vector3(0f,7f,0f));
+        exploder.Explode(new Vector3(0f,7f,0f),1f);
     }
 
     [System.Serializable]

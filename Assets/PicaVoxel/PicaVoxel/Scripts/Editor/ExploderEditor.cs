@@ -59,13 +59,13 @@ namespace PicaVoxel
                 voxelExploder.ValueFilter = valueFilter;
             }
             EditorGUILayout.EndHorizontal();
-            if (GUILayout.Button("Explode!"))
+           /* if (GUILayout.Button("Explode!"))
             {
                 voxelExploder.Explode();
                 foreach (GameObject o in GameObject.FindGameObjectsWithTag("PicaVoxelVolume"))
                     o.GetComponent<Volume>().UpdateChunks(true);
             }
-
+            */
         }
     }
 }

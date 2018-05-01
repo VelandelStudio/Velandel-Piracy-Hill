@@ -7,10 +7,10 @@ namespace VelandelPiracyHill
     {
 
         [SerializeField] private GameObject cannonBallAnim;
-        private NSTElementsEngine nstElementEngine;
+        [SerializeField] private Transform CannonsSides;
+
         private void Awake()
         {
-            nstElementEngine = GetComponent<NSTElementsEngine>();
             enabled = photonView.isMine;
         }
 
@@ -19,21 +19,21 @@ namespace VelandelPiracyHill
         [PunRPC]
         private void RPC_StartReloadingCannon(string cannonID)
         {
-            Animator cannonAnim = nstElementEngine.elementLookup[cannonID].gameobject.GetComponent<Animator>();
+            Animator cannonAnim = TransformExtensions.FindAnyChild<Transform>(CannonsSides, cannonID).GetComponent<Animator>();
             cannonAnim.SetTrigger("StartReloading");
         }
 
         [PunRPC]
         private void RPC_EndReloadingCannon(string cannonID)
         {
-            Animator cannonAnim = nstElementEngine.elementLookup[cannonID].gameobject.GetComponent<Animator>();
+            Animator cannonAnim = TransformExtensions.FindAnyChild<Transform>(CannonsSides, cannonID).GetComponent<Animator>();
             cannonAnim.SetTrigger("EndReloading");
         }
 
         [PunRPC]
         private void RPC_PickUpNewCannonBall(string pirateID, string cannonBallSlotName)
         {
-            Transform pirate = nstElementEngine.elementLookup[pirateID].gameobject.transform;
+            Transform pirate = TransformExtensions.FindAnyChild<Transform>(CannonsSides, pirateID);
             Transform cannonBallSlot = TransformExtensions.FindAnyChild<Transform>(pirate, cannonBallSlotName);
             Instantiate(cannonBallAnim, cannonBallSlot.transform);
         }
@@ -41,7 +41,7 @@ namespace VelandelPiracyHill
         [PunRPC]
         private void RPC_DropCannonBall(string pirateID, string cannonBallSlotName)
         {
-            Transform pirate = nstElementEngine.elementLookup[pirateID].gameobject.transform;
+            Transform pirate = TransformExtensions.FindAnyChild<Transform>(CannonsSides, pirateID);
             Transform cannonBallSlot = TransformExtensions.FindAnyChild<Transform>(pirate, cannonBallSlotName);
             cannonBallSlot.transform.SetParent(pirate);
         }
@@ -49,7 +49,7 @@ namespace VelandelPiracyHill
         [PunRPC]
         private void RPC_PickUpCannonBall(string pirateID, string cannonBallSlotName, string cannonBallSlotParentName)
         {
-            Transform pirate = nstElementEngine.elementLookup[pirateID].gameobject.transform;
+            Transform pirate = TransformExtensions.FindAnyChild<Transform>(CannonsSides, pirateID);
             Transform cannonBallSlot = TransformExtensions.FindAnyChild<Transform>(pirate, cannonBallSlotName);
             Transform cannonBallSlotParent = TransformExtensions.FindAnyChild<Transform>(pirate, cannonBallSlotParentName);
 
@@ -59,7 +59,7 @@ namespace VelandelPiracyHill
         [PunRPC]
         private void RPC_DestroyHeldObject(string pirateID, string cannonBallSlotName)
         {
-            Transform pirate = nstElementEngine.elementLookup[pirateID].gameobject.transform;
+            Transform pirate = TransformExtensions.FindAnyChild<Transform>(CannonsSides, pirateID);
             Transform cannonBallSlot = TransformExtensions.FindAnyChild<Transform>(pirate, cannonBallSlotName);
             Destroy(cannonBallSlot.GetChild(0).gameObject);
         }
@@ -67,16 +67,16 @@ namespace VelandelPiracyHill
         [PunRPC]
         private void RPC_NotifyCannonLoaded(string cannonID)
         {
-            Animator cannonAnim = nstElementEngine.elementLookup[cannonID].gameobject.GetComponent<Animator>();
+            Animator cannonAnim = TransformExtensions.FindAnyChild<Transform>(CannonsSides, cannonID).GetComponent<Animator>();
             cannonAnim.SetBool("CannonLoaded", true);
         }
 
         [PunRPC]
         public void RPC_StartShooting(string pirateID, string cannonID)
         {
-            Animator pirateAnim = nstElementEngine.elementLookup[pirateID].gameobject.GetComponent<Animator>();
-            Animator cannonAnim = nstElementEngine.elementLookup[cannonID].gameobject.GetComponent<Animator>();
-            //cannonAnim.SetBool("CannonLoaded", false);
+            Debug.Log(cannonID);
+            Animator cannonAnim = TransformExtensions.FindAnyChild<Transform>(CannonsSides, cannonID).GetComponent<Animator>();
+            Animator pirateAnim = TransformExtensions.FindAnyChild<Transform>(cannonAnim.transform, pirateID).GetComponent<Animator>();
             pirateAnim.SetTrigger("StartShooting");
             cannonAnim.GetComponentInChildren<ParticleSystem>().Play();
         }

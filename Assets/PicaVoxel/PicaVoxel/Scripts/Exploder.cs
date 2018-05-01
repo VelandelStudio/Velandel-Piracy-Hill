@@ -43,9 +43,9 @@ namespace PicaVoxel
 
         public void Explode()
         {
-            Explode(Vector3.zero);
+            Explode(Vector3.zero,1f);
         }
-        public void Explode(Vector3 additionalVelocity)
+        public void Explode(Vector3 additionalVelocity, float scaleX)
         {
             foreach (Volume pvo in GameObject.FindObjectsOfType<Volume>())
             {
@@ -64,16 +64,14 @@ namespace PicaVoxel
                     if (batch.Voxels.Count > 0 && VoxelParticleSystem.Instance != null)
                         VoxelParticleSystem.Instance.SpawnBatch(batch,
                             pos =>
-                                (((pos + Random.insideUnitSphere) - transform.position)*
-                                ((Random.Range(ParticleVelocity - 1f, ParticleVelocity + 1f))))+additionalVelocity);
+                                (((pos + Random.insideUnitSphere) - transform.position) *
+                                ((Random.Range(ParticleVelocity - 1f, ParticleVelocity + 1f)))) + additionalVelocity,
+                         scaleX
+                     );
 
                     batch.Dispose();
                 }
-
             }
-
         }
-
-
     }
 }

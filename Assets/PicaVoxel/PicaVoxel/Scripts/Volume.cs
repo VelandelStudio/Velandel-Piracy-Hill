@@ -583,7 +583,7 @@ namespace PicaVoxel
 
             if (batch.Voxels.Count > 0 && VoxelParticleSystem.Instance != null)
                 VoxelParticleSystem.Instance.SpawnBatch(batch,
-                    pos => (pos - transform.position).normalized * Random.Range(0f, particleVelocity * 2f));
+                    pos => (pos - transform.position).normalized * Random.Range(0f, particleVelocity * 2f),1f);
 
             batch.Dispose();
         }

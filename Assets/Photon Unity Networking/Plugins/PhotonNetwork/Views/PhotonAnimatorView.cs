@@ -21,7 +21,7 @@ using UnityEngine;
 /// Triggers are raised true during one frame only.
 /// </remarks>
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(PhotonView))]
+//[RequireComponent(typeof(PhotonView))]
 [AddComponentMenu("Photon Networking/Photon Animator View")]
 public class PhotonAnimatorView : MonoBehaviour, IPunObservable
 {
@@ -110,7 +110,7 @@ public class PhotonAnimatorView : MonoBehaviour, IPunObservable
 
     private void Awake()
     {
-        this.m_PhotonView = GetComponent<PhotonView>();
+        this.m_PhotonView = transform.root.GetComponent<PhotonView>();
         this.m_StreamQueue = new PhotonStreamQueue(120);
 
         this.m_Animator = GetComponent<Animator>();

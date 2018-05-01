@@ -54,4 +54,6 @@ MonoBehaviour:
   - RPC_PickUpNewCannonBall
   - RPC_StartReloadingCannon
   - RPC_StartShooting
+  - RPC_ExplodeContactPoint
+  - RPC_CannonSideShoot
   DisableAutoOpenWizard: 1

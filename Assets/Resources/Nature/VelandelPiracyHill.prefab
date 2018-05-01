@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4855613846936522}
   - component: {fileID: 65979238849450790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4214055463193782}
   - component: {fileID: 65940391081715520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4345923291002644}
   - component: {fileID: 65026506812971322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098545411510552}
   - component: {fileID: 65518393857597996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4763910282039022}
   - component: {fileID: 65764825963280250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4833459548931816}
   - component: {fileID: 65944822273110154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,6 +984,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1523980850804592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4625487825448078}
+  - component: {fileID: 114283309421266064}
+  m_Layer: 0
+  m_Name: Exploder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1527716423152592
 GameObject:
   m_ObjectHideFlags: 1
@@ -1050,7 +1066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4821825031114800}
   - component: {fileID: 65268959955455274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4631310245566486}
   - component: {fileID: 65992514719039640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4450857668171072}
   - component: {fileID: 65553039446635342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,6 +1403,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4557732535035174}
+  - component: {fileID: 114310026106504628}
   m_Layer: 0
   m_Name: VelandelPiracyHill
   m_TagString: Untagged
@@ -2809,7 +2826,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709128894272892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7, z: 45.4}
+  m_LocalPosition: {x: -42.6, y: -7.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4758324650808398}
@@ -2821,6 +2838,7 @@ Transform:
   - {fileID: 4684085367426130}
   - {fileID: 4424968527350774}
   - {fileID: 4182273365880798}
+  - {fileID: 4625487825448078}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 9.735001, z: 0}
@@ -2915,6 +2933,19 @@ Transform:
   - {fileID: 4236145229880744}
   m_Father: {fileID: 4170828315882876}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4625487825448078
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523980850804592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4557732535035174}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4631310245566486
 Transform:
@@ -7710,7 +7741,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2892
+  thisInstanceId: -1322166
   Undone: 0
 --- !u!114 &114109319457288400
 MonoBehaviour:
@@ -7971,7 +8002,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2890
+  thisInstanceId: -1322158
   Undone: 0
 --- !u!114 &114216761766728898
 MonoBehaviour:
@@ -8057,7 +8088,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2898
+  thisInstanceId: -1322164
   Undone: 0
 --- !u!114 &114242485689912588
 MonoBehaviour:
@@ -8138,6 +8169,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUpdated: 0
+--- !u!114 &114283309421266064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523980850804592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88542c465f9e96b4ea82c353b78789f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: PicaVoxelVolume
+  ExplosionRadius: 2
+  ParticleVelocity: 25
+  ExplodeTarget: 0
+  ValueFilterOperation: 3
+  ValueFilter: 1
+--- !u!114 &114310026106504628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709128894272892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefb743948354c1459e30f6183d0e05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exploder: {fileID: 114283309421266064}
 --- !u!114 &114327284261863470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8210,7 +8270,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2896
+  thisInstanceId: -1322154
   Undone: 0
 --- !u!114 &114328209078648368
 MonoBehaviour:
@@ -8308,7 +8368,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2894
+  thisInstanceId: -1322156
   Undone: 0
 --- !u!114 &114351773486419928
 MonoBehaviour:
@@ -8653,7 +8713,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2900
+  thisInstanceId: -1322150
   Undone: 0
 --- !u!114 &114679072357052980
 MonoBehaviour:
@@ -8758,7 +8818,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2888
+  thisInstanceId: -1322160
   Undone: 0
 --- !u!114 &114692706563027198
 MonoBehaviour:
@@ -9026,7 +9086,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2886
+  thisInstanceId: -1322152
   Undone: 0
 --- !u!114 &114852708530193746
 MonoBehaviour:
@@ -9229,7 +9289,7 @@ MonoBehaviour:
   ImportedFrom: 0
   ImportedFile: 
   ImportedCutoutColor: {r: 0, g: 0, b: 0, a: 0}
-  thisInstanceId: -2884
+  thisInstanceId: -1322162
   Undone: 0
 --- !u!114 &114987197708511082
 MonoBehaviour:

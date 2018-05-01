@@ -35,7 +35,7 @@ public class IslandsClickBoom : MonoBehaviour
 
                             // The delegate function here calculates a random particle velocity based on the position of the explosion
                             VoxelParticleSystem.Instance.SpawnBatch(b, pos =>
-                                 (pos - r.GetPoint(d)) * Random.Range(0f, 2f));
+                                 (pos - r.GetPoint(d)) * Random.Range(0f, 2f),1f);
                             
                             break;
                         }

@@ -115,13 +115,13 @@ namespace PicaVoxel
             //worldPos, velocity, voxelSize, ParticleLifetime, voxel.Color)};
         }
 
-        public void SpawnBatch(Batch batch, Func<Vector3, Vector3> velocityFunction)
+        public void SpawnBatch(Batch batch, Func<Vector3, Vector3> velocityFunction, float scale)
         {
             int step = batch.Voxels.Count/(MaxBatchParticles >= 0 ? MaxBatchParticles : 100);
             if (step < 1) step = 1;
             for (int i = 0; i < batch.Voxels.Count; i += step)
             {
-                SpawnSingle(batch.Voxels[i].WorldPosition, batch.Voxels[i].Voxel, batch.VoxelObject.VoxelSize,
+                SpawnSingle(batch.Voxels[i].WorldPosition, batch.Voxels[i].Voxel, batch.VoxelObject.VoxelSize * scale,
                     velocityFunction(batch.Voxels[i].WorldPosition));
             }
         }

@@ -11,232 +11,232 @@ using UnityEditor;
 namespace emotitron.Network.NST.Sample
 {
 
-	[AddComponentMenu("NST/Sample Code/NST Sample Controller")]
+    [AddComponentMenu("NST/Sample Code/NST Sample Controller")]
 
-	/// <summary>
-	/// A VERY basic and generic example of a controller for getting started. 
-	/// Feel free to augment this, replace this, or borrow parts from this as needed.
-	/// If the gameobject is a non-kinematic rigidbody it will use force to move the object, otherwise it will translate it each update. 
-	/// Setting the Restrict To NST Ranges to True will restrict translates to the ranges of the NST and any NST Elements (add-on).
-	/// Physics objects (Rigidbodies) can't be range restricted since they use forces, and should be constrained by world colliders.
-	/// </summary>
-	public class NSTSampleController : NSTComponent, INstStart
-	{
-		#region Inspector Fields
+    /// <summary>
+    /// A VERY basic and generic example of a controller for getting started. 
+    /// Feel free to augment this, replace this, or borrow parts from this as needed.
+    /// If the gameobject is a non-kinematic rigidbody it will use force to move the object, otherwise it will translate it each update. 
+    /// Setting the Restrict To NST Ranges to True will restrict translates to the ranges of the NST and any NST Elements (add-on).
+    /// Physics objects (Rigidbodies) can't be range restricted since they use forces, and should be constrained by world colliders.
+    /// </summary>
+    public class NSTSampleController : NSTComponent, INstStart
+    {
+        #region Inspector Fields
 
-		[Tooltip("Leave empty to use the game object this component is attached to.")]
-		public GameObject _gameObject;
+        [Tooltip("Leave empty to use the game object this component is attached to.")]
+        public GameObject _gameObject;
 
-		[Tooltip("Automatically add percentage of force/rate to forward direction. This is just here to make testing easier, by making things move on their own.")]
-		[Range(0, 1)]
-		public float autoForward = 0;
+        [Tooltip("Automatically add percentage of force/rate to forward direction. This is just here to make testing easier, by making things move on their own.")]
+        [Range(0, 1)]
+        public float autoForward = 0;
 
-		[Tooltip("Automatically add rotation of force/rate. This is just here to make testing easier, by making things move on their own.")]
-		[Range(0, 1)]
-		public float autoRotate = 0;
+        [Tooltip("Automatically add rotation of force/rate. This is just here to make testing easier, by making things move on their own.")]
+        [Range(0, 1)]
+        public float autoRotate = 0;
 
-		[Tooltip("If true, will find PostitionElements and RotationElements on the gameobject and restrict movement to their data ranges.")]
-		public bool restrictToNstRange = true;
+        [Tooltip("If true, will find PostitionElements and RotationElements on the gameobject and restrict movement to their data ranges.")]
+        public bool restrictToNstRange = true;
 
-		[Tooltip("This complex sounding switch just indicates whether rigidbodies set 'isKinematic=true' are moved using the transform translate, or with rb.MovePosition/rb.MoveRotation. Moving them by translate is more immediate, but may have some undesired effects on physics.")]
-		public bool translateKinematic = false;
-
-
-		[Header("Force (Non-Kinematic RBs only)")]
-		public float moveForce = 300f;
-		public float turnForce = 30f;
+        [Tooltip("This complex sounding switch just indicates whether rigidbodies set 'isKinematic=true' are moved using the transform translate, or with rb.MovePosition/rb.MoveRotation. Moving them by translate is more immediate, but may have some undesired effects on physics.")]
+        public bool translateKinematic = false;
 
 
-		[Header("Rates (Kinematic and non-RBs)")]
-		public float moveRate = 2f;
-		public float turnRate = 50f;
-
-		[Space]
-		[Tooltip("Normalize accumulated movement inputs into a final vector magnitude of 1")]
-		public bool clampMove = true;
-
-		[Header("Key Inputs")]
-		public NSTControllerPresets keyPresets = (NSTControllerPresets)(-1);
-		public ControllerKeyMap mapping = new ControllerKeyMap();
+        [Header("Force (Non-Kinematic RBs only)")]
+        public float moveForce = 300f;
+        public float turnForce = 30f;
 
 
-		[Header("Mouse Inputs")]
-		public MouseInputAxis mousePitch = new MouseInputAxis { axisId = 0 };
-		public MouseInputAxis mouseYaw = new MouseInputAxis { axisId = 1 };
-		public MouseInputAxis mouseRoll = new MouseInputAxis { axisId = 2 };
+        [Header("Rates (Kinematic and non-RBs)")]
+        public float moveRate = 2f;
+        public float turnRate = 50f;
 
-		public bool enableBasicTouch = false;
+        [Space]
+        [Tooltip("Normalize accumulated movement inputs into a final vector magnitude of 1")]
+        public bool clampMove = true;
 
-		#endregion
+        [Header("Key Inputs")]
+        public NSTControllerPresets keyPresets = (NSTControllerPresets)(-1);
+        public ControllerKeyMap mapping = new ControllerKeyMap();
 
-		private bool hasAuthority;
-		private Rigidbody rb;
 
-		// restrict axis bools
-		private bool[] allowMove = new bool[3] { true, true, true };
-		private bool[] allowTurn = new bool[3] { true, true, true };
+        [Header("Mouse Inputs")]
+        public MouseInputAxis mousePitch = new MouseInputAxis { axisId = 0 };
+        public MouseInputAxis mouseYaw = new MouseInputAxis { axisId = 1 };
+        public MouseInputAxis mouseRoll = new MouseInputAxis { axisId = 2 };
 
-		private bool moveWithForce;
-		private bool turnWithForce;
-		private bool isQuat = true;
-		private bool isRootGO;
+        public bool enableBasicTouch = false;
 
-		private IPositionElement pe;
-		private IRotationElement re;
+        #endregion
 
-		public override void OnNstPostAwake()
-		{
-			base.OnNstPostAwake();
+        private bool hasAuthority;
+        private Rigidbody rb;
 
-			if (_gameObject == null)
-				_gameObject = gameObject;
+        // restrict axis bools
+        private bool[] allowMove = new bool[3] { true, true, true };
+        private bool[] allowTurn = new bool[3] { true, true, true };
 
-			isRootGO = (_gameObject == transform.root.gameObject);
+        private bool moveWithForce;
+        private bool turnWithForce;
+        private bool isQuat = true;
+        private bool isRootGO;
 
-			// If this is the root, try to get the RB
-			if (isRootGO)
-				rb = nst.rb;
-		}
+        private IPositionElement pe;
+        private IRotationElement re;
 
-		public void OnNstStart()
-		{
+        public override void OnNstPostAwake()
+        {
+            base.OnNstPostAwake();
 
-			if (nst != null)
-				hasAuthority = nst.na.IsMine;
+            if (_gameObject == null)
+                _gameObject = gameObject;
 
-			// Find position and rotation elements that are defined for this child (assumes there are no more than one per, since there shouldn't be)
-			if (nst != null && nst.nstElementsEngine != null)
-				foreach (TransformElement te in nst.nstElementsEngine.transformElements)
-					if (te.gameobject == _gameObject)
-					{
-						if (te is IPositionElement)
-							pe = te as IPositionElement;
-						else if (te is IRotationElement)
-							re = te as IRotationElement;
-					}
+            isRootGO = (_gameObject == transform.root.gameObject);
 
-			isQuat = (re != null && re.RotationType == RotationType.Quaternion);
+            // If this is the root, try to get the RB
+            if (isRootGO)
+                rb = nst.rb;
+        }
 
-			turnWithForce = isRootGO && rb != null && !rb.isKinematic && isQuat;
+        public void OnNstStart()
+        {
+
+            if (nst != null)
+                hasAuthority = nst.na.IsMine;
+
+            // Find position and rotation elements that are defined for this child (assumes there are no more than one per, since there shouldn't be)
+            if (nst != null && nst.nstElementsEngine != null)
+                foreach (TransformElement te in nst.nstElementsEngine.transformElements)
+                    if (te.gameobject == _gameObject)
+                    {
+                        if (te is IPositionElement)
+                            pe = te as IPositionElement;
+                        else if (te is IRotationElement)
+                            re = te as IRotationElement;
+                    }
+
+            isQuat = (re != null && re.RotationType == RotationType.Quaternion);
+
+            turnWithForce = isRootGO && rb != null && !rb.isKinematic && isQuat;
             turnWithForce = false;
             moveWithForce = isRootGO && rb != null && !rb.isKinematic;
 
-			// Set the restriction bools based on the restrict switch and the enabled/disabled axes
-			if (restrictToNstRange)
-			{
-				if (pe != null)
-					for (int i = 0; i < 3; i++)
-						allowMove[i] = pe[i];
+            // Set the restriction bools based on the restrict switch and the enabled/disabled axes
+            if (restrictToNstRange)
+            {
+                if (pe != null)
+                    for (int i = 0; i < 3; i++)
+                        allowMove[i] = pe[i];
 
-				if (re != null && !isQuat)
-					for (int i = 0; i < 3; i++)
-						allowTurn[i] = re[i];
-			}
-		}
+                if (re != null && !isQuat)
+                    for (int i = 0; i < 3; i++)
+                        allowTurn[i] = re[i];
+            }
+        }
 
-		// Input Accumulators
-		float[] move = new float[3];
-		float[] turn = new float[3];
+        // Input Accumulators
+        float[] move = new float[3];
+        float[] turn = new float[3];
 
-		void Update()
-		{
+        void Update()
+        {
 
-			// Only accept input for the local player
-			if (!hasAuthority)
-				return;
-
-
-			// Reset the accumulators to zero
-			for (int i = 0; i < 3; i++)
-			{
-				move[i] = 0;
-				turn[i] = 0;
-			}
-
-			// Add autoforward if used.
-			move[2] += autoForward;
-			turn[1] += autoRotate;
-
-			AccumulateKeyInputs();
-			AccumulateMouse();
-
-			if (enableBasicTouch)
-				AccumulateTouchInputs();
+            // Only accept input for the local player
+            if (!hasAuthority)
+                return;
 
 
-			// Make the accumulators into vectors
-			Vector3 turns = new Vector3(turn[0] * Time.deltaTime, turn[1] * Time.deltaTime, turn[2] * Time.deltaTime);
+            // Reset the accumulators to zero
+            for (int i = 0; i < 3; i++)
+            {
+                move[i] = 0;
+                turn[i] = 0;
+            }
 
-			Vector3 moves = (clampMove) ?
-				Vector3.ClampMagnitude(new Vector3(move[0] * Time.deltaTime, move[1] * Time.deltaTime, move[2] * Time.deltaTime), 1):
-									   new Vector3(move[0] * Time.deltaTime, move[1] * Time.deltaTime, move[2] * Time.deltaTime);
+            // Add autoforward if used.
+            move[2] += autoForward;
+            turn[1] += autoRotate;
 
-			ApplyRotation(turns);
-			ApplyPosition(moves);
+            AccumulateKeyInputs();
+            AccumulateMouse();
 
-		}
+            if (enableBasicTouch)
+                AccumulateTouchInputs();
 
-		float _lastMouseX;
-		float _lastMouseY;
 
-		private void AccumulateMouse()
-		{
-			for (int i = 0; i < 3; i++)
-			{
-				MouseInputAxis m = (i == 0) ? mousePitch : (i == 1) ? mouseYaw : mouseRoll;
+            // Make the accumulators into vectors
+            Vector3 turns = new Vector3(turn[0] * Time.deltaTime, turn[1] * Time.deltaTime, turn[2] * Time.deltaTime);
 
-				if (m.mouseAxis != MouseAxes.None)
-					turn[i] += (
-						(m.mouseAxis == MouseAxes.MouseX) ? (_lastMouseX - Input.mousePosition.x) :
-						(m.mouseAxis == MouseAxes.MouseY) ? (_lastMouseY - Input.mousePosition.y) :
-						(m.mouseAxis == MouseAxes.ScrollX) ? Input.mouseScrollDelta.x :
-						Input.mouseScrollDelta.y
-						)
-						* (m.invert ? -m.sensitivity : m.sensitivity);
-			}
-			_lastMouseX = Input.mousePosition.x;
-			_lastMouseY = Input.mousePosition.y;
-		}
-		private void AccumulateKeyInputs()
-		{
-			if (allowMove[0])
-			{
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveRight]))
-					move[0] += 1;
+            Vector3 moves = (clampMove) ?
+                Vector3.ClampMagnitude(new Vector3(move[0] * Time.deltaTime, move[1] * Time.deltaTime, move[2] * Time.deltaTime), 1) :
+                                       new Vector3(move[0] * Time.deltaTime, move[1] * Time.deltaTime, move[2] * Time.deltaTime);
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveLeft]))
-					move[0] += -1;
-			}
+            ApplyRotation(turns);
+            ApplyPosition(moves);
 
-			if (allowMove[1])
-			{
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveUp]))
-					move[1] += 1;
+        }
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveDown]))
-					move[1] += -1;
-			}
+        float _lastMouseX;
+        float _lastMouseY;
 
-			if (allowMove[2])
-			{
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveForward]))
-					move[2] += 1;
+        private void AccumulateMouse()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                MouseInputAxis m = (i == 0) ? mousePitch : (i == 1) ? mouseYaw : mouseRoll;
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveBack]))
-					move[2] += -1;
-			}
+                if (m.mouseAxis != MouseAxes.None)
+                    turn[i] += (
+                        (m.mouseAxis == MouseAxes.MouseX) ? (_lastMouseX - Input.mousePosition.x) :
+                        (m.mouseAxis == MouseAxes.MouseY) ? (_lastMouseY - Input.mousePosition.y) :
+                        (m.mouseAxis == MouseAxes.ScrollX) ? Input.mouseScrollDelta.x :
+                        Input.mouseScrollDelta.y
+                        )
+                        * (m.invert ? -m.sensitivity : m.sensitivity);
+            }
+            _lastMouseX = Input.mousePosition.x;
+            _lastMouseY = Input.mousePosition.y;
+        }
+        private void AccumulateKeyInputs()
+        {
+            if (allowMove[0])
+            {
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveRight]))
+                    move[0] += 1;
 
-			if (allowTurn[0])
-			{
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.PitchDown]))
-					turn[0] += 1;
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveLeft]))
+                    move[0] += -1;
+            }
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.PitchUp]))
-					turn[0] += -1;
-			}
+            if (allowMove[1])
+            {
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveUp]))
+                    move[1] += 1;
 
-			if (allowTurn[1])
-			{
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveDown]))
+                    move[1] += -1;
+            }
+
+            if (allowMove[2])
+            {
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveForward]))
+                    move[2] += 1;
+
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.MoveBack]))
+                    move[2] += -1;
+            }
+
+            if (allowTurn[0])
+            {
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.PitchDown]))
+                    turn[0] += 1;
+
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.PitchUp]))
+                    turn[0] += -1;
+            }
+
+            if (allowTurn[1])
+            {
                 if (Input.GetKey(mapping.keyMaps[(int)InputAxis.YawRight]))
                 {
                     turn[1] += 1;
@@ -251,102 +251,102 @@ namespace emotitron.Network.NST.Sample
             }
 
             if (allowTurn[2])
-			{
+            {
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.RollLeft]))
-					turn[2] += 1;
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.RollLeft]))
+                    turn[2] += 1;
 
-				if (Input.GetKey(mapping.keyMaps[(int)InputAxis.RollRight]))
-					turn[2] += -1;
+                if (Input.GetKey(mapping.keyMaps[(int)InputAxis.RollRight]))
+                    turn[2] += -1;
 
-			}
-		}
-		private void AccumulateTouchInputs()
-		{
-			// Some touch inputs for testing on mobile.
-			for (var i = 0; i < Input.touchCount; ++i)
-			{
-				Touch touch = Input.GetTouch(i);
-				if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Began)
-				{
-					if (allowMove[1])
-					{
-						if (touch.position.x < (Screen.width * .33f))
-						{
-							turn[1] = -1;
-						}
-						else if (touch.position.x > (Screen.width * .667f))
-						{
-							turn[1] = 1;
-						}
-					}
+            }
+        }
+        private void AccumulateTouchInputs()
+        {
+            // Some touch inputs for testing on mobile.
+            for (var i = 0; i < Input.touchCount; ++i)
+            {
+                Touch touch = Input.GetTouch(i);
+                if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Began)
+                {
+                    if (allowMove[1])
+                    {
+                        if (touch.position.x < (Screen.width * .33f))
+                        {
+                            turn[1] = -1;
+                        }
+                        else if (touch.position.x > (Screen.width * .667f))
+                        {
+                            turn[1] = 1;
+                        }
+                    }
 
-					if (allowMove[2])
-					{
-						if (touch.position.y < (Screen.height * .33f))
-						{
-							move[2] += -1;
-						}
-						else if (touch.position.y > (Screen.height * .66f))
-						{
-							move[2] += 1;
-						}
-					}
-				}
-			}
-		}
+                    if (allowMove[2])
+                    {
+                        if (touch.position.y < (Screen.height * .33f))
+                        {
+                            move[2] += -1;
+                        }
+                        else if (touch.position.y > (Screen.height * .66f))
+                        {
+                            move[2] += 1;
+                        }
+                    }
+                }
+            }
+        }
 
 
-		/// <summary>
-		/// Apply the position inputs, respecting if the moved gameobject is a rigidbody or not. Moves non-kinematic rigidbodies with force, 
-		/// moves all others with translation. restrictToNstRanges=true will clamp the ranges to the NST and NST Element ranges set for that object, 
-		/// if any exist.
-		/// </summary>
-		/// <param name="moves"></param>
-		private void ApplyPosition(Vector3 moves)
-		{
-			// Position
-			// Non kinematic rigidbodies can't really be ranged (without an insane amount of code) and this will be the root object in all cases (rbs can't be on children)
-			if (moveWithForce)
-			{
-				rb.AddRelativeForce(moves * moveForce);
-			}
-			else
-			{
-				Vector3 unclamped = _gameObject.transform.localPosition + _gameObject.transform.rotation * moves * moveRate;
-				Vector3 clamped = 
-					(restrictToNstRange && pe != null) ? pe.ClampAxes(unclamped) :
-					(restrictToNstRange && isRootGO) ? WorldVectorCompression.ClampAxes(unclamped) : unclamped;
+        /// <summary>
+        /// Apply the position inputs, respecting if the moved gameobject is a rigidbody or not. Moves non-kinematic rigidbodies with force, 
+        /// moves all others with translation. restrictToNstRanges=true will clamp the ranges to the NST and NST Element ranges set for that object, 
+        /// if any exist.
+        /// </summary>
+        /// <param name="moves"></param>
+        private void ApplyPosition(Vector3 moves)
+        {
+            // Position
+            // Non kinematic rigidbodies can't really be ranged (without an insane amount of code) and this will be the root object in all cases (rbs can't be on children)
+            if (moveWithForce)
+            {
+                rb.AddRelativeForce(moves * moveForce);
+            }
+            else
+            {
+                Vector3 unclamped = _gameObject.transform.localPosition + _gameObject.transform.rotation * moves * moveRate;
+                Vector3 clamped =
+                    (restrictToNstRange && pe != null) ? pe.ClampAxes(unclamped) :
+                    (restrictToNstRange && isRootGO) ? WorldVectorCompression.ClampAxes(unclamped) : unclamped;
 
-				if (!isRootGO && pe != null)
-					pe.Apply(clamped);
-				// If this is the root object, we will want to move this
-				else if (rb == null || translateKinematic)
-					_gameObject.transform.localPosition = clamped;
-				else
-					rb.MovePosition(clamped);
-			}
-		}
+                if (!isRootGO && pe != null)
+                    pe.Apply(clamped);
+                // If this is the root object, we will want to move this
+                else if (rb == null || translateKinematic)
+                    _gameObject.transform.localPosition = clamped;
+                else
+                    rb.MovePosition(clamped);
+            }
+        }
 
-		/// <summary>
-		/// Apply the rotation inputs, respecting if the moved gameobject is a rigidbody or not. Moves non-kinematic rigidbodies with force, 
-		/// moves all others with translation. restrictToNstRanges=true will clamp the ranges to the NST and NST Element ranges set for that object, 
-		/// if any exist. Additionally, even if the objects is a non-kinematic RB, this will still rotate using translate if the rotation type is Euler.
-		/// </summary>
-		private void ApplyRotation(Vector3 turns)
-		{
+        /// <summary>
+        /// Apply the rotation inputs, respecting if the moved gameobject is a rigidbody or not. Moves non-kinematic rigidbodies with force, 
+        /// moves all others with translation. restrictToNstRanges=true will clamp the ranges to the NST and NST Element ranges set for that object, 
+        /// if any exist. Additionally, even if the objects is a non-kinematic RB, this will still rotate using translate if the rotation type is Euler.
+        /// </summary>
+        private void ApplyRotation(Vector3 turns)
+        {
             // Turn with force only if is a nonKinematic RB and rotation is of the Quat type - otherwise must be moved as euler angles
             if (turnWithForce)
-			{
+            {
                 rb.AddRelativeTorque(turns * turnForce, ForceMode.Impulse);
                 return;
-			}
+            }
 
-			// Non-Physics-based rotation
-			GenericX clamped = 
-					(restrictToNstRange && re != null && !isQuat) ?
-					re.ClampAxes(_gameObject.transform.localEulerAngles + turns * turnRate) :
-								 _gameObject.transform.localEulerAngles + turns * turnRate;
+            // Non-Physics-based rotation
+            GenericX clamped =
+                    (restrictToNstRange && re != null && !isQuat) ?
+                    re.ClampAxes(_gameObject.transform.localEulerAngles + turns * turnRate) :
+                                 _gameObject.transform.localEulerAngles + turns * turnRate;
 
 
             if (!isRootGO && re != null)
@@ -381,77 +381,77 @@ namespace emotitron.Network.NST.Sample
 
                 rb.MoveRotation(clamped);
             }
-		}
+        }
 
-		public void ApplyPreset(ControllerKeyMap target, NSTControllerPresets copyFrom)
-		{
-			ControllerKeyMap source = ControllerKeyMap.presets[(int)copyFrom];
+        public void ApplyPreset(ControllerKeyMap target, NSTControllerPresets copyFrom)
+        {
+            ControllerKeyMap source = ControllerKeyMap.presets[(int)copyFrom];
 
-			for (int i = 0; i < mapping.keyMaps.Length; i++)
-				mapping.keyMaps[i] = source.keyMaps[i];
+            for (int i = 0; i < mapping.keyMaps.Length; i++)
+                mapping.keyMaps[i] = source.keyMaps[i];
 
-			keyPresets = copyFrom;
-		}
+            keyPresets = copyFrom;
+        }
 
 
-		public bool CompareToPreset(NSTControllerPresets selected)
-		{
-			ControllerKeyMap selectedPreset = ControllerKeyMap.presets[(int)selected];
+        public bool CompareToPreset(NSTControllerPresets selected)
+        {
+            ControllerKeyMap selectedPreset = ControllerKeyMap.presets[(int)selected];
 
-			// return false if any key mapping doesn't match
-			for (int i = 0; i < mapping.keyMaps.Length; i++)
-				if (mapping.keyMaps[i] != selectedPreset.keyMaps[i])
-					return false;
+            // return false if any key mapping doesn't match
+            for (int i = 0; i < mapping.keyMaps.Length; i++)
+                if (mapping.keyMaps[i] != selectedPreset.keyMaps[i])
+                    return false;
 
-			return true;
-		}
-	}
+            return true;
+        }
+    }
 
 
 #if UNITY_EDITOR
-	[CustomEditor(typeof(NSTSampleController))]
-	[CanEditMultipleObjects]
-	public class NSTSampleControllerEditor : NSTSampleHeader
-	{
-		int lastSelectedPreset;
+    [CustomEditor(typeof(NSTSampleController))]
+    [CanEditMultipleObjects]
+    public class NSTSampleControllerEditor : NSTSampleHeader
+    {
+        int lastSelectedPreset;
 
-		public override void OnEnable()
-		{
-			base.OnEnable();
+        public override void OnEnable()
+        {
+            base.OnEnable();
 
-			NSTSampleController _target = (NSTSampleController)target;
-			bool isRoot = _target.transform.parent == null;
+            NSTSampleController _target = (NSTSampleController)target;
+            bool isRoot = _target.transform.parent == null;
 
-			// If targetPreset == -1 then this has been run before
-			if ((int)_target.keyPresets == -1) //NSTSampleController.NSTControllerPresets.None)
-			{
-				_target.ApplyPreset(_target.mapping, isRoot ? NSTControllerPresets.FreeController : NSTControllerPresets.Secondary);
+            // If targetPreset == -1 then this has been run before
+            if ((int)_target.keyPresets == -1) //NSTSampleController.NSTControllerPresets.None)
+            {
+                _target.ApplyPreset(_target.mapping, isRoot ? NSTControllerPresets.FreeController : NSTControllerPresets.Secondary);
 
-			}
-			lastSelectedPreset = (int)_target.keyPresets;
-		}
+            }
+            lastSelectedPreset = (int)_target.keyPresets;
+        }
 
-		public override void OnInspectorGUI()
-		{
-			NSTSampleController _target = (NSTSampleController)target;
-			
-			// If the preset selection has changed... apply that presets values (unless its Custom ... custom will not overwrite user settings)
-			if (lastSelectedPreset != (int)_target.keyPresets && _target.keyPresets != NSTControllerPresets.Custom)
-			{
-				_target.ApplyPreset(_target.mapping, _target.keyPresets);
-			}
+        public override void OnInspectorGUI()
+        {
+            NSTSampleController _target = (NSTSampleController)target;
 
-			// if there are differences in the input mappings from the preset, switch the selection to Custom so they don't keep getting overwritten.
-			else if (_target.keyPresets != NSTControllerPresets.Custom && _target.CompareToPreset(_target.keyPresets) == false)
-			{
-				_target.keyPresets = NSTControllerPresets.Custom;
-			}
+            // If the preset selection has changed... apply that presets values (unless its Custom ... custom will not overwrite user settings)
+            if (lastSelectedPreset != (int)_target.keyPresets && _target.keyPresets != NSTControllerPresets.Custom)
+            {
+                _target.ApplyPreset(_target.mapping, _target.keyPresets);
+            }
 
-			lastSelectedPreset = (int)_target.keyPresets;
+            // if there are differences in the input mappings from the preset, switch the selection to Custom so they don't keep getting overwritten.
+            else if (_target.keyPresets != NSTControllerPresets.Custom && _target.CompareToPreset(_target.keyPresets) == false)
+            {
+                _target.keyPresets = NSTControllerPresets.Custom;
+            }
 
-			base.OnInspectorGUI();
-		}
-	}
-	
+            lastSelectedPreset = (int)_target.keyPresets;
+
+            base.OnInspectorGUI();
+        }
+    }
+
 #endif
 }

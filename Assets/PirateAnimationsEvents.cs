@@ -6,56 +6,55 @@ namespace VelandelPiracyHill
     public class PirateAnimationsEvents : Photon.MonoBehaviour
     {
         [SerializeField] private GameObject cannonBallSlot;
-        private string cannonID;
-        private string pirateID;
+        private GameObject cannon;
         private Transform cannonBallSlotParent;
 
-        private PhotonView photonView;
+        private PhotonView myView;
         private void Awake()
         {
-            cannonID = transform.parent.GetComponent<NSTPositionElement>().positionElement.name;
-            pirateID = GetComponent<NSTPositionElement>().positionElement.name;
+            myView = transform.root.GetComponent<PhotonView>();
+            //IDProvider.BuildIDFor(gameObject, myView.isMine);
 
+            cannon = transform.parent.gameObject;
             cannonBallSlotParent = cannonBallSlot.transform.parent;
 
-            photonView = transform.root.GetComponent<PhotonView>();
-            enabled = photonView.isMine;
+            enabled = myView.isMine;
         }
 
         #region AnimationEvents		
         public void StartReloadingCannon()
         {
-            photonView.RPC("RPC_StartReloadingCannon", PhotonTargets.All, cannonID);
+            myView.RPC("RPC_StartReloadingCannon", PhotonTargets.All, cannon.name);
         }
 
         public void EndReloadingCannon()
         {
-            photonView.RPC("RPC_EndReloadingCannon", PhotonTargets.All, cannonID);
+            myView.RPC("RPC_EndReloadingCannon", PhotonTargets.All, cannon.name);
         }
 
         public void PickUpNewCannonBall()
         {
-            photonView.RPC("RPC_PickUpNewCannonBall", PhotonTargets.All, pirateID, cannonBallSlot.name);
+            myView.RPC("RPC_PickUpNewCannonBall", PhotonTargets.All, gameObject.name, cannonBallSlot.name);
         }
 
         public void DropCannonBall()
         {
-            photonView.RPC("RPC_DropCannonBall", PhotonTargets.All, pirateID, cannonBallSlot.name);
+            myView.RPC("RPC_DropCannonBall", PhotonTargets.All, gameObject.name, cannonBallSlot.name);
         }
 
         public void PickUpCannonBall()
         {
-            photonView.RPC("RPC_PickUpCannonBall", PhotonTargets.All, pirateID, cannonBallSlot.name, cannonBallSlotParent.name);
+            myView.RPC("RPC_PickUpCannonBall", PhotonTargets.All, gameObject.name, cannonBallSlot.name, cannonBallSlotParent.name);
         }
 
         public void DestroyHeldObject()
         {
-            photonView.RPC("RPC_DestroyHeldObject", PhotonTargets.All,pirateID, cannonBallSlot.name);
+            myView.RPC("RPC_DestroyHeldObject", PhotonTargets.All, gameObject.name, cannonBallSlot.name);
         }
 
         public void NotifyCannonLoaded()
         {
-            photonView.RPC("RPC_NotifyCannonLoaded", PhotonTargets.All, cannonID);
+            myView.RPC("RPC_NotifyCannonLoaded", PhotonTargets.All, cannon.name);
         }
         #endregion
     }

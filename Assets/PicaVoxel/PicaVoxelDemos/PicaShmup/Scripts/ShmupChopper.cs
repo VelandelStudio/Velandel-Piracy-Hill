@@ -62,7 +62,7 @@ public class ShmupChopper : MonoBehaviour
         if (explodeTime >= 0.25f)
         {         
             explodeTime = 0f;
-            grassExploder.Explode(new Vector3(0, 0, -3f));
+            grassExploder.Explode(new Vector3(0, 0, -3f),1f);
         }
 	}
 

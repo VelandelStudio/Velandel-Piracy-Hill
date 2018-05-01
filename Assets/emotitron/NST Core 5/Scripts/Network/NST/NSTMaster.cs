@@ -39,12 +39,12 @@ namespace emotitron.Network.NST
 
 #if UNITY_EDITOR
 			// Don't run awake if this is not runtime.
-			/*if (!Application.isPlaying)
+			if(!Application.isPlaying)
 			{
-				EnsureNSTMasterConforms();
-				needsEditorModePostAwakeCheck = true;
+				/*EnsureNSTMasterConforms();
+				needsEditorModePostAwakeCheck = true;*/
 				return;
-			}*/
+			}
 #endif
 			DontDestroyOnLoad(gameObject);
 		}

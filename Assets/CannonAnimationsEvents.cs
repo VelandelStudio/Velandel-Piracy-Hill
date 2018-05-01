@@ -6,20 +6,19 @@ namespace VelandelPiracyHill
     public class CannonAnimationsEvents : Photon.MonoBehaviour
     {
         private PhotonView myView;
-        private string cannonID;
-        private string pirateID;
+        private GameObject pirate;
 
         private void Awake()
         {
-            cannonID = GetComponent<NSTPositionElement>().positionElement.name;
-            pirateID = GetComponentInChildren<PirateAnimationsEvents>().GetComponent<NSTPositionElement>().positionElement.name;
             myView = transform.root.GetComponent<PhotonView>();
+            //IDProvider.BuildIDFor(gameObject, myView.isMine);
+            pirate = GetComponentInChildren<PirateAnimationsEvents>().gameObject;
             enabled = myView.isMine;
         }
 
         public void StartShooting()
         {
-            myView.RPC("RPC_StartShooting", PhotonTargets.All, pirateID, cannonID);
+            myView.RPC("RPC_StartShooting", PhotonTargets.All, pirate.name, gameObject.name);
         }
     }
 }

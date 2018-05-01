@@ -103,7 +103,7 @@ namespace PicaVoxel
                 VoxelParticleSystem.Instance.SpawnBatch(batch,
                     pos =>
                         ((transform.position - (pos + Random.insideUnitSphere))*
-                         1f));
+                         1f),1f);
 
             batch.Dispose();
         }
