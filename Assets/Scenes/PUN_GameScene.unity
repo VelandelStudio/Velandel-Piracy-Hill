@@ -374,7 +374,18 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 23334960272313938, guid: 82e5ef7be80983b429caad73d40b9555,
+        type: 2}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23334960272313938, guid: 82e5ef7be80983b429caad73d40b9555,
+        type: 2}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64668696181182418, guid: 82e5ef7be80983b429caad73d40b9555, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 82e5ef7be80983b429caad73d40b9555, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1866081318

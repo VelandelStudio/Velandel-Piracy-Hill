@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerShipController : Photon.PunBehaviour
 {
-        public float m_Speed = 12f;                 // How fast the tank moves forward and back.
+    public float m_Speed = 12f;                 // How fast the tank moves forward and back.
     public float m_TurnSpeed = 180f;            // How fast the tank turns in degrees per second.
     private Rigidbody m_Rigidbody;              // Reference used to move the tank.
     private float m_MovementInputValue;         // The current value of the movement input.
     private float m_TurnInputValue;             // The current value of the turn input.
 
+    private float animVelocity = 0f;
+    private float animVelocity5 = 0f;
+    [SerializeField] private Animator shipVoxelAC;
 
     private void Awake()
     {
@@ -53,6 +56,8 @@ public class PlayerShipController : Photon.PunBehaviour
         Turn();
         //m_Rigidbody.velocity = Vector3.zero;
         //m_Rigidbody.angularVelocity = Vector3.zero;
+        Animate();
+
     }
 
     private void Move()
@@ -78,5 +83,13 @@ public class PlayerShipController : Photon.PunBehaviour
 
         // Apply this rotation to the rigidbody's rotation.
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+    }
+
+    private void Animate()
+    {
+        shipVoxelAC.SetFloat("Rotation", Mathf.SmoothDamp(shipVoxelAC.GetFloat("Rotation"), Input.GetAxisRaw("Horizontal"), ref animVelocity5, 1f));
+
+        int modulo = Input.GetAxisRaw("Vertical") > 0 ? 1 : 0;
+        shipVoxelAC.SetFloat("Movement", Mathf.SmoothDamp(shipVoxelAC.GetFloat("Movement"), modulo, ref animVelocity, 1f));
     }
 }

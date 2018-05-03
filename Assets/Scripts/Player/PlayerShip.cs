@@ -83,6 +83,13 @@ namespace VelandelPiracyHill
             }
             yield return null;
         }
+
+        public void SetCustomProperty(string propName, object value)
+        {
+            ExitGames.Client.Photon.Hashtable prop = new ExitGames.Client.Photon.Hashtable();
+            prop.Add(propName, value);
+            photonView.owner.SetCustomProperties(prop);
+        }
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 namespace VelandelPiracyHill
@@ -99,17 +100,30 @@ namespace VelandelPiracyHill
                 {
                     anim.SetBool("CannonLoaded", false);
                     Debug.Log("Left Fire");
-
-                    Transform canon = anim.GetComponent<Transform>();
-                    Transform bulletSpawn = TransformExtensions.FindAnyChild<Transform>(canon, "Bullet Spawn");
-
-                    anim.SetTrigger("StartShooting");
-
-                    var bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-                    bullet.SetOwner(info.photonView);
-                    bullet.gameObject.SetActive(true);
+                    StartCoroutine(CountDownBeforeShooting(anim, info));
                 }
             }
+        }
+
+        private IEnumerator CountDownBeforeShooting(Animator anim, PhotonMessageInfo info)
+        {
+            Transform canon = anim.GetComponent<Transform>();
+            Transform bulletSpawn = TransformExtensions.FindAnyChild<Transform>(canon, "Bullet Spawn");
+
+            CannonController cannonController = anim.GetComponent<CannonController>();
+            ParticleSystem ShootOrderPS = cannonController.ShootOrderPS;
+            var mainPS = ShootOrderPS.main;
+            mainPS.startLifetime = cannonController.NextShootTimer;
+            ShootOrderPS.Play();
+            yield return new WaitForSeconds(cannonController.NextShootTimer);
+            ShootOrderPS.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+            anim.SetTrigger("StartShooting");
+            var bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            bullet.SetOwner(info.photonView);
+            bullet.gameObject.SetActive(true);
+
+            yield return null;
         }
     }
 }

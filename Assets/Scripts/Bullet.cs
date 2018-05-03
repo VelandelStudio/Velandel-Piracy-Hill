@@ -15,8 +15,9 @@ namespace VelandelPiracyHill
 
         PlayerShooter bulletOwner;
 
+        public int damage = 5;
         float speed = 20f;
-
+        
         /// <summary>
         /// Start is used to add the initial force of the cannonball.
         /// </summary>
@@ -57,6 +58,8 @@ namespace VelandelPiracyHill
             if (other.transform.root.tag == "Player")
             {
                 PlayerShip otherShip = other.transform.root.GetComponent<PlayerShip>();
+                PlayerHealth playerHealth = other.transform.root.GetComponent<PlayerHealth>();
+
                 if (bulletOwner.photonView.viewID == otherShip.photonView.viewID)
                     return;
 
@@ -66,6 +69,8 @@ namespace VelandelPiracyHill
                     float contactY = other.contacts[0].point.y;
                     float contactZ = other.contacts[0].point.z;
                     otherShip.photonView.RPC("RPC_ExplodeContactPoint", PhotonTargets.All, contactX, contactY, contactZ);
+
+                    playerHealth.DoDamages(this);
                 }
             }
 

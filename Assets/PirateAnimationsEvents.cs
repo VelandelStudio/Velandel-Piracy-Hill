@@ -15,7 +15,7 @@ namespace VelandelPiracyHill
             myView = transform.root.GetComponent<PhotonView>();
             //IDProvider.BuildIDFor(gameObject, myView.isMine);
 
-            cannon = transform.parent.gameObject;
+            cannon = transform.parent.parent.gameObject;
             cannonBallSlotParent = cannonBallSlot.transform.parent;
 
             enabled = myView.isMine;
