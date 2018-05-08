@@ -12,15 +12,20 @@ namespace VelandelPiracyHill
     /// </summary>
     public class PlayerHealth : Photon.PunBehaviour
     {
-        public Color fullHealth = Color.green;
-        public Color zeroHealth = Color.red;
-        public Slider healthBar;
-        public Image fillBar;
+        public HealthBar healthBar;
+
+        PlayerShip _player;
+        PlayerShip player
+        {
+            get
+            {
+                if (_player == null) _player = GetComponent<PlayerShip>();
+                return _player;
+            }
+        }
+
 
         const int MAX_HP = 100;
-
-        PlayerShip player;
-
         int hitPoints
         {
             get
@@ -43,6 +48,33 @@ namespace VelandelPiracyHill
             }
         }
 
+        public override void OnPhotonInstantiate(PhotonMessageInfo info)
+        {
+            if (photonView.isMine)
+            {
+                hitPoints = MAX_HP;
+            }
+            else
+            {
+                DisplayHealth();
+            }
+        }
+
+        void DisplayHealth()
+        {
+            healthBar.SetHealthBarValue(GetNormalisedHealthPercent(hitPoints));
+        }
+
+        public void DoDamages(Bullet bullet)
+        {
+            hitPoints = Mathf.Clamp(hitPoints - bullet.damage, 0, MAX_HP);
+        }
+
+        float GetNormalisedHealthPercent(int hp)
+        {
+            return hp / (float)MAX_HP;
+        }
+
         public override void OnPhotonPlayerPropertiesChanged(object[] playerAndUpdatedProps)
         {
             var plyr = (PhotonPlayer)playerAndUpdatedProps[0];
@@ -56,36 +88,6 @@ namespace VelandelPiracyHill
                     DisplayHealth();
                 }
             }
-        }
-
-        private void Awake()
-        {
-            player = GetComponent<PlayerShip>();
-        }
-
-        void DisplayHealth()
-        {
-            healthBar.value = hitPoints;
-            fillBar.color = Color.Lerp(zeroHealth, fullHealth, hitPoints / MAX_HP);
-
-            /*
-            if (photonView.isMine)
-            {
-                GameUI.SetHealth(GetNormalisedHealthPercent(hitPoints);
-            }
-            */
-        }
-
-        public void DoDamages(Bullet bullet)
-        {
-            hitPoints = Mathf.Clamp(hitPoints - bullet.damage, 0, MAX_HP);
-
-            /*
-            if (hitPoints == 0)
-            {
-                StartCoroutine(ExplodeTank());
-            }
-            */
         }
     }
 }
