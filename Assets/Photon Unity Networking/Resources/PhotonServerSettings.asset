@@ -56,4 +56,5 @@ MonoBehaviour:
   - RPC_StartShooting
   - RPC_ExplodeContactPoint
   - RPC_CannonSideShoot
+  - RPC_ExplodeShip
   DisableAutoOpenWizard: 1

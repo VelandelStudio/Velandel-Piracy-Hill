@@ -12,6 +12,7 @@ namespace VelandelPiracyHill
     /// </summary>
     public class PlayerHealth : Photon.PunBehaviour
     {
+        public List<Transform> explodePointsOnDeath;
         public HealthBar healthBar;
 
         PlayerShip _player;
@@ -25,7 +26,7 @@ namespace VelandelPiracyHill
         }
 
 
-        const int MAX_HP = 100;
+        const int MAX_HP = 1;
         int hitPoints
         {
             get
@@ -48,6 +49,12 @@ namespace VelandelPiracyHill
             }
         }
 
+        /// <summary>
+        /// OnPhotonInstantiate method
+        /// Trigger the instantiation of the playerHealth gameObj
+        /// Setting and display its HP
+        /// </summary>
+        /// <param name="info"></param>
         public override void OnPhotonInstantiate(PhotonMessageInfo info)
         {
             if (photonView.isMine)
@@ -60,21 +67,45 @@ namespace VelandelPiracyHill
             }
         }
 
+        /// <summary>
+        /// DisplayHealth method
+        /// called to adjust the value of the current health 
+        /// </summary>
         void DisplayHealth()
         {
             healthBar.SetHealthBarValue(GetNormalisedHealthPercent(hitPoints));
         }
 
+        /// <summary>
+        /// DoDamages method
+        /// Called by the obj that touch the player and apply damages 
+        /// </summary>
+        /// <param name="bullet">Weapon Bullet</param>
         public void DoDamages(Bullet bullet)
         {
             hitPoints = Mathf.Clamp(hitPoints - bullet.damage, 0, MAX_HP);
+            if (hitPoints == 0)
+            {
+                photonView.RPC("RPC_ExplodeShip", PhotonTargets.All);
+            }
         }
 
+        /// <summary>
+        /// GetNormalisedHealthPercent method
+        /// Pass the hp from number to purcent
+        /// </summary>
+        /// <param name="hp">CurrentHP</param>
+        /// <returns>Hp as purcent</returns>
         float GetNormalisedHealthPercent(int hp)
         {
             return hp / (float)MAX_HP;
         }
 
+        /// <summary>
+        /// OnPhotonPlayerPropertiesChanged method
+        /// This is to Sync a value over network
+        /// </summary>
+        /// <param name="playerAndUpdatedProps"></param>
         public override void OnPhotonPlayerPropertiesChanged(object[] playerAndUpdatedProps)
         {
             var plyr = (PhotonPlayer)playerAndUpdatedProps[0];
@@ -88,6 +119,25 @@ namespace VelandelPiracyHill
                     DisplayHealth();
                 }
             }
+        }
+
+        [PunRPC]
+        void RPC_ExplodeShip()
+        {
+            ParticleSystem explosion = explodePointsOnDeath[0].GetComponentInChildren<ParticleSystem>();
+            StartCoroutine(waitOtherBoom(explosion));
+
+            explosion = explodePointsOnDeath[1].GetComponentInChildren<ParticleSystem>();
+            StartCoroutine(waitOtherBoom(explosion));
+
+            explosion = explodePointsOnDeath[2].GetComponentInChildren<ParticleSystem>();
+            StartCoroutine(waitOtherBoom(explosion));
+        }
+
+        IEnumerator waitOtherBoom(ParticleSystem particleSystem)
+        {
+            yield return new WaitForSeconds(2f);
+            particleSystem.Play();
         }
     }
 }

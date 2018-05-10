@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 namespace VelandelPiracyHill
 {
+    /// <summary>
+    /// HealthBar Class
+    /// Dealing with the UI Image of LifeBar
+    /// </summary>
     public class HealthBar : MonoBehaviour
     {
         [SerializeField] Image healthBarImage;
@@ -15,6 +19,10 @@ namespace VelandelPiracyHill
             scale = healthBarImage.transform.localScale.x;
         }
 
+        /// <summary>
+        /// Set the size and the color of remaining life
+        /// </summary>
+        /// <param name="value">purcent of remaining life</param>
         public void SetHealthBarValue(float value)
         {
             healthBarImage.fillAmount = value;
