@@ -967,6 +967,21 @@ Prefab:
       propertyPath: CollideNegativeZ
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198786270216159076, guid: 7d0849c65fe459a47aaf1b1a239007f3,
+        type: 2}
+      propertyPath: randomSeed
+      value: 115478460
+      objectReference: {fileID: 0}
+    - target: {fileID: 198786270216159076, guid: 7d0849c65fe459a47aaf1b1a239007f3,
+        type: 2}
+      propertyPath: CollisionModule.quality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198786270216159076, guid: 7d0849c65fe459a47aaf1b1a239007f3,
+        type: 2}
+      propertyPath: CollisionModule.voxelSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d0849c65fe459a47aaf1b1a239007f3, type: 2}
   m_IsPrefabParent: 0

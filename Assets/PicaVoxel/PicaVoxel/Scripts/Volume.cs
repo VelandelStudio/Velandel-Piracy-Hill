@@ -507,9 +507,9 @@ namespace PicaVoxel
 
             position += (transform.rotation * (Pivot));
 
-            for (float x = position.x - explosionRadius; x <= position.x + explosionRadius; x += VoxelSize * 0.5f)
-                for (float y = position.y - explosionRadius; y <= position.y + explosionRadius; y += VoxelSize * 0.5f)
-                    for (float z = position.z - explosionRadius; z <= position.z + explosionRadius; z += VoxelSize * 0.5f)
+            for (float x = position.x - explosionRadius; x <= position.x + explosionRadius; x += VoxelSize * transform.lossyScale.x * 0.5f)
+                for (float y = position.y - explosionRadius; y <= position.y + explosionRadius; y += VoxelSize * transform.lossyScale.y * 0.5f)
+                    for (float z = position.z - explosionRadius; z <= position.z + explosionRadius; z += VoxelSize * transform.lossyScale.z * 0.5f)
                     {
                         Vector3 checkPos = new Vector3(x, y, z);
                         if (Vector3.Distance(checkPos, position) <= explosionRadius)
