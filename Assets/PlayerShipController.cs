@@ -70,7 +70,7 @@ public class PlayerShipController : Photon.PunBehaviour
         m_MovementInputValue = Mathf.Clamp(Input.GetAxis("Vertical"),0,1);
         m_TurnInputValue = Input.GetAxis("Horizontal");
         
-        float movementValue = Mathf.Abs(m_Rigidbody.velocity.x + m_Rigidbody.velocity.z);
+        float movementValue = Mathf.Abs(m_Rigidbody.velocity.x) + Mathf.Abs(m_Rigidbody.velocity.z);
         if (!PSPlaying && movementValue > 1)
         {
             PSPlaying = true;
