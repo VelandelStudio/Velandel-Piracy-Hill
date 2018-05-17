@@ -48,7 +48,7 @@ namespace VelandelPiracyHill
         {
             Vector3 contactPoint = new Vector3(x, y, z);
             int layerMask = ~(1 << LayerMask.NameToLayer("Indestructible"));
-            Collider[] hitColliders = Physics.OverlapSphere(contactPoint, 2f, layerMask, QueryTriggerInteraction.Ignore);
+            Collider[] hitColliders = Physics.OverlapSphere(contactPoint, 0.4f, layerMask, QueryTriggerInteraction.Ignore);
 
             StartCoroutine(CoroutineExploder(hitColliders, contactPoint));
 
@@ -78,7 +78,7 @@ namespace VelandelPiracyHill
                     Rigidbody rb = hitColliders[i].GetComponent<Rigidbody>();
                     rb.useGravity = true;
                     rb.isKinematic = false;
-                    //rb.AddExplosionForce(10f, contactPoint, 1f, 0.2f);
+                    rb.AddExplosionForce(10f, contactPoint, 1f, 0.2f);
                 }
             }
             yield return null;
