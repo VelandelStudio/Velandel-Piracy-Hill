@@ -293,7 +293,7 @@ MonoBehaviour:
   Tag: PicaVoxelVolume
   ExplosionRadius: 2
   ParticleVelocity: 25
-  ExplodeTarget: 0
+  ExplodeTarget: 2
   ValueFilterOperation: 3
   ValueFilter: 1
 --- !u!4 &77512382
@@ -382,7 +382,7 @@ MonoBehaviour:
   Tag: PicaVoxelVolume
   ExplosionRadius: 2
   ParticleVelocity: 25
-  ExplodeTarget: 0
+  ExplodeTarget: 2
   ValueFilterOperation: 3
   ValueFilter: 1
 --- !u!4 &661806593
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   Tag: PicaVoxelVolume
   ExplosionRadius: 2
   ParticleVelocity: 25
-  ExplodeTarget: 0
+  ExplodeTarget: 2
   ValueFilterOperation: 3
   ValueFilter: 1
 --- !u!4 &1708058030
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   Tag: PicaVoxelVolume
   ExplosionRadius: 2
   ParticleVelocity: 25
-  ExplodeTarget: 0
+  ExplodeTarget: 2
   ValueFilterOperation: 3
   ValueFilter: 1
 --- !u!4 &1879614067
