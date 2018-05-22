@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using emotitron.Utilities.SmartVars;
+﻿using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {

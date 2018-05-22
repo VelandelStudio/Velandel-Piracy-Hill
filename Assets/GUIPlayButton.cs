@@ -9,22 +9,28 @@ namespace VelandelPiracyHill
         public GameObject PlayButton;
         public GameObject PlayButtonOverlayed;
         public GameManager GameManager;
+        public GameObject NickNameChoicePanel;
+        private bool Activated;
+
         private void OnMouseOver()
         {
-            Debug.Log("Hello world");
             PlayButtonOverlayed.SetActive(true);
             PlayButton.SetActive(false);
 
-            if (Input.GetMouseButtonUp(0))
+            if (!Activated && Input.GetMouseButtonUp(0))
             {
-                GameManager.JoinGame();
+                Activated = true;
+                NickNameChoicePanel.SetActive(true);
             }
         }
 
         private void OnMouseExit()
         {
-            PlayButton.SetActive(true);
-            PlayButtonOverlayed.SetActive(false);
+            if (!Activated)
+            {
+                PlayButton.SetActive(true);
+                PlayButtonOverlayed.SetActive(false);
+            }
         }
     }
 }

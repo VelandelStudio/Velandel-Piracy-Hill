@@ -1,5 +1,4 @@
-﻿using emotitron.Network.NST;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace VelandelPiracyHill
 {
@@ -13,7 +12,6 @@ namespace VelandelPiracyHill
         private void Awake()
         {
             myView = transform.root.GetComponent<PhotonView>();
-            //IDProvider.BuildIDFor(gameObject, myView.isMine);
 
             cannon = transform.parent.parent.gameObject;
             cannonBallSlotParent = cannonBallSlot.transform.parent;

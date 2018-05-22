@@ -1,5 +1,4 @@
-﻿using emotitron.Network.NST;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace VelandelPiracyHill
 {
@@ -74,7 +73,6 @@ namespace VelandelPiracyHill
         [PunRPC]
         public void RPC_StartShooting(string pirateID, string cannonID)
         {
-            Debug.Log(cannonID);
             Animator cannonAnim = TransformExtensions.FindAnyChild<Transform>(CannonsSides, cannonID).GetComponent<Animator>();
             Animator pirateAnim = TransformExtensions.FindAnyChild<Transform>(cannonAnim.transform, pirateID).GetComponent<Animator>();
             pirateAnim.SetTrigger("StartShooting");
