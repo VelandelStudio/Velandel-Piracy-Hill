@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using emotitron.Network.NST;
 
 namespace VelandelPiracyHill
 {
@@ -11,7 +10,6 @@ namespace VelandelPiracyHill
         private void Awake()
         {
             myView = transform.root.GetComponent<PhotonView>();
-            //IDProvider.BuildIDFor(gameObject, myView.isMine);
             pirate = GetComponentInChildren<PirateAnimationsEvents>().gameObject;
             enabled = myView.isMine;
         }

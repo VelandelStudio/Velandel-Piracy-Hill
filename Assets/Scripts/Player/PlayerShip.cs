@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using emotitron.Network.NST.Sample;
 using PicaVoxel;
 
 namespace VelandelPiracyHill
@@ -50,7 +49,7 @@ namespace VelandelPiracyHill
             int layerMask = ~(1 << LayerMask.NameToLayer("Indestructible"));
             Collider[] hitColliders = Physics.OverlapSphere(contactPoint, 0.4f, layerMask, QueryTriggerInteraction.Ignore);
 
-            StartCoroutine(CoroutineExploder(hitColliders, contactPoint));
+            //StartCoroutine(CoroutineExploder(hitColliders, contactPoint));
 
             exploder.transform.position = contactPoint;
             exploder.transform.position += new Vector3(0f, 0.25f, 0f);
