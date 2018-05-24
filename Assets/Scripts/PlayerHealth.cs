@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using PicaVoxel;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace VelandelPiracyHill
 {
@@ -12,6 +11,7 @@ namespace VelandelPiracyHill
     /// </summary>
     public class PlayerHealth : Photon.PunBehaviour
     {
+        [SerializeField] private Exploder exploder;
         public List<Transform> explodePointsOnDeath;
         public HealthBar healthBar;
 
@@ -26,7 +26,7 @@ namespace VelandelPiracyHill
         }
 
 
-        const int MAX_HP = 1;
+        const int MAX_HP = 0;
         int hitPoints
         {
             get
@@ -124,20 +124,33 @@ namespace VelandelPiracyHill
         [PunRPC]
         void RPC_ExplodeShip()
         {
-            ParticleSystem explosion = explodePointsOnDeath[0].GetComponentInChildren<ParticleSystem>();
-            StartCoroutine(waitOtherBoom(explosion));
-
-            explosion = explodePointsOnDeath[1].GetComponentInChildren<ParticleSystem>();
-            StartCoroutine(waitOtherBoom(explosion));
-
-            explosion = explodePointsOnDeath[2].GetComponentInChildren<ParticleSystem>();
-            StartCoroutine(waitOtherBoom(explosion));
+            for (int i = 0; i < explodePointsOnDeath.Count; i++)
+            {
+                ParticleSystem explosion = explodePointsOnDeath[i].GetComponentInChildren<ParticleSystem>();
+                StartCoroutine(waitOtherBoom(explosion, explodePointsOnDeath[i].transform));
+            }
         }
 
-        IEnumerator waitOtherBoom(ParticleSystem particleSystem)
+        IEnumerator waitOtherBoom(ParticleSystem particleSystem, Transform pos)
         {
             yield return new WaitForSeconds(2f);
             particleSystem.Play();
+
+            exploder.ExplosionRadius = 1;
+
+            exploder.transform.position = pos.position;
+            exploder.transform.position -= new Vector3(0f, 0.25f, 0f);
+            exploder.Explode(pos.position, gameObject.transform.lossyScale.x);
         }
+
+        /*
+        private void Start()
+        {
+            if (hitPoints == 0)
+            {
+                photonView.RPC("RPC_ExplodeShip", PhotonTargets.All);
+            }
+        }
+        */
     }
 }
