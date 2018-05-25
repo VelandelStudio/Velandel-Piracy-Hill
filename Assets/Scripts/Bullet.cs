@@ -74,6 +74,7 @@ namespace VelandelPiracyHill
                 }
             }
 
+            Debug.Log(other);
             DestructibleElement element = other.transform.root.GetComponent<DestructibleElement>();
             if (element)
             {

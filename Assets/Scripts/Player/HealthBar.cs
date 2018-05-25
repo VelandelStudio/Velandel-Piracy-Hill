@@ -26,7 +26,7 @@ namespace VelandelPiracyHill
         public void SetHealthBarValue(float value)
         {
             healthBarImage.fillAmount = value;
-            healthBarImage.transform.localScale = new Vector3(Mathf.Lerp(0, scale, value), healthBarImage.transform.localScale.y, healthBarImage.transform.localScale.z);
+            healthBarImage.transform.localScale = new Vector3(Mathf.Lerp(1, scale, value), healthBarImage.transform.localScale.y, healthBarImage.transform.localScale.z);
             healthBarImage.color = Color.Lerp(Color.red, Color.green, value);
         }
     }

@@ -14,7 +14,7 @@ namespace VelandelPiracyHill
         [SerializeField] private Exploder exploder;
         public List<Transform> explodePointsOnDeath;
         public HealthBar healthBar;
-
+        private Volume[] volumes;
         PlayerShip _player;
         PlayerShip player
         {
@@ -127,30 +127,35 @@ namespace VelandelPiracyHill
             for (int i = 0; i < explodePointsOnDeath.Count; i++)
             {
                 ParticleSystem explosion = explodePointsOnDeath[i].GetComponentInChildren<ParticleSystem>();
-                StartCoroutine(waitOtherBoom(explosion, explodePointsOnDeath[i].transform));
+                StartCoroutine(waitOtherBoom(explosion, explodePointsOnDeath[i].transform, i / 5.00f));
             }
         }
 
-        IEnumerator waitOtherBoom(ParticleSystem particleSystem, Transform pos)
+        IEnumerator waitOtherBoom(ParticleSystem particleSystem, Transform tr, float timer)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(timer);
             particleSystem.Play();
 
-            exploder.ExplosionRadius = 1;
-
-            exploder.transform.position = pos.position;
-            exploder.transform.position -= new Vector3(0f, 0.25f, 0f);
-            exploder.Explode(pos.position, gameObject.transform.lossyScale.x);
+            for (int i = 0; i < volumes.Length; i++)
+            {
+                var batch = volumes[i].Explode(tr.position, 0.6f, 0, Exploder.ExplodeValueFilterOperation.GreaterThanOrEqualTo);
+                if (batch.Voxels.Count > 0 && VoxelParticleSystem.Instance != null)
+                {
+                    // Adjust these values to change the speed of the exploding particles
+                    var minExplodeSpeed = 20f;
+                    var maxExplodeSpeed = 50f;
+                    VoxelParticleSystem.Instance.SpawnBatch(batch, pos => (pos - tr.position).normalized * Random.Range(minExplodeSpeed, maxExplodeSpeed), gameObject.transform.lossyScale.x);
+                }
+            }
         }
 
-        /*
         private void Start()
         {
+            volumes = GetComponentsInChildren<Volume>();
             if (hitPoints == 0)
             {
                 photonView.RPC("RPC_ExplodeShip", PhotonTargets.All);
             }
         }
-        */
     }
 }

@@ -48,12 +48,23 @@ namespace VelandelPiracyHill
             Vector3 contactPoint = new Vector3(x, y, z);
             int layerMask = ~(1 << LayerMask.NameToLayer("Indestructible"));
             Collider[] hitColliders = Physics.OverlapSphere(contactPoint, 0.4f, layerMask, QueryTriggerInteraction.Ignore);
-
-            //StartCoroutine(CoroutineExploder(hitColliders, contactPoint));
-
-            exploder.transform.position = contactPoint;
-            exploder.transform.position += new Vector3(0f, 0.25f, 0f);
-            exploder.Explode(new Vector3(0f, 7f, 0f),transform.lossyScale.x * 4);
+            
+            StartCoroutine(CoroutineExploder(hitColliders, contactPoint));
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                Volume vol = hitColliders[i].GetComponent<Volume>();
+                if(vol)
+                {
+                    var batch = vol.Explode(contactPoint, 0.4f, 0, Exploder.ExplodeValueFilterOperation.GreaterThanOrEqualTo);
+                    if (batch.Voxels.Count > 0 && VoxelParticleSystem.Instance != null)
+                    {
+                        // Adjust these values to change the speed of the exploding particles
+                        var minExplodeSpeed = 20f;
+                        var maxExplodeSpeed = 50f;
+                        VoxelParticleSystem.Instance.SpawnBatch(batch, pos => (pos - contactPoint).normalized * Random.Range(minExplodeSpeed, maxExplodeSpeed), gameObject.transform.lossyScale.x);
+                    }
+                }
+            }
         }
 
         private IEnumerator CoroutineExploder(Collider[] hitColliders, Vector3 contactPoint)
