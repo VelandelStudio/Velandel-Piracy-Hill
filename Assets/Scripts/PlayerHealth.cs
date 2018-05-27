@@ -148,14 +148,5 @@ namespace VelandelPiracyHill
                 }
             }
         }
-
-        private void Start()
-        {
-            volumes = GetComponentsInChildren<Volume>();
-            if (hitPoints == 0)
-            {
-                photonView.RPC("RPC_ExplodeShip", PhotonTargets.All);
-            }
-        }
     }
 }
