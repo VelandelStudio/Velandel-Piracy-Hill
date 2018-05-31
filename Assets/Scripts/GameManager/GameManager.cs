@@ -24,7 +24,10 @@ namespace VelandelPiracyHill
 
         void Start()
         {
-            PhotonNetwork.ConnectUsingSettings("VPH_v-a.0.0.01");
+            if (!PhotonNetwork.connected)
+            {
+                PhotonNetwork.ConnectUsingSettings("VPH_v-a.0.0.01");
+            }
         }
 
         public void JoinGame()
