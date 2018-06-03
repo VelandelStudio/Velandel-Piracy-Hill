@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace VelandelPiracyHill
 {
@@ -8,7 +9,7 @@ namespace VelandelPiracyHill
     {
         public static GameManager instance;
         public static GameObject localPlayer;
-
+        [SerializeField] private InputField playerNameInputField;
         void Awake()
         {
             if (instance != null)
@@ -53,6 +54,7 @@ namespace VelandelPiracyHill
                 "PlayerShip",
                 new Vector3(0, 0.4f, 0),
                 Quaternion.identity, 0);
+            PhotonNetwork.playerName = playerNameInputField.text;
         }
     }
 }

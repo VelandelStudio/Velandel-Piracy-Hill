@@ -38,6 +38,18 @@ namespace VelandelPiracyHill
             }
         }
 
+        public override void OnPhotonInstantiate(PhotonMessageInfo info)
+        {
+            gameObject.name = new System.Text.StringBuilder()
+                .Append(photonView.owner.NickName)
+                .Append(" [")
+                .Append(photonView.viewID)
+                .Append("]")
+                .ToString();
+
+            BroadcastMessage("OnInstantiate", info, SendMessageOptions.DontRequireReceiver);
+        }
+
         /// <summary>
         /// RPC_ExplodeContactPoint RPC launched when an ennemy cannonball reached us.
         /// Handles Voxels and non-Voxels prefabs explosion.
