@@ -15,6 +15,7 @@ namespace VelandelPiracyHill
         public List<Transform> explodePointsOnDeath;
         public HealthBar healthBar;
         private Volume[] volumes;
+
         PlayerShip _player;
         PlayerShip player
         {
@@ -26,7 +27,7 @@ namespace VelandelPiracyHill
         }
 
 
-        const int MAX_HP = 0;
+        const int MAX_HP = 1;
         int hitPoints
         {
             get
@@ -129,6 +130,8 @@ namespace VelandelPiracyHill
                 ParticleSystem explosion = explodePointsOnDeath[i].GetComponentInChildren<ParticleSystem>();
                 StartCoroutine(waitOtherBoom(explosion, explodePointsOnDeath[i].transform, i / 5.00f));
             }
+
+            StartCoroutine(BackLaunchScene());
         }
 
         IEnumerator waitOtherBoom(ParticleSystem particleSystem, Transform tr, float timer)
@@ -147,6 +150,21 @@ namespace VelandelPiracyHill
                     VoxelParticleSystem.Instance.SpawnBatch(batch, pos => (pos - tr.position).normalized * Random.Range(minExplodeSpeed, maxExplodeSpeed), gameObject.transform.lossyScale.x);
                 }
             }
+        }
+
+        IEnumerator BackLaunchScene()
+        {
+            yield return new WaitForSeconds(5f);
+
+            if (photonView.isMine)
+            {
+                PhotonNetwork.LeaveRoom();
+            }
+        }
+
+        public override void OnLeftRoom()
+        {
+            PhotonNetwork.LoadLevel(0);
         }
     }
 }
