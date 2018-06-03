@@ -10,6 +10,7 @@ namespace VelandelPiracyHill
         public static GameManager instance;
         public static GameObject localPlayer;
         [SerializeField] private InputField playerNameInputField;
+        private string playerName;
         void Awake()
         {
             if (instance != null)
@@ -33,6 +34,7 @@ namespace VelandelPiracyHill
 
         public void JoinGame()
         {
+            playerName = playerNameInputField.text;
             RoomOptions ro = new RoomOptions();
             ro.MaxPlayers = 4;
             PhotonNetwork.JoinOrCreateRoom("Default Room", ro, null);
@@ -50,6 +52,8 @@ namespace VelandelPiracyHill
 
         void OnLevelWasLoaded(int levelNumber)
         {
+            PhotonNetwork.playerName = playerName;
+
             if (!PhotonNetwork.inRoom)
                 return;
 
@@ -57,7 +61,6 @@ namespace VelandelPiracyHill
                 "PlayerShip",
                 new Vector3(0, 0.4f, 0),
                 Quaternion.identity, 0);
-            PhotonNetwork.playerName = playerNameInputField.text;
         }
     }
 }

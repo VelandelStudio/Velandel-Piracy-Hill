@@ -7,13 +7,7 @@ public class PlayerName : MonoBehaviour {
 
     void OnInstantiate(PhotonMessageInfo info)
     {
-        var pView = GetComponentInParent<PhotonView>();
-        if (pView.isMine)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-
-        GetComponent<InputField>().text = pView.owner.NickName;
+        var pView = transform.root.GetComponent<PhotonView>();
+        GetComponent<Text>().text = pView.owner.NickName;
     }
 }
